@@ -45,7 +45,7 @@ const rules = {
   },
   typescript: {
     test: /\.ts$/,
-    loader: 'ts',
+    loader: ['awesome-typescript-loader', 'angular2-template-loader'],
     exclude: /node_modules/
   }
 };

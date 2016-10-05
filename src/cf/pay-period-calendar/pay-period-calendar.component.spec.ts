@@ -3,7 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { ComponentFixture, TestBed, fakeAsync, tick } from "@angular/core/testing";
 import * as moment from "moment/moment";
 
-import { standardISOFormat } from "src/date.setup";
+import { standardISOFormat } from "../shared/date.values";
 
 import { PayPeriodCalendarComponent } from "./pay-period-calendar.component";
 import { PayPeriodCalendarService } from "./pay-period-calendar.service";

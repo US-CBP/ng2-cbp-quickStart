@@ -7,7 +7,8 @@ import { PayPeriodMonth } from "./pay-period-month.model";
 
 @Component({
     selector: "cf-pay-period-calendar",
-    templateUrl: "pay-period-calendar.component.html"
+    templateUrl: "pay-period-calendar.component.html",
+    styleUrls: ["pay-period-calendar.component.scss"]
 })
 export class PayPeriodCalendarComponent implements OnInit {
     @Input() id: string;
