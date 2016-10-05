@@ -1,0 +1,51 @@
+//
+// Variables
+// --------------------------------------------------
+
+$white:                             #FFF;
+$gray-base:                         #000;
+$gray-darker:                       lighten($gray-base, 13.5%); // #222
+$gray-dark:                         lighten($gray-base, 20%);   // #333
+$gray:                              lighten($gray-base, 33.5%); // #555
+$gray-light:                        lighten($gray-base, 66.7%); // #aaa
+$gray-lighter:                      lighten($gray-base, 93.5%); // #eee
+$gray-lightest:                     lighten($gray-base, 96.5%); // #f6f6f6
+
+$brand-primary:                     #00416A !default;
+$brand-success:                     #008000 !default;
+$brand-info:                        #1460aa !default;
+$brand-warning:                     #f09511 !default;
+$brand-danger:                      #a00000 !default;
+$brand-default:                     #fff !default;
+$brand-live:                        lighten(#fac554, 15%)!default;
+
+// custom brand border
+$brand-primary-border:              #0A3055;
+$brand-success-border:              #134d13;
+$brand-danger-border:               #aa0000;
+$brand-warning-border:              #4a2e1f;
+$brand-info-border:                 #0f4880;
+$brand-default-border:              #adadad;
+$brand-live-border:                 darken($brand-live, 10%);
+
+// custom brand text
+$brand-warning-text:                darken($brand-warning, 45%);
+
+//
+$brand-default-highlight:           rgba(20,96,170,.1);
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:                           $white !default;
+//** Global text color on `<body>`.
+$text-color:                        $gray-dark !default;
+
+//** Global textual link color.
+$link-color:                        $brand-primary !default;
+//** Link hover color set via `darken()` function.
+$link-hover-color:                  darken($link-color, 15%) !default;
+//** Link hover decoration.
+$link-hover-decoration:             underline !default;

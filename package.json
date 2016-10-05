@@ -11,7 +11,7 @@
     "name": "Xavier/Martin",
     "email": ""
   },
-  "license": "MIT",
+  "license": "BEMS",
   "private": true,
   "engines": {
     "node": ">=6.4"
@@ -47,7 +47,9 @@
     "moment": "~2.15.1",
     "reflect-metadata": "~0.1.8",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "~0.6.25"
+    "zone.js": "~0.6.25",
+    "jquery": "2.2 - 3",
+    "jquery.inputmask": "~3.1.26"
   },
   "devDependencies": {
     "@ngrx/store-devtools": "~3.1.0",
