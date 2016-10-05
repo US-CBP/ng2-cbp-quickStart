@@ -177,4 +177,8 @@ export class PayPeriodCalendarComponent implements OnInit {
     selectPayPeriod(pp: PayPeriod) {
         this.payPeriodSelected.next(pp);
     }
+
+    dayOfMonth(pp: PayPeriod, week: number, dayOfWeek: number): number {
+        return moment(pp.startDate).add(week - 1, "weeks").add(dayOfWeek, "days").date();
+    }
 }
