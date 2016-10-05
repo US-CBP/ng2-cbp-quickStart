@@ -7,6 +7,7 @@ import { standardISOFormat } from "../shared/date.values";
 
 import { PayPeriodCalendarComponent } from "./pay-period-calendar.component";
 import { PayPeriodCalendarService } from "./pay-period-calendar.service";
+import { PayPeriod } from "./pay-period.model";
 import { PayPeriodMonth } from "./pay-period-month.model";
 
 describe("PayPeriodCalendarComponent", () => {
@@ -722,6 +723,49 @@ describe("PayPeriodCalendarComponent", () => {
             tick();
             expect(component.payPeriodsOfMonth).toEqual(payPeriodsOfMonth);
         }));
+    });
+
+    describe("dayOfWeek", () => {
+        let payPeriodsOfMonth: PayPeriod[];
+
+        beforeEach(fakeAsync(() => {
+            payPeriodsOfMonth = [
+                {
+                    id: 201525,
+                    number: 25,
+                    startDate: "2015-12-27T00:00:00",
+                    isSelectable: true
+                },
+                {
+                    id: 201601,
+                    number: 1,
+                    startDate: "2016-01-10T00:00:00",
+                    isSelectable: true
+                },
+                {
+                    id: 201602,
+                    number: 2,
+                    startDate: "2016-01-24T00:00:00",
+                    isSelectable: true
+                }
+            ];
+            (<jasmine.Spy>service.loadPayPeriods).and.returnValue(Promise.resolve(payPeriodsOfMonth));
+
+            fixture.detectChanges();
+            tick();
+        }));
+
+        it("returns start date day for week 1 day 0", () => {
+            expect(component.dayOfMonth(payPeriodsOfMonth[0], 1, 0)).toBe(27);
+        });
+
+        it("returns day for week 1 offset with day 0", () => {
+            expect(component.dayOfMonth(payPeriodsOfMonth[0], 1, 2)).toBe(29);
+        });
+
+        it("returns day for week 2 offset with day 0", () => {
+            expect(component.dayOfMonth(payPeriodsOfMonth[0], 2, 2)).toBe(5);
+        });
     });
 
     function createMonthsFromCurrent(startIndex, endIndex) {

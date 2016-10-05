@@ -44,22 +44,22 @@
                     <button type="button" class="btn btn-primary btn-xs" [disabled]="!pp.isSelectable" (click)="selectPayPeriod(pp); $event.stopPropagation();">{{pp.number}}</button>
                     <span class="selected-text" *ngIf="isSelected(pp)">(selected)</span>
                 </th>
-                <td class="day sunday">{{pp.week1[0]}}</td>
-                <td class="day monday">{{pp.week1[1]}}</td>
-                <td class="day tuesday">{{pp.week1[2]}}</td>
-                <td class="day wednesday">{{pp.week1[3]}}</td>
-                <td class="day thursday">{{pp.week1[4]}}</td>
-                <td class="day friday">{{pp.week1[5]}}</td>
-                <td class="day saturday">{{pp.week1[6]}}</td> 
+                <td class="day sunday">{{dayOfMonth(pp, 1, 0)}}</td>
+                <td class="day monday">{{dayOfMonth(pp, 1, 1)}}</td>
+                <td class="day tuesday">{{dayOfMonth(pp, 1, 2)}}</td>
+                <td class="day wednesday">{{dayOfMonth(pp, 1, 3)}}</td>
+                <td class="day thursday">{{dayOfMonth(pp, 1, 4)}}</td>
+                <td class="day friday">{{dayOfMonth(pp, 1, 5)}}</td>
+                <td class="day saturday">{{dayOfMonth(pp, 1, 6)}}</td> 
             </tr>
             <tr id="{{id}}-pay-period-{{pp.id}}-week2" class="week week2" [ngClass]="{ 'even': even, 'odd': odd, 'last': last, 'selected': isSelected(pp), 'is-selectable': pp.isSelectable }" (click)="selectPayPeriod(pp)">
-                <td class="day sunday">{{pp.week2[0]}}</td>
-                <td class="day monday">{{pp.week2[1]}}</td>
-                <td class="day tuesday">{{pp.week2[2]}}</td>
-                <td class="day wednesday">{{pp.week2[3]}}</td>
-                <td class="day thursday">{{pp.week2[4]}}</td>
-                <td class="day friday">{{pp.week2[5]}}</td>
-                <td class="day saturday">{{pp.week2[6]}}</td>
+                <td class="day sunday">{{dayOfMonth(pp, 2, 0)}}</td>
+                <td class="day monday">{{dayOfMonth(pp, 2, 1)}}</td>
+                <td class="day tuesday">{{dayOfMonth(pp, 2, 2)}}</td>
+                <td class="day wednesday">{{dayOfMonth(pp, 2, 3)}}</td>
+                <td class="day thursday">{{dayOfMonth(pp, 2, 4)}}</td>
+                <td class="day friday">{{dayOfMonth(pp, 2, 5)}}</td>
+                <td class="day saturday">{{dayOfMonth(pp, 2, 6)}}</td>
             </tr>
         </template>
     </tbody>
