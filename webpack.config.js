@@ -3,6 +3,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -29,6 +30,11 @@ const PORT = 3000;
 //  LOADERS
 //---------------------------------------------------------
 const rules = {
+  cssStyles: { 
+    test: /\.css$/, 
+    loader: 'raw!postcss',
+    exclude: path.resolve('src/shared/styles')
+  },
   componentStyles: {
     test: /\.scss$/,
     loader: 'raw!postcss!sass',
@@ -61,18 +67,31 @@ config.resolve = {
   modules: [
     path.resolve('.'),
     'node_modules'
-  ]
+  ],
+  alias: {
+    jquery: 'node_modules/jquery/dist/jquery.js',
+    jqueryInputmask: 'node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask.js'
+  }
 };
 
 config.module = {
   rules: [
     rules.typescript,
+    rules.cssStyles,
     rules.componentStyles,
     rules.html
   ]
 };
 
 config.plugins = [
+  new ProvidePlugin({
+    //_: 'lodash',
+    //angular: 'angular',
+    jQuery: 'jquery',
+    $: 'jquery',
+    jquery: 'jquery',
+    'jquery.inputmask': 'jqueryInputmask'
+  }),
   new DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   }),

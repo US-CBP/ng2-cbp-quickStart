@@ -3,16 +3,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app',
-  styles: [
-    require('./app.scss')
-  ],
-
   template: `
     <header class="header">
       <div class="g-row">
         <div class="g-col">
-          <h1 class="header__title">Todo Angular2 NgRx</h1>
-          <a class="header__link" href="https://github.com/r-park/todo-angular2-ngrx"></a>
+          <h1 class="header__title">BEMS Agular2 Quick Start</h1>
         </div>
       </div>
     </header>
