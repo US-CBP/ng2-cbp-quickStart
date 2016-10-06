@@ -5,11 +5,7 @@ import { Component } from '@angular/core';
   selector: 'app',
   template: `
     <header class="header">
-      <div class="g-row">
-        <div class="g-col">
-          <h1 class="header__title">BEMS Agular2 Quick Start</h1>
-        </div>
-      </div>
+      <cf-header></cf-header>
     </header>
 
     <main class="main">
