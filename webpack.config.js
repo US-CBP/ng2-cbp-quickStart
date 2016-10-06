@@ -32,7 +32,7 @@ const PORT = 3000;
 const rules = {
   cssStyles: { 
     test: /\.css$/, 
-    loader: 'raw!postcss',
+    loader: ['style-loader', 'css-loader'],
     exclude: path.resolve('src/shared/styles')
   },
   componentStyles: {
@@ -50,10 +50,24 @@ const rules = {
     loader: 'raw'
   },
   typescript: {
+    test: /\.js$/,
+    loader: ['babel-loader'],
+    exclude: /node_modules/
+  },
+  typescript: {
     test: /\.ts$/,
     loader: ['awesome-typescript-loader', 'angular2-template-loader'],
     exclude: /node_modules/
+  },
+  fontFile: { 
+    test: /\.(ttf|otf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    loaders: ['file-loader'] 
+  },
+  fontUrl: { 
+    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+    loader: 'url-loader?limit=10000&mimetype=application/font-woff'
   }
+
 };
 
 
@@ -63,7 +77,7 @@ const rules = {
 const config = module.exports = {};
 
 config.resolve = {
-  extensions: ['.ts', '.js'],
+  extensions: ['.ts', '.js', '.css', '.scss'],
   modules: [
     path.resolve('.'),
     'node_modules'
@@ -79,7 +93,9 @@ config.module = {
     rules.typescript,
     rules.cssStyles,
     rules.componentStyles,
-    rules.html
+    rules.html,
+    rules.fontFile,
+    rules.fontUrl
   ]
 };
 

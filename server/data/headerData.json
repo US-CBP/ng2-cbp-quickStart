@@ -1,0 +1,159 @@
+{
+    "user": {
+        "fullName": "MOULIGNEAU, XAVIER",
+        "id": 3163,
+        "picsId": "AJO0002A",
+        "hashId": "EGI99I4",
+        "roles": "BUSINESS_OWNER,USER_ADMINISTRATOR,ENF_AGENT,ENF_CLERK,ENF_DETAINEE_MGR,ENF_DETAINEE_MGR_SUPERVISOR,ENF_DSA,ENF_FACILITY_INSPECTOR,ENF_GUEST,ENF_HQ_USER,ENF_REPORT_USER,ENF_SUPERVISOR,ENF_SUPER_USER,OASISS_ADMIN,OASISS_SUPERVISOR,ROLE_ENF_EADM_DETAINEE_MGR,ROLE_ENF_EADM_DETAINEE_MGR_SUP,ROLE_ENF_EARM_HQ_USER,ROLE_ENF_EARM_READ_ONLY,ROLE_ENF_EARM_STANDARD,ROLE_ENF_EARM_SUPER_USER,ROLE_ENF_FACM_HQ_USER,E3_PROS_SUPER_USER_DSA"
+    },
+    "cbpMenu": [{
+        "id": "global_1",
+        "html": "<span class='e3Logo'>e3</span><span class='e3AppBrand'>e3</span><span class='e3AppName'>ProcessiNG<sup>2.1</sup></span>",
+        "title": "e3 Processing Next Generation",
+        "href": "#",
+        "target": "",
+        "className": "",
+        "hasMenu": true,
+        "toggle": "",
+        "menu": [{
+            "html": "e3 ProcessiNG<sup>2.1</sup>",
+            "title": "e3 Processing Next Generation",
+            "href": "https://e3-dev.sat.cbp.dhs.gov/e3Intake",
+            "target": "",
+            "divider": false
+        }, {
+            "html": "Processing",
+            "title": "Processing",
+            "href": "#",
+            "target": "https://e3dev.cbp.dhs.gov/e3Processing",
+            "divider": false
+        }, {
+            "html": "Detentions",
+            "title": "Detentions",
+            "href": "https://e3-dev.sat.cbp.dhs.gov/e3DetentionWeb/",
+            "target": "",
+            "divider": false
+        }, {
+            "html": "Biometrics",
+            "title": "Biometrics",
+            "href": "#",
+            "target": "https://e3dev.cbp.dhs.gov/e3biometricWeb/index.jsp",
+            "divider": false
+        }, {
+            "html": "Prosecutions",
+            "title": "Prosecutions",
+            "href": "#",
+            "target": "https://e3dev.cbp.dhs.gov/e3pros/home",
+            "divider": false
+        }, {
+            "html": "Assaults",
+            "title": "Assaults",
+            "href": "#",
+            "target": "https://e3dev.cbp.dhs.gov/e3Assault",
+            "divider": false
+        }, {
+            "html": "OASISS",
+            "title": "OASISS",
+            "href": "#",
+            "target": "https://e3dev.cbp.dhs.gov/e3Oasiss",
+            "divider": false
+        }]
+    }, {
+        "id": "global_2",
+        "html": "<span class='label label-success label-success-e3'>NEW</span> Event",
+        "title": "New Event",
+        "href": "https://e3-dev.sat.cbp.dhs.gov/e3Intake/#/e3/intake/event/search/new",
+        "target": "",
+        "className": "",
+        "hasMenu": false,
+        "toggle": ""
+    }, {
+        "id": "global_3",
+        "html": "<span class='fa fa-search'></span> Search Events",
+        "title": "Search Events",
+        "href": "https://e3-dev.sat.cbp.dhs.gov/e3Intake/#/e3/intake/event/search/list",
+        "target": "",
+        "className": "searchEvents",
+        "hasMenu": false,
+        "toggle": ""
+    }, {
+        "id": "global_4",
+        "html": "",
+        "title": "Recent Events",
+        "href": "#",
+        "target": "",
+        "className": "recentEvents",
+        "hasMenu": true,
+        "toggle": "",
+        "menu": [{
+                "html": "<b>Recent Events</b>",
+                "title": "Recent Events",
+                "href": "#",
+                "target": "",
+                "className": "",
+                "divider": false
+            }, {
+                "html": "",
+                "title": "",
+                "href": "#",
+                "target": "",
+                "className": "",
+                "divider": true
+            }, {
+                "html": "AJO1508000011",
+                "title": "AJO1508000011",
+                "href": "https://e3-dev.sat.cbp.dhs.gov/e3Intake/#/e3/intake/event/update/529506",
+                "target": "",
+                "className": "",
+                "divider": false
+            }, {
+                "html": "MCS1409000002",
+                "title": "MCS1409000002",
+                "href": "https://e3-dev.sat.cbp.dhs.gov/e3Intake/#/e3/intake/event/update/525998",
+                "target": "",
+                "className": "",
+                "divider": false
+            }]
+    }],
+    "userMenu": [{
+        "id": "user_name",
+        "html": "<span class='glyphicon glyphicon-user'></span><u title='david.strange@CBP.DHS.GOV' class='hidden-sm'>David, Strange</u>",
+        "title": "User Info",
+        "href": "#",
+        "target": "",
+        "toggle": "",
+        "className":"cbpUser"
+    },
+    {
+        "id": "header_user_station",
+        "html": "MCS",
+        "title": "Assigned Station",
+        "href": "#",
+        "target": "",
+        "toggle": "",
+        "hasMenu": true,
+        "className":"cbpUser addMarginRight"
+    }],
+    "appMenu": [{
+        "id": "app_1",
+        "html": "Intake",
+        "title": "Intake",
+        "href": "#",
+        "target": "",
+        "hasMenu": true,
+        "menu": [{
+            "html": "Family Panel",
+            "title": "",
+            "href": "#",
+            "target": "",
+            "divider": false
+        }]
+    }, {
+        "id": "app_2",
+        "html": "Disposition",
+        "title": "Disposition",
+        "href": "#",
+        "target": "",
+        "hasMenu": false
+    }]
+}
