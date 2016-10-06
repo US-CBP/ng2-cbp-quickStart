@@ -13,5 +13,4 @@ import { Component } from '@angular/core';
     </main>
   `
 })
-
 export class AppComponent {}

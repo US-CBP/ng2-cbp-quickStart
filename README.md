@@ -1,8 +1,7 @@
-[![CircleCI](https://circleci.com/gh/r-park/todo-angular2-ngrx.svg?style=shield&circle-token=dd1325d92e93517cb5c52669e92c7f1698b55bc0)](https://circleci.com/gh/r-park/todo-angular2-ngrx)
+BEMS-SEED-PROJECT-ANGULAR2
 
-
-# Todo app with Angular2 and ngrx/store
-A simple Todo app example featuring [ngrx/store](https://github.com/ngrx/store) — RxJS powered state management inspired by Redux for Angular2 apps.
+# Angular2 and ngrx/store with Common Framework
+    RxJS powered state management inspired by Redux for Angular2 apps.
 
 
 Stack
@@ -45,3 +44,15 @@ Usage
 |`npm run lint:ts`|Lint `.ts` files with tslint|
 |`npm test`|Run unit tests with Karma and Jasmine|
 |`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|
+
+
+To Do
+-----
+- Webpack:
+    1. Separate css vendor to main chunk file
+
+- Angular2:
+    1. Export the config of CF to be overwritten
+    2. Be able to pass data instead of URL through a mechanism
+
+-SCSS:
