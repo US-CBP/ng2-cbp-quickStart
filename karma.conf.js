@@ -14,7 +14,11 @@ module.exports = config => {
       noInfo: true
     },
 
-    reporters: ['dots'],
+    webpackMiddleware: {
+        stats: 'minimal'
+    },
+
+    reporters: ['progress'],
 
     logLevel: config.LOG_INFO,
 
