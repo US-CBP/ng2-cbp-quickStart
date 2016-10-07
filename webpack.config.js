@@ -167,7 +167,7 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 //  DEVELOPMENT
 //-------------------------------------
 if (ENV_DEVELOPMENT) {
-  config.devtool = 'cheap-module-source-map';
+  config.devtool = 'inline-source-map';
 
   config.module.rules.push(rules.sharedStyles);
 

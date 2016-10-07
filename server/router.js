@@ -15,7 +15,6 @@ const db = low(path.join(__dirname, 'db.json'), {storage});
 
 //Load Header Data
 loadJsonFile(path.join(__dirname, 'data/headerData.json')).then(json => {
-    console.log(json)
     db.set('getHeaderData', json).value();
 });
 
