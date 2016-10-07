@@ -2,7 +2,7 @@
     <input type="text" id="{{id}}-input" class="dropdown-tree dt--hidden-accesible" [attr.aria-expanded]="isDropdownExpanded" tabindex="-1" aria-hidden="true" />
     <span class="dt--container dt--container-default" [ngClass]="containerClasses" dir="ltr">
         <span class="dt--selection">
-            <span class="dt--selection-combobox" role="combobox" aria-haspopup="true" [attr.aria-expanded]="isDropdownExpanded" tabindex="0" aria-labelledby="{{id}}-selection" [attr.aria-owns]="" [attr.aria-activedescendant]="" (keypress)="onKeypress($event)">
+            <span class="dt--selection-combobox" role="combobox" aria-haspopup="true" [attr.aria-expanded]="isDropdownExpanded" tabindex="0" [attr.aria-labelledby]="id + '-selection'" [attr.aria-owns]="" [attr.aria-activedescendant]="" (keypress)="onKeypress($event)">
                 <span class="dt--rendered" id="{{id}}-selection" [title]="selectedText">{{selectedText}}</span>
                 <span class="dt--arrow" role="presentation">
                     <b role="presentation"></b>
@@ -21,5 +21,5 @@
             </span>
         </span>
     </span>
-    <label for="{{id}}-input">{{label}}</label>
+    <label [attr.for]="id + '-input'">{{label}}</label>
 </div>
