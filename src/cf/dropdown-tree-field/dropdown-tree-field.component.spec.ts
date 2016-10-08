@@ -140,6 +140,42 @@ describe("DropdownTreeItemComponent", () => {
 
             expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ selectedNode: component.defaultNode }));
         });
+
+        it("sets selectedText to selectedNode text when showFullSelectedPath is false and selectedNode is not null", () => {
+            component.showFullSelectedPath = false;
+
+            fixture.detectChanges();
+
+            expect(component.selectedText).toBe(selectedNode.text);
+        });
+
+        it("sets selectedText to defaultLabel when showFullSelectedPath is false and selectedNode is null", () => {
+            component.selectedNode = null;
+            component.defaultLabel = "Select One";
+            component.showFullSelectedPath = false;
+
+            fixture.detectChanges();
+
+            expect(component.selectedText).toBe(component.defaultLabel);
+        });
+
+        it("sets selectedText to selectedNode text preceded by parent nodes' text when showFullSelectedPath is true and selectedNode is not null", () => {
+            component.showFullSelectedPath = true;
+
+            fixture.detectChanges();
+
+            expect(component.selectedText).toBe(`${nodes[0].text} / ${nodes[0].children[2].text} / ${selectedNode.text}`);
+        });
+
+        it("sets selectedText to defaultLabel when showFullSelectedPath is true and selectedNode is null", () => {
+            component.selectedNode = null;
+            component.defaultLabel = "Select One";
+            component.showFullSelectedPath = true;
+
+            fixture.detectChanges();
+
+            expect(component.selectedText).toBe(component.defaultLabel);
+        });
     });
 
     describe("ngOnChanges", () => {
@@ -177,6 +213,17 @@ describe("DropdownTreeItemComponent", () => {
             expect(nodeSelected).not.toHaveBeenCalled();
         });
 
+        it("with selectedNode change sets selectedText", () => {
+            let selectedNode = nodes[0].children[2].children[1];
+            component.selectedNode = selectedNode;
+            fixture.detectChanges();
+
+            let change = createSimpleChange("selectedNode", nodes[1]);
+            component.ngOnChanges({ selectedNode: change });
+
+            expect(component.selectedText).toBe(nodes[1].text);
+        });
+
         it("with selectedNode change sets defaultNode to not null when new selectedNode is null and defaultLabel is null", () => {
             let selectedNode = nodes[0].children[2].children[1];
             component.selectedNode = selectedNode;
@@ -199,6 +246,18 @@ describe("DropdownTreeItemComponent", () => {
             component.ngOnChanges({ selectedNode: change });
 
             expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ selectedNode: component.defaultNode }));
+        });
+
+        it("with selectedNode change sets selectedText to defaultNode text when new selectedNode is null", () => {
+            let selectedNode = nodes[0].children[2].children[1];
+            component.selectedNode = selectedNode;
+            fixture.detectChanges();
+            stateSpy.calls.reset();
+
+            let change = createSimpleChange("selectedNode", null);
+            component.ngOnChanges({ selectedNode: change });
+
+            expect(component.selectedText).toBe(component.defaultNode.text);
         });
 
         it("with selectedNode change does not raise nodeSelected when new selectedNode is null", () => {
@@ -278,6 +337,18 @@ describe("DropdownTreeItemComponent", () => {
             expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ selectedNode: component.defaultNode }));
         });
 
+        it("with defaultLabel change to null sets selectedText to new defaultNode text when previous defaultLabel is not null and selectedNode is null", () => {
+            component.selectedNode = null;
+            component.defaultLabel = "Select One";
+            fixture.detectChanges();
+            stateSpy.calls.reset();
+
+            let change = createSimpleChange("defaultLabel", null);
+            component.ngOnChanges({ defaultLabel: change });
+
+            expect(component.selectedText).toBe(component.defaultNode.text);
+        });
+
         it("with defaultLabel change to null does not raise nodeSelected when previous defaultLabel is not null and selectedNode is null", () => {
             component.selectedNode = null;
             component.defaultLabel = "Select One";
@@ -333,6 +404,18 @@ describe("DropdownTreeItemComponent", () => {
             expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ selectedNode: component.defaultNode }));
         });
 
+        it("with defaultLabel change sets selectedText to new defaultNode text when previous defaultLabel is not null and selectedNode is null", () => {
+            component.selectedNode = null;
+            component.defaultLabel = "Select One";
+            fixture.detectChanges();
+            stateSpy.calls.reset();
+
+            let change = createSimpleChange("defaultLabel", "New Select One");
+            component.ngOnChanges({ defaultLabel: change });
+
+            expect(component.selectedText).toBe(component.defaultNode.text);
+        });
+
         it("with defaultLabel change does not raise nodeSelected when previous defaultLabel is not null and selectedNode is null", () => {
             component.selectedNode = null;
             component.defaultLabel = "Select One";
@@ -384,6 +467,18 @@ describe("DropdownTreeItemComponent", () => {
             component.ngOnChanges({ defaultLabel: change });
 
             expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ selectedNode: component.defaultNode }));
+        });
+
+        it("with defaultLabel change sets selectedText to new defaultNode text when previous defaultLabel is null and selectedNode is null", () => {
+            component.selectedNode = null;
+            component.defaultLabel = null;
+            fixture.detectChanges();
+            stateSpy.calls.reset();
+
+            let change = createSimpleChange("defaultLabel", "Select One");
+            component.ngOnChanges({ defaultLabel: change });
+
+            expect(component.selectedText).toBe(component.defaultNode.text);
         });
 
         it("with defaultLabel change does not raise nodeSelected when previous defaultLabel is null and selectedNode is null", () => {
@@ -467,6 +562,15 @@ describe("DropdownTreeItemComponent", () => {
             service.setState(nodes[0], component.defaultNode, new Set<TreeNode>());
 
             expect(nodeSelected).toHaveBeenCalledWith(null);
+        });
+
+        it("does not change selectedText when selectedNode changes", () => {
+            fixture.detectChanges();
+            let previousValue = component.selectedText;
+
+            service.setState(nodes[0], nodes[1], new Set<TreeNode>());
+
+            expect(component.selectedText).toBe(previousValue);
         });
     });
 
