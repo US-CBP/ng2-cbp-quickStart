@@ -37,19 +37,23 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     selectedText: string;
 
     private stateSubscription: Subscription;
+    private parentMap: Map<TreeNode, TreeNode>;
 
     constructor(private service: DropdownTreeService) {
     }
 
     ngOnInit() {
         this.defaultNode = this.initializeDefaultNode();
+        this.initializeMaps();
 
         let expandedNodes = new Set<TreeNode>();
         if(this.selectedNode != null) {
             this.addExpandedNodesToNodeFromArray(this.selectedNode, this.nodes, expandedNodes);
             this.service.setState(null, this.selectedNode, expandedNodes);
+            this.selectedText = this.calculateSelectedText(this.selectedNode);
         } else {
             this.service.setState(null, this.defaultNode, expandedNodes);
+            this.selectedText = this.calculateSelectedText(this.defaultNode);
         }
 
         this.stateSubscription = this.service.stateObservable.subscribe(this.onStateChange.bind(this));
@@ -60,7 +64,9 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
             this.defaultNode = this.initializeDefaultNode();
         }
 
-        this.service.selectNode(this.selectedNode == null ? this.defaultNode : this.selectedNode);
+        let localSelectedNode = this.selectedNode == null ? this.defaultNode : this.selectedNode;
+        this.service.selectNode(localSelectedNode);
+        this.selectedText = this.calculateSelectedText(localSelectedNode);
     }
 
     ngOnDestroy() {
@@ -100,7 +106,7 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         return found;
     }
 
-    private initializeDefaultNode() {
+    private initializeDefaultNode(): TreeNode {
         if(this.defaultLabel != null) {
             return this.createDefaultNode(this.defaultLabel);
         } else if(this.selectedNode == null) {
@@ -116,6 +122,33 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
             text: text,
             children: []
         };
+    }
+
+    private buildFullSelectedPathText(currentNode: TreeNode): string {
+        if(currentNode == null) {
+            return "";
+        }
+
+        let parent = this.parentMap.get(currentNode);
+        return parent == null ? currentNode.text : `${this.buildFullSelectedPathText(parent)} / ${currentNode.text}`;
+    }
+
+    private calculateSelectedText(selectedNode: TreeNode): string {
+        return this.showFullSelectedPath ? this.buildFullSelectedPathText(selectedNode) : selectedNode.text;
+    }
+
+    private processNodeForMaps(currentNode: TreeNode, parentNode: TreeNode) {
+        this.parentMap.set(currentNode, parentNode);
+
+        if(currentNode.children != null) {
+            currentNode.children.forEach(node => this.processNodeForMaps(node, currentNode));
+        }
+    }
+
+    private initializeMaps() {
+        this.parentMap = new Map<TreeNode, TreeNode>();
+
+        this.nodes.forEach(node => this.processNodeForMaps(node, null));
     }
 }
 
