@@ -2,7 +2,19 @@
     <input type="text" id="{{id}}-input" class="dropdown-tree dt--hidden-accesible" [attr.aria-expanded]="isDropdownOpen" tabindex="-1" aria-hidden="true" />
     <span class="dt--container dt--container-default" [ngClass]="containerClasses" dir="ltr">
         <span class="dt--selection">
-            <span class="dt--selection-combobox" role="combobox" aria-haspopup="true" [attr.aria-expanded]="isDropdownOpen" tabindex="0" [attr.aria-labelledby]="id + '-selection'" [attr.aria-owns]="" [attr.aria-activedescendant]="" (keypress)="onKeypress($event)">
+            <span  class="dt--selection-combobox"
+                   role="combobox"
+                   aria-haspopup="true"
+                   [attr.aria-expanded]="isDropdownOpen"
+                   tabindex="0"
+                   [attr.aria-labelledby]="id + '-selection'"
+                   [attr.aria-owns]="ariaOwnsId"
+                   [attr.aria-activedescendant]="ariaActiveDescendentId"
+                   (keypress)="onComboboxKeypress($event)"
+                   (click)="onComboboxClick()"
+                   (focus)="onComboboxFocus()"
+                   (blur)="onComboboxBlur()">
+
                 <span class="dt--rendered" id="{{id}}-selection" [title]="selectedText">{{selectedText}}</span>
                 <span class="dt--arrow" role="presentation">
                     <b role="presentation"></b>
@@ -12,11 +24,11 @@
         <span class="dt--dropdown-wrapper" aria-hidden="true"></span>
     </span>
     <span *ngIf="isDropdownOpen" class="dt--container dt--container-default dt--container-open">
-        <span class="dt--dropdown" [ngClass]="dropdownClasses" dir="ltr">
+        <span class="dt--dropdown" dir="ltr">
             <span class="dt--results">
-                <ul id="{{id}}-tree" role="tree" class="tree tree-root" aria-expanded="true" aria-hidden="false">
-                    <cf-dropdown-tree-item *ngIf="defaultNode" [idPrefix]="id + '-tree-'" [node]="defaultNode"></cf-dropdown-tree-item>
-                    <cf-dropdown-tree-item *ngFor="let n of nodes" [idPrefix]="id + '-tree-'" [node]="n"></cf-dropdown-tree-item>
+                <ul [id]="treeId" role="tree" class="tree tree-root" aria-expanded="true" aria-hidden="false">
+                    <cf-dropdown-tree-item *ngIf="defaultNode" [idPrefix]="treeItemIdPrefix" [node]="defaultNode"></cf-dropdown-tree-item>
+                    <cf-dropdown-tree-item *ngFor="let n of nodes" [idPrefix]="treeItemIdPrefix" [node]="n"></cf-dropdown-tree-item>
                 </ul>
             </span>
         </span>

@@ -72,4 +72,12 @@ export class DropdownTreeService {
             }
         }
     }
+
+    createTreeItemId(prefix: string, node: TreeNode): string {
+        return prefix + node.id.toString();
+    }
+
+    isNodeExpanded(node: TreeNode): boolean {
+        return node.children != null && node.children.length > 0 && this.state.expandedNodes.has(node);
+    }
 }
