@@ -86,6 +86,24 @@ describe("DropdownTreeItemComponent", () => {
             expect(component.isDropdownOpen).toBe(false);
         });
 
+        it("defaults containerClasses to empty array", () => {
+            fixture.detectChanges();
+
+            expect(component.containerClasses).toEqual([]);
+        });
+
+        it("defaults ariaOwnsId to undefined", () => {
+            fixture.detectChanges();
+
+            expect(component.ariaOwnsId).toBeUndefined();
+        });
+
+        it("defaults ariaActiveDescendentId to undefined", () => {
+            fixture.detectChanges();
+
+            expect(component.ariaActiveDescendentId).toBeUndefined();
+        });
+
         it("defaults defaultNode to null when defaultLabel is not provided", () => {
             fixture.detectChanges();
 
@@ -571,6 +589,170 @@ describe("DropdownTreeItemComponent", () => {
             service.setState(nodes[0], nodes[1], new Set<TreeNode>());
 
             expect(component.selectedText).toBe(previousValue);
+        });
+    });
+
+    describe("onComboboxFocus", () => {
+        beforeEach(() => {
+            fixture.detectChanges();
+
+            component.containerClasses.push("existing-class");
+        });
+
+        it("adds focusClass when containerClasses does not contain focusClass", () => {
+            component.onComboboxFocus();
+
+            expect(component.containerClasses).toEqual(["existing-class", DropdownTreeFieldComponent.focusClass]);
+        });
+
+        it("does not add another focusClass when containerClasses does contains focusClass", () => {
+            component.containerClasses.push(DropdownTreeFieldComponent.focusClass);
+
+            component.onComboboxFocus();
+
+            expect(component.containerClasses).toEqual(["existing-class", DropdownTreeFieldComponent.focusClass]);
+        });
+    });
+
+    describe("onComboboxBlur", () => {
+        beforeEach(() => {
+            fixture.detectChanges();
+
+            component.containerClasses.push("existing-class");
+        });
+
+        it("does not change containerClasses when containerClasses does not contain focusClass", () => {
+            component.onComboboxBlur();
+
+            expect(component.containerClasses).toEqual(["existing-class"]);
+        });
+
+        it("removes focusClass when containerClasses does contains focusClass", () => {
+            component.containerClasses.push(DropdownTreeFieldComponent.focusClass);
+
+            component.onComboboxBlur();
+
+            expect(component.containerClasses).toEqual(["existing-class"]);
+        });
+    });
+
+    describe("onComboboxClick", () => {
+        beforeEach(() => {
+            fixture.detectChanges();
+        });
+
+        describe("when closed", () => {
+            it("sets isDropdownOpen to true", () => {
+                component.onComboboxClick();
+
+                expect(component.isDropdownOpen).toBe(true);
+            });
+
+            it("sets containerClasses to contain focusClass and openClass", () => {
+                component.onComboboxClick();
+
+                expect(component.containerClasses).toEqual([DropdownTreeFieldComponent.focusClass, DropdownTreeFieldComponent.openClass]);
+            });
+
+            it("sets ariaOwnsId to id of the tree element", () => {
+                component.onComboboxClick();
+
+                expect(component.ariaOwnsId).toBe(component.treeId);
+            });
+
+            it("highlights selectedNode when visible", () => {
+                let selectedNode = nodes[0].children[2].children[1];
+                let expandedNodes = new Set<TreeNode>([
+                    nodes[0],
+                    nodes[0].children[2],
+                    nodes[0].children[2].children[1]]);
+                service.setState(null, selectedNode, expandedNodes);
+                component.selectedNode = selectedNode;
+
+                let stateSpy = jasmine.createSpy("state");
+                service.stateObservable.subscribe(stateSpy);
+                stateSpy.calls.reset();
+
+                component.onComboboxClick();
+
+                expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ highlightedNode: selectedNode }));
+            });
+
+            it("highlights first node when selectedNode is not visible and defaultNode does not exist", () => {
+                let selectedNode = nodes[0].children[2].children[1];
+                let expandedNodes = new Set<TreeNode>([nodes[0]]);
+                service.setState(null, selectedNode, expandedNodes);
+                component.selectedNode = selectedNode;
+                component.defaultNode = null;
+
+                let stateSpy = jasmine.createSpy("state");
+                service.stateObservable.subscribe(stateSpy);
+                stateSpy.calls.reset();
+
+                component.onComboboxClick();
+
+                expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ highlightedNode: nodes[0] }));
+            });
+
+            it("highlights defaultNode when selectedNode is not visible and defaultNode exists", () => {
+                let selectedNode = nodes[0].children[2].children[1];
+                let expandedNodes = new Set<TreeNode>([nodes[0]]);
+                service.setState(null, selectedNode, expandedNodes);
+                component.selectedNode = selectedNode;
+                component.defaultNode = createNode();
+
+                let stateSpy = jasmine.createSpy("state");
+                service.stateObservable.subscribe(stateSpy);
+                stateSpy.calls.reset();
+
+                component.onComboboxClick();
+
+                expect(stateSpy).toHaveBeenCalledWith(jasmine.objectContaining({ highlightedNode: component.defaultNode }));
+            });
+
+            it("sets ariaActiveDescendentId to highlightedNode element id", () => {
+                let selectedNode = nodes[0].children[2].children[1];
+                let expandedNodes = new Set<TreeNode>([
+                    nodes[0],
+                    nodes[0].children[2],
+                    nodes[0].children[2].children[1]]);
+                service.setState(null, selectedNode, expandedNodes);
+                component.selectedNode = selectedNode;
+
+                component.onComboboxClick();
+
+                expect(component.ariaActiveDescendentId).toBe(service.createTreeItemId(component.treeItemIdPrefix, selectedNode));
+            });
+        });
+
+        describe("when open", () => {
+            beforeEach(() => {
+                component.onComboboxClick();
+            });
+
+            it("sets isDropdownOpen to false", () => {
+                component.onComboboxClick();
+
+                expect(component.isDropdownOpen).toBe(false);
+            });
+
+            it("sets containerClasses to only contain focusClass", () => {
+                component.onComboboxClick();
+
+                expect(component.containerClasses).toEqual([DropdownTreeFieldComponent.focusClass]);
+            });
+
+            it("sets ariaOwnsId to undefined", () => {
+                component.onComboboxClick();
+
+                expect(component.ariaOwnsId).toBeUndefined();
+            });
+
+            it("sets ariaActiveDescendentId to undefined", () => {
+                component.onComboboxClick();
+
+                expect(component.ariaActiveDescendentId).toBeUndefined();
+            });
         });
     });
 

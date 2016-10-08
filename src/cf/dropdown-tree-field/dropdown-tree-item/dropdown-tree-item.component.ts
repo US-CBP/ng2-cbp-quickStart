@@ -32,7 +32,7 @@ export class DropdownTreeItemComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.id = this.idPrefix + "-" + this.node.id.toString();
+        this.id = this.service.createTreeItemId(this.idPrefix, this.node);
         this.stateSubscription = this.service.stateObservable.subscribe(this.onStateChange.bind(this));
     }
 

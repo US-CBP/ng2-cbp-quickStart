@@ -31,10 +31,18 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     @Input() nodes: TreeNode[];
     @Output() nodeSelected = new EventEmitter<TreeNode>();
 
+    treeId: string;
+    treeItemIdPrefix: string;
     isDropdownOpen: boolean = false;
-    containerClasses: string[];
+    containerClasses: string[] = [];
+    ariaOwnsId: string = undefined;
+    ariaActiveDescendentId: string = undefined;
     defaultNode: TreeNode;
     selectedText: string;
+    visibleNodes: TreeNode[];
+
+    static readonly focusClass = "dt--selection-focus";
+    static readonly openClass = "dt--selection-open";
 
     private stateSubscription: Subscription;
     private parentMap: Map<TreeNode, TreeNode>;
@@ -43,6 +51,8 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     }
 
     ngOnInit() {
+        this.treeId = `${this.id}-tree`;
+        this.treeItemIdPrefix = this.treeId + "-";
         this.defaultNode = this.initializeDefaultNode();
         this.initializeMaps();
 
@@ -72,6 +82,63 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     ngOnDestroy() {
         if(this.stateSubscription != null) {
             this.stateSubscription.unsubscribe();
+        }
+    }
+
+    onComboboxFocus() {
+        if(this.containerClasses.indexOf(DropdownTreeFieldComponent.focusClass) === -1) {
+            this.containerClasses.push(DropdownTreeFieldComponent.focusClass);
+        }
+    }
+
+    onComboboxBlur() {
+        let index = this.containerClasses.indexOf(DropdownTreeFieldComponent.focusClass);
+        if(index !== -1) {
+            this.containerClasses.splice(index, 1);
+        }
+    }
+
+    onComboboxClick() {
+        this.containerClasses = [DropdownTreeFieldComponent.focusClass];
+        if(this.isDropdownOpen) {
+            this.closeDropdown();
+        } else {
+            this.openDropdown();
+        }
+    }
+
+    onComboboxKeypress($event: KeyboardEvent) {
+        if($event.altKey || $event.ctrlKey || $event.metaKey || $event.shiftKey) {
+            return;
+        }
+    }
+
+    private openDropdown() {
+        this.isDropdownOpen = true;
+        this.resetVisibleNodes();
+
+        var highlightedNode = this.calculateHighlightedOnOpen();
+        this.service.highlightNode(highlightedNode);
+
+        this.containerClasses.push(DropdownTreeFieldComponent.openClass);
+        this.ariaOwnsId = this.treeId;
+        this.ariaActiveDescendentId = this.service.createTreeItemId(this.treeItemIdPrefix, highlightedNode);
+    }
+
+    private closeDropdown() {
+        this.isDropdownOpen = false;
+        this.resetVisibleNodes();
+        this.service.highlightNode(null);
+
+        this.ariaOwnsId = undefined;
+        this.ariaActiveDescendentId = undefined;
+    }
+
+    private calculateHighlightedOnOpen(): TreeNode {
+        if(this.visibleNodes.indexOf(this.selectedNode) === -1) {
+            return this.defaultNode == null ? this.nodes[0] : this.defaultNode;
+        } else {
+            return this.selectedNode;
         }
     }
 
@@ -149,6 +216,25 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         this.parentMap = new Map<TreeNode, TreeNode>();
 
         this.nodes.forEach(node => this.processNodeForMaps(node, null));
+    }
+
+    private processNodeForVisible(currentNode: TreeNode) {
+        this.visibleNodes.push(currentNode);
+        if(currentNode.children != null && currentNode.children.length > 0 && this.service.isNodeExpanded(currentNode)) {
+            currentNode.children.forEach(node => this.processNodeForVisible(node));
+        }
+    }
+
+    private resetVisibleNodes() {
+        if(this.isDropdownOpen) {
+            this.visibleNodes = [];
+            if(this.defaultNode != null) {
+                this.visibleNodes.push();
+            }
+            this.nodes.forEach(node => this.processNodeForVisible(node));
+        } else {
+            this.visibleNodes = null;
+        }
     }
 }
 
