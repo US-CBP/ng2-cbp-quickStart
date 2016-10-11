@@ -756,6 +756,516 @@ describe("DropdownTreeItemComponent", () => {
         });
     });
 
+    describe("onComboboxKeydown", () => {
+        beforeEach(() => {
+            component.defaultLabel = "Select One";
+
+            fixture.detectChanges();
+        });
+
+        describe("when closed", () => {
+            it("Alt+ArrowDown opens the dropdown", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    altKey: true,
+                    key: "ArrowDown"
+                });
+
+                component.onComboboxKeydown($event);
+
+                expect(component.isDropdownOpen).toBe(true);
+            });
+        });
+
+        describe("when open", () => {
+            beforeEach(() => {
+                component.onComboboxClick();
+            });
+
+            it("Alt+ArrowUp closes the dropdown", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    altKey: true,
+                    key: "ArrowUp"
+                });
+
+                component.onComboboxKeydown($event);
+
+                expect(component.isDropdownOpen).toBe(false);
+            });
+
+            it("Escape closes the dropdown", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "Escape"
+                });
+
+                component.onComboboxKeydown($event);
+
+                expect(component.isDropdownOpen).toBe(false);
+            });
+
+            it("ArrowUp highlights previous visible node of current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp"
+                });
+                service.setState(nodes[1], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowUp selects previous visible node of current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp"
+                });
+                service.setState(nodes[1], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowUp does not change highlighted node when current highlighted node is first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp"
+                });
+                service.setState(component.defaultNode, nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(component.defaultNode);
+            });
+
+            it("ArrowUp does not change selected node when current highlighted node is first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp"
+                });
+                service.setState(component.defaultNode, nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("Ctrl+ArrowUp highlights previous visible node of current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp",
+                    ctrlKey: true
+                });
+                service.setState(nodes[1], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0]);
+            });
+
+            it("Ctrl+ArrowUp does not change selected node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp",
+                    ctrlKey: true
+                });
+                service.setState(nodes[1], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("Ctrl+ArrowUp does not change highlighted node when current highlighted node is first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp",
+                    ctrlKey: true
+                });
+                service.setState(component.defaultNode, nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(component.defaultNode);
+            });
+
+            it("Ctrl+ArrowUp does not change selected node when current highlighted node is first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowUp",
+                    ctrlKey: true
+                });
+                service.setState(component.defaultNode, nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowDown highlights next visible node of current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown"
+                });
+                service.setState(nodes[1], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowDown selects next visible node of current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown"
+                });
+                service.setState(nodes[1], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowDown does not change highlighted node when current highlighted node is last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown"
+                });
+                service.setState(nodes[2], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowDown does not change selected node when current highlighted node is last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown"
+                });
+                service.setState(nodes[2], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0]);
+            });
+
+            it("Ctrl+ArrowDown highlights next visible node of current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown",
+                    ctrlKey: true
+                });
+                service.setState(nodes[1], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[2]);
+            });
+
+            it("Ctrl+ArrowDown does not change selected node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown",
+                    ctrlKey: true
+                });
+                service.setState(nodes[1], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0]);
+            });
+
+            it("Ctrl+ArrowDown does not change highlighted node when current highlighted node is last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown",
+                    ctrlKey: true
+                });
+                service.setState(nodes[2], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[2]);
+            });
+
+            it("Ctrl+ArrowDown does not change selected node when current highlighted node is last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowDown",
+                    ctrlKey: true
+                });
+                service.setState(nodes[2], nodes[0], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowLeft does not change highlighted node when current highlighted node is expanded", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([
+                    nodes[0],
+                    nodes[0].children[1]
+                ]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0].children[1]);
+            });
+
+            it("ArrowLeft does not change selected node when current highlighted node is expanded", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([
+                    nodes[0],
+                    nodes[0].children[1]
+                ]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowLeft collapses current highlighted node when current highlighted node is expanded", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([
+                    nodes[0],
+                    nodes[0].children[1]
+                ]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().expandedNodes.has(nodes[0].children[1])).toBe(false);
+            });
+
+            it("ArrowLeft changes highlighted node to parent of current highlighted node when current highlighted node is collapsed", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowLeft changes selected node to parent of current highlighted node when current highlighted node is collapsed", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowLeft does not change highlighted node when current highlighted node is collapsed and has no parent", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowLeft does not change selected node when current highlighted node is collapsed and has no parent", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowLeft"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowRight does not change highlighted node when current highlighted node is collapsed", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowRight does not change selected node when current highlighted node is collapsed", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("ArrowRight expands current highlighted node when current highlighted node is collapsed", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().expandedNodes.has(nodes[0])).toBe(true);
+            });
+
+            it("ArrowRight changes highlighted node to first child of the current highlighted node when current highlighted node is expanded", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0].children[0]);
+            });
+
+            it("ArrowRight changes selected node to first child of the current highlighted node when current highlighted node is expanded", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0].children[0]);
+            });
+
+            it("ArrowRight does not change highlighted node when current highlighted node has no children", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[0]);
+            });
+
+            it("ArrowRight does not change selected node when current highlighted node has no children", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "ArrowRight"
+                });
+                service.setState(nodes[0], nodes[2], new Set<TreeNode>([]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("Home changes highlighted node to first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "Home"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(component.defaultNode);
+            });
+
+            it("Home changes selected node to first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "Home"
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(component.defaultNode);
+            });
+
+            it("Ctrl+Home changes highlighted node to first visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "Home",
+                    ctrlKey: true
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(component.defaultNode);
+            });
+
+            it("Ctrl+Home does not change selected node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "Home",
+                    ctrlKey: true
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("End changes highlighted node to last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "End"
+                });
+                service.setState(nodes[0].children[1], nodes[0], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[2]);
+            });
+
+            it("End changes selected node to last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "End"
+                });
+                service.setState(nodes[0].children[1], nodes[0], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[2]);
+            });
+
+            it("Ctrl+End changes highlighted node to last visible node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "End",
+                    ctrlKey: true
+                });
+                service.setState(nodes[0].children[1], nodes[0], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().highlightedNode).toBe(nodes[2]);
+            });
+
+            it("Ctrl+End does not change selected node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: "End",
+                    ctrlKey: true
+                });
+                service.setState(nodes[0].children[1], nodes[0], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0]);
+            });
+
+            it("Space changes selected node to current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: " "
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0].children[1]);
+            });
+
+            it("Ctrl+Space changes selected node to current highlighted node", () => {
+                let $event = new KeyboardEvent("keydown", {
+                    key: " ",
+                    ctrlKey: true
+                });
+                service.setState(nodes[0].children[1], nodes[2], new Set<TreeNode>([nodes[0]]));
+
+                component.onComboboxKeydown($event);
+
+                expect(service.currentState().selectedNode).toBe(nodes[0].children[1]);
+            });
+        });
+    });
+
     function createNode(...children: TreeNode[]): TreeNode {
         let id = currentId++;
 
@@ -786,7 +1296,8 @@ describe("DropdownTreeItemComponent", () => {
                 createNode(
                     createNode()
                 )
-            )
+            ),
+            createNode()
         ];
     }
 });

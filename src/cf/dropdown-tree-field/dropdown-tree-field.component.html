@@ -10,7 +10,7 @@
                    [attr.aria-labelledby]="id + '-selection'"
                    [attr.aria-owns]="ariaOwnsId"
                    [attr.aria-activedescendant]="ariaActiveDescendentId"
-                   (keypress)="onComboboxKeypress($event)"
+                   (keydown)="onComboboxKeydown($event)"
                    (click)="onComboboxClick()"
                    (focus)="onComboboxFocus()"
                    (blur)="onComboboxBlur()">

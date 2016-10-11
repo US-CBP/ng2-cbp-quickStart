@@ -58,7 +58,7 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
 
         let expandedNodes = new Set<TreeNode>();
         if(this.selectedNode != null) {
-            this.addExpandedNodesToNodeFromArray(this.selectedNode, this.nodes, expandedNodes);
+            this.expandNodesToNode(this.selectedNode, expandedNodes);
             this.service.setState(null, this.selectedNode, expandedNodes);
             this.selectedText = this.calculateSelectedText(this.selectedNode);
         } else {
@@ -107,10 +107,126 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         }
     }
 
-    onComboboxKeypress($event: KeyboardEvent) {
-        if($event.altKey || $event.ctrlKey || $event.metaKey || $event.shiftKey) {
-            return;
+    onComboboxKeydown($event: KeyboardEvent) {
+        if(!this.isDropdownOpen) {
+            if(this.isKey($event, "ArrowDown", true)) {
+                this.openDropdown();
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            }
+        } else {
+            if(this.isKey($event, "ArrowUp", true) || this.isKey($event, "Escape")) {
+                this.closeDropdown();
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "ArrowUp")) {
+                let previousNode = this.previousVisibleNode();
+                if(previousNode != null) {
+                    this.service.highlightNode(previousNode);
+                    this.service.selectNode(previousNode);
+                }
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "ArrowUp", false, true)) {
+                let previousNode = this.previousVisibleNode();
+                if(previousNode != null) {
+                    this.service.highlightNode(previousNode);
+                }
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "ArrowDown")) {
+                let nextNode = this.nextVisibleNode();
+                if(nextNode != null) {
+                    this.service.highlightNode(nextNode);
+                    this.service.selectNode(nextNode);
+                }
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "ArrowDown", false, true)) {
+                let nextNode = this.nextVisibleNode();
+                if(nextNode != null) {
+                    this.service.highlightNode(nextNode);
+                }
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "ArrowLeft")) {
+                let highlightedNode = this.service.currentState().highlightedNode;
+                if(this.service.isNodeExpanded(highlightedNode)) {
+                    this.service.collapseNode(highlightedNode);
+                } else {
+                    let parentNode = this.parentMap.get(highlightedNode);
+                    if(parentNode != null) {
+                        this.service.highlightNode(parentNode);
+                        this.service.selectNode(parentNode);
+                    }
+                }
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "ArrowRight")) {
+                let highlightedNode = this.service.currentState().highlightedNode;
+                if(this.service.isNodeExpanded(highlightedNode)) {
+                    this.service.highlightNode(highlightedNode.children[0]);
+                    this.service.selectNode(highlightedNode.children[0]);
+                } else {
+                    this.service.expandNode(highlightedNode);
+                }
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "Home")) {
+                this.service.highlightNode(this.visibleNodes[0]);
+                this.service.selectNode(this.visibleNodes[0]);
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "Home", false, true)) {
+                this.service.highlightNode(this.visibleNodes[0]);
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "End")) {
+                this.service.highlightNode(this.visibleNodes[this.visibleNodes.length - 1]);
+                this.service.selectNode(this.visibleNodes[this.visibleNodes.length - 1]);
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, "End", false, true)) {
+                this.service.highlightNode(this.visibleNodes[this.visibleNodes.length - 1]);
+
+                $event.stopPropagation();
+                $event.preventDefault();
+            } else if(this.isKey($event, " ") || this.isKey($event, " ", false, true)) {
+                let highlightedNode = this.service.currentState().highlightedNode;
+                this.service.selectNode(highlightedNode);
+            }
         }
+    }
+
+    private isKey($event: KeyboardEvent, key: string, altKey: boolean = false, ctrlKey: boolean = false): boolean {
+        return $event.key === key &&
+            $event.altKey === altKey &&
+            $event.ctrlKey === ctrlKey &&
+            $event.shiftKey === false &&
+            $event.metaKey === false;
+    }
+
+    private previousVisibleNode(): TreeNode {
+        let highlightedNode = this.service.currentState().highlightedNode;
+        let highlightedNodeIndex = this.visibleNodes.indexOf(highlightedNode);
+        return (highlightedNodeIndex > 0) ? this.visibleNodes[highlightedNodeIndex - 1] : null;
+    }
+
+    private nextVisibleNode(): TreeNode {
+        let highlightedNode = this.service.currentState().highlightedNode;
+        let highlightedNodeIndex = this.visibleNodes.indexOf(highlightedNode);
+        return (highlightedNodeIndex < this.visibleNodes.length - 1) ? this.visibleNodes[highlightedNodeIndex + 1] : null;
     }
 
     private openDropdown() {
@@ -146,31 +262,15 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         if(this.selectedNode !== state.selectedNode && !(this.selectedNode == null && state.selectedNode === this.defaultNode)) {
             this.nodeSelected.next(state.selectedNode === this.defaultNode ? null : state.selectedNode);
         }
+        this.resetVisibleNodes();
     }
 
-    private addExpandedNodesToNodeFromNode(nodeToFind: TreeNode, currentNode: TreeNode, expandedNodes: Set<TreeNode>): boolean {
-        if(nodeToFind === currentNode) {
-            return true;
+    private expandNodesToNode(nodeToFind: TreeNode, expandedNodes: Set<TreeNode>) {
+        let parentNode = this.parentMap.get(nodeToFind);
+        while(parentNode != null) {
+            expandedNodes.add(parentNode);
+            parentNode = this.parentMap.get(parentNode);
         }
-
-        let found = this.addExpandedNodesToNodeFromArray(nodeToFind, currentNode.children, expandedNodes);
-        if(found) {
-            expandedNodes.add(currentNode);
-        }
-
-        return found;
-    }
-
-    private addExpandedNodesToNodeFromArray(nodeToFind: TreeNode, nodes: TreeNode[], expandedNodes: Set<TreeNode>): boolean {
-        let found = false;
-
-        if(nodes != null) {
-            for(var i = 0; !found && i < nodes.length; i++) {
-                found = this.addExpandedNodesToNodeFromNode(nodeToFind, nodes[i], expandedNodes);
-            }
-        }
-
-        return found;
     }
 
     private initializeDefaultNode(): TreeNode {
@@ -229,7 +329,7 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         if(this.isDropdownOpen) {
             this.visibleNodes = [];
             if(this.defaultNode != null) {
-                this.visibleNodes.push();
+                this.visibleNodes.push(this.defaultNode);
             }
             this.nodes.forEach(node => this.processNodeForVisible(node));
         } else {
