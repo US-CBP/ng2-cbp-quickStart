@@ -80,4 +80,10 @@ export class DropdownTreeService {
     isNodeExpanded(node: TreeNode): boolean {
         return node.children != null && node.children.length > 0 && this.state.expandedNodes.has(node);
     }
+
+    currentState(): DropdownTreeState {
+        return Object.assign({}, this.state, {
+            expandedNodes: new Set<TreeNode>(this.state.expandedNodes)
+        });
+    }
 }
