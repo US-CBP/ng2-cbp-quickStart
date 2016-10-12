@@ -11,8 +11,12 @@ import { Header }            from '../cf';
       <cf-header [data]="headerData"></cf-header>
     </header>
 
-    <main class="main">
-      <router-outlet></router-outlet>
+    <main class="main container-fluid content">
+      <div class="row">
+        <div id="content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </main>
   `
 })

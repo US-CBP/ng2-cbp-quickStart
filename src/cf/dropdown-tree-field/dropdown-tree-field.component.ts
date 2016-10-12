@@ -1,11 +1,13 @@
 ﻿import {
     Component,
+    ElementRef,
     EventEmitter,
     Input,
     OnChanges,
     OnDestroy,
     OnInit,
-    Output
+    Output,
+    ViewChild
 }                               from "@angular/core";
 import { Subscription }         from "rxjs";
 
@@ -18,6 +20,7 @@ let nextId = 1;
 @Component({
     selector: "cf-dropdown-tree-field",
     templateUrl: "dropdown-tree-field.component.html",
+    styleUrls: ["dropdown-tree-field.component.scss"],
     providers: [
         DropdownTreeService
     ]
@@ -31,6 +34,8 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     @Input() nodes: TreeNode[];
     @Output() nodeSelected = new EventEmitter<TreeNode>();
 
+    @ViewChild("dropdownContainer") dropdownContainerElement: ElementRef;
+
     treeId: string;
     treeItemIdPrefix: string;
     isDropdownOpen: boolean = false;
@@ -40,6 +45,10 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     defaultNode: TreeNode;
     selectedText: string;
     visibleNodes: TreeNode[];
+
+    dropdownLeft: number;
+    dropdownTop: number;
+    dropdownWidth: number;
 
     static readonly focusClass = "dt--selection-focus";
     static readonly openClass = "dt--selection-open";
@@ -230,6 +239,8 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     }
 
     private openDropdown() {
+        this.setDropdownPosition();
+
         this.isDropdownOpen = true;
         this.resetVisibleNodes();
 
@@ -335,6 +346,13 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         } else {
             this.visibleNodes = null;
         }
+    }
+
+    private setDropdownPosition() {
+        let rect = <ClientRect>this.dropdownContainerElement.nativeElement.getBoundingClientRect();
+        this.dropdownLeft = rect.left;
+        this.dropdownTop = rect.bottom;
+        this.dropdownWidth = rect.width;
     }
 }
 

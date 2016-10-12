@@ -1,0 +1,140 @@
+﻿@import '../shared/_variables.scss';
+
+.dropdown-tree-field {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    max-width: 100%;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+
+    .dropdown-tree.dt--hidden-accesible {
+        border: 0 !important;
+        clip: rect(0, 0, 0, 0) !important;
+        height: 1px !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 1px !important;
+    }
+
+    .dt--container {
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 0;
+        position: relative;
+        vertical-align: middle;
+        width: 100%;
+
+        &.dropdown-tree {
+            z-index: 1;
+
+            .dt--selection {
+                background-color: transparent;
+                z-index: inherit;
+
+                .dt--selection-combobox {
+                    background-color: inherit;
+                    border: none;
+                    border-bottom: 1px solid $gray;
+                    border-radius: 0;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    display: block;
+                    height: 2.67em;
+                    outline: 0;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+
+                    &:hover,
+                    &[aria-expanded="true"] {
+                        background-color: $brand-default-highlight;
+                        color: $gray-dark;
+                    }
+
+                    .dt--rendered {
+                        color: #444;
+                        display: block;
+                        line-height: 2.67em;
+                        overflow: hidden;
+                        padding: 0 8px;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .dt--arrow {
+                        height: 2.67em;
+                        position: absolute;
+                        top: 1px;
+                        right: 1px;
+                        width: 2.67em;
+
+                        b {
+                            border-color: #808080 transparent transparent transparent;
+                            border-style: solid;
+                            border-width: 5px 5px 0 5px;
+                            height: 0;
+                            left: 50%;
+                            margin-left: -4px;
+                            margin-top: -2px;
+                            position: absolute;
+                            top: 50%;
+                            width: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.dt--dropdown {
+            position: absolute;
+
+            .dt--dropdown {
+                background-color: $white;
+                border: 1px solid $gray-light;
+                border-radius: 2px;
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 100%;
+                z-index: 1051;
+
+                &.dt--dropdown-below {
+                    border-top: none;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+            }
+        }
+    }
+
+    &.dtf--floating-label {
+        label {
+            display: block;
+            margin: 0;
+            overflow: hidden;
+            padding-left: 8px;
+            position: absolute;
+            text-align: left;
+            top: 30px;
+            white-space: nowrap;
+            width: 100%;
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+            -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        &.is-dirty label {
+            color: $brand-info;
+            display: block;
+            font-size: 0.8em;
+            padding-left: 0;
+            top: 0;
+        }
+    }
+}

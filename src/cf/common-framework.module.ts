@@ -1,10 +1,13 @@
 import './lib';
-import { NgModule }                        from '@angular/core';
-import { BrowserModule }                   from '@angular/platform-browser';
-import { FormsModule }                     from '@angular/forms';
-import { HttpModule }                      from "@angular/http";
-import { HeaderComponent }                 from './header';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserModule }                    from '@angular/platform-browser';
+import { FormsModule }                      from '@angular/forms';
+import { HttpModule }                       from '@angular/http';
+import {
+    DropdownTreeFieldComponent,
+    DropdownTreeItemComponent
+}                                           from './dropdown-tree-field';
+import { HeaderComponent }                  from './header';
 
 @NgModule({
     imports: [
@@ -13,12 +16,19 @@ import { HeaderComponent }                 from './header';
         HttpModule
     ],
     declarations: [
+        DropdownTreeFieldComponent,
+        DropdownTreeItemComponent,
         HeaderComponent
     ],
     exports: [
+        DropdownTreeFieldComponent,
+        DropdownTreeItemComponent,
         HeaderComponent
     ],
     providers: [
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
     ]
 })
 export class CommonFrameworkModule {
