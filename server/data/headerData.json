@@ -100,35 +100,47 @@
                 "href": "#",
                 "target": "",
                 "divider": false
-            }, {
+            },
+            {
                 "html": "Textarea",
                 "title": "Textarea ",
                 "href": "#",
                 "target": "",
                 "divider": false
-            }, {
+            },
+            {
                 "html": "Checkbox",
                 "title": "Checkbox ",
                 "href": "#",
                 "target": "",
                 "divider": false
-            }, {
+            },
+            {
                 "html": "Radio button",
                 "title": "Radio button ",
                 "href": "#",
                 "target": "",
                 "divider": false
-            }, {
+            },
+            {
                 "html": "Date Picker/Range",
                 "title": "Date Picker/Range",
                 "href": "#",
                 "target": "",
                 "divider": false
-            }, {
+            },
+            {
                 "html": "Select",
                 "title": "Select",
                 "href": "#",
                 "target": "",
+                "divider": false
+            },
+            {
+                "html": "Dropdown Tree",
+                "title": "Dropdown Tree",
+                "href": null,
+                "route": "form-control-demo/dropdown-tree-demo",
                 "divider": false
             }
         ]
