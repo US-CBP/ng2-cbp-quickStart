@@ -2,7 +2,8 @@
     <input type="text" id="{{id}}-input" class="dropdown-tree dt--hidden-accesible" [attr.aria-expanded]="isDropdownOpen" tabindex="-1" aria-hidden="true" />
     <span #dropdownContainer class="dropdown-tree dt--container dt--container-default" [ngClass]="containerClasses" dir="ltr">
         <span class="dt--selection">
-            <span  class="dt--selection-combobox"
+            <span #combobox
+                   class="dt--selection-combobox"
                    role="combobox"
                    aria-haspopup="true"
                    [attr.aria-expanded]="isDropdownOpen"
@@ -23,7 +24,7 @@
         </span>
         <span class="dt--dropdown-wrapper" aria-hidden="true"></span>
     </span>
-    <span *ngIf="isDropdownOpen" class="dt--dropdown dt--container dt--container-default dt--container-open" [style.left]="dropdownLeft" [style.top]="dropdownTop">
+    <span *ngIf="isDropdownOpen" class="dt--dropdown dt--container dt--container-default dt--container-open" [style.left]="dropdownLeft" [style.top]="dropdownTop" (click)="onTreeClick($event)">
         <span class="dt--dropdown dt--dropdown-below" dir="ltr" [style.width]="dropdownWidth">
             <span class="dt--results">
                 <ul [id]="treeId" role="tree" class="tree tree-root" aria-expanded="true" aria-hidden="false">
@@ -33,5 +34,5 @@
             </span>
         </span>
     </span>
-    <label [attr.for]="id + '-input'">{{label}}</label>
+    <label [attr.for]="id + '-input'" (click)="onLabelClick($event)">{{label}}</label>
 </div>

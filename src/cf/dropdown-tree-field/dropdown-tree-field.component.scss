@@ -1,6 +1,6 @@
 ﻿@import '../shared/_variables.scss';
 
-.dropdown-tree-field {
+:host .dropdown-tree-field {
     box-sizing: border-box;
     display: inline-block;
     margin: 0;
@@ -30,6 +30,11 @@
 
         &.dropdown-tree {
             z-index: 1;
+
+            &.dt--selection-focus .dt--selection .dt--selection-combobox {
+                background-color: $brand-default-highlight;
+                color: $gray-dark;
+            }
 
             .dt--selection {
                 background-color: transparent;
@@ -107,6 +112,79 @@
                     border-top: none;
                     border-top-left-radius: 0;
                     border-top-right-radius: 0;
+                }
+
+                ul.tree-root {
+                    list-style: none;
+                    max-height: 13em;
+                    overflow-y: auto;
+                    padding: 5px;
+
+                    >>> cf-dropdown-tree-item ul {
+                        list-style: none;
+                        padding: 0 5px 0 1.2em;
+                    }
+
+                    >>> cf-dropdown-tree-item li {
+                        box-sizing: border-box;
+                        display: block;
+
+                        > .arrow {
+                            display: inline-block;
+                            height: 1.6em;
+                            vertical-align: middle;
+                            width: 1em;
+
+                            span {
+                                height: 1.33em;
+                                left: 5px;
+                                position: relative;
+                                top: 0.8em;
+                                width: 1.33em;
+
+                                b {
+                                    border-style: solid;
+                                    height: 0;
+                                    left: 50%;
+                                    position: absolute;
+                                    top: 50%;
+                                    width: 0;
+                                }
+                            }
+                        }
+
+                        > .text {
+                            display: inline-block;
+                            padding: 2px .5em;
+                        }
+
+                        &.tree--no-children > .arrow span {
+                            display: none;
+                        }
+
+                        &.tree--has-children.tree--expanded > .arrow span b {
+                            border-color: #808080 transparent transparent transparent;
+                            border-width: 5px 5px 0 5px;
+                            margin-left: -2px;
+                            margin-top: -4px;
+                        }
+
+                        &.tree--has-children.tree--collapsed > .arrow span b {
+                            border-color: transparent transparent transparent #808080;
+                            border-width: 5px 0 5px 5px;
+                            margin-left: 1px;
+                            margin-top: -6px;
+                        }
+
+                        &.tree--highlighted > .text {
+                            background-color: $brand-default-highlight;
+                            color: $gray-dark;
+                        }
+
+                        &.tree--selected > .text {
+                            background-color: #ddd;
+                        }
+                    }
                 }
             }
         }

@@ -1,9 +1,12 @@
 ﻿import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ElementRef,
     Input,
     OnDestroy,
-    OnInit
+    OnInit,
+    ViewChild
 }                               from "@angular/core";
 import { Subscription }         from "rxjs";
 
@@ -20,6 +23,8 @@ export class DropdownTreeItemComponent implements OnInit, OnDestroy {
     @Input() idPrefix: string;
     @Input() node: TreeNode;
 
+    @ViewChild("text") textElement: ElementRef;
+
     id: string;
     treeItemClasses: string[];
     isSelected: boolean;
@@ -28,7 +33,7 @@ export class DropdownTreeItemComponent implements OnInit, OnDestroy {
 
     private stateSubscription: Subscription;
 
-    constructor(private service: DropdownTreeService) {
+    constructor(private service: DropdownTreeService, private changeDetector: ChangeDetectorRef) {
     }
 
     ngOnInit() {
@@ -68,9 +73,13 @@ export class DropdownTreeItemComponent implements OnInit, OnDestroy {
         if(state.selectedNode === this.node) {
             this.treeItemClasses.push("tree--selected");
             this.isSelected = true;
+
+            this.textElement.nativeElement.scrollIntoView();
         } else {
             this.isSelected = false;
         }
+
+        this.changeDetector.markForCheck();
     }
 
     onExpanderClick() {

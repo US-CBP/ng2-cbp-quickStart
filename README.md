@@ -54,5 +54,8 @@ To Do
 - Angular2:
     1. Export the config of CF to be overwritten
     2. Be able to pass data instead of URL through a mechanism
+    3. Be able to lazy load child nodes in Dropdown Tree
+    4. Add disable option for Dropdown Tree
+    5. Allow Dropdown Tree to open above
 
 -SCSS:
