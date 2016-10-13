@@ -57,5 +57,6 @@ To Do
     3. Be able to lazy load child nodes in Dropdown Tree
     4. Add disable option for Dropdown Tree
     5. Allow Dropdown Tree to open above
+    6. Make Dropdown Tree NgModel enabled
 
 -SCSS:
