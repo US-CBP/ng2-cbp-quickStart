@@ -1,6 +1,10 @@
-﻿<li role="treeitem" id="{{id}}" class="item" [ngClass]="treeItemClasses" [attr.aria-selected]="isSelected" [attr.aria-expanded]="isExpanded" (click)="$event.stopPropagation()">
-    <b role="presentation" (click)="onExpanderClick()"></b>
-    <span (click)="onNodeClick()" (mouseenter)="onNodeMouseEnter()">{{node.text}}</span>
+﻿<li role="treeitem" id="{{id}}" class="item" [ngClass]="treeItemClasses" [attr.aria-selected]="isSelected" [attr.aria-expanded]="isExpanded">
+    <span class="arrow" (click)="onExpanderClick()">
+        <span>
+            <b role="presentation"></b>
+        </span>
+    </span><!--
+    --><span #text class="text" (click)="onNodeClick()" (mouseenter)="onNodeMouseEnter()">{{node.text}}</span>
     <ul role="group" *ngIf="showChildren">
         <cf-dropdown-tree-item *ngFor="let n of node.children" [node]="n" [idPrefix]="idPrefix"></cf-dropdown-tree-item>
     </ul>

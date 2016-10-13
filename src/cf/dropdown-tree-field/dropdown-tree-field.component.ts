@@ -13,7 +13,7 @@ import { Subscription }         from "rxjs";
 
 import { DropdownTreeService }  from "./dropdown-tree.service";
 import { DropdownTreeState }    from "./dropdown-tree-state.model";
-import { TreeNode } from "./tree-node.model";
+import { TreeNode }             from "./tree-node.model";
 
 let nextId = 1;
 
@@ -35,6 +35,7 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     @Output() nodeSelected = new EventEmitter<TreeNode>();
 
     @ViewChild("dropdownContainer") dropdownContainerElement: ElementRef;
+    @ViewChild("combobox") comboboxElement: ElementRef;
 
     treeId: string;
     treeItemIdPrefix: string;
@@ -63,15 +64,11 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         this.treeId = `${this.id}-tree`;
         this.treeItemIdPrefix = this.treeId + "-";
         this.defaultNode = this.initializeDefaultNode();
-        this.initializeMaps();
+        this.initializeNodes();
 
-        let expandedNodes = new Set<TreeNode>();
         if(this.selectedNode != null) {
-            this.expandNodesToNode(this.selectedNode, expandedNodes);
-            this.service.setState(null, this.selectedNode, expandedNodes);
             this.selectedText = this.calculateSelectedText(this.selectedNode);
         } else {
-            this.service.setState(null, this.defaultNode, expandedNodes);
             this.selectedText = this.calculateSelectedText(this.defaultNode);
         }
 
@@ -79,6 +76,10 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
     }
 
     ngOnChanges(changes: any) {
+        if(changes.nodes) {
+            this.initializeNodes();
+        }
+
         if(changes.defaultLabel || changes.selectedNode) {
             this.defaultNode = this.initializeDefaultNode();
         }
@@ -218,12 +219,44 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
         }
     }
 
+    onLabelClick($event: MouseEvent) {
+        this.comboboxElement.nativeElement.focus();
+
+        $event.preventDefault();
+        $event.stopPropagation();
+    }
+
+    onTreeClick($event: MouseEvent) {
+        this.comboboxElement.nativeElement.focus();
+
+        if((<Element>$event.target).classList.contains("text")) {
+            this.closeDropdown();
+        }
+
+        $event.preventDefault();
+        $event.stopPropagation();
+    }
+
     private isKey($event: KeyboardEvent, key: string, altKey: boolean = false, ctrlKey: boolean = false): boolean {
         return $event.key === key &&
             $event.altKey === altKey &&
             $event.ctrlKey === ctrlKey &&
             $event.shiftKey === false &&
             $event.metaKey === false;
+    }
+
+    private initializeNodes() {
+        this.initializeMaps();
+
+        let expandedNodes = new Set<TreeNode>();
+        if(this.selectedNode != null) {
+            this.expandNodesToNode(this.selectedNode, expandedNodes);
+            this.service.setState(this.isDropdownOpen ? this.selectedNode : null, this.selectedNode, expandedNodes);
+        } else {
+            this.service.setState(this.isDropdownOpen ? this.defaultNode : null, this.defaultNode, expandedNodes);
+        }
+
+        this.resetVisibleNodes();
     }
 
     private previousVisibleNode(): TreeNode {
@@ -286,9 +319,9 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
 
     private initializeDefaultNode(): TreeNode {
         if(this.defaultLabel != null) {
-            return this.createDefaultNode(this.defaultLabel);
+            return (this.defaultNode != null && this.defaultNode.text === this.defaultLabel) ? this.defaultNode : this.createDefaultNode(this.defaultLabel);
         } else if(this.selectedNode == null) {
-            return this.createDefaultNode("");
+            return (this.defaultNode != null && this.defaultNode.text === "") ? this.defaultNode : this.createDefaultNode("");
         } else {
             return null;
         }
