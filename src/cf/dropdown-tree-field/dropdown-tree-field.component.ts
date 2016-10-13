@@ -80,9 +80,7 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
             this.initializeNodes();
         }
 
-        if(changes.defaultLabel || changes.selectedNode) {
-            this.defaultNode = this.initializeDefaultNode();
-        }
+        this.defaultNode = this.initializeDefaultNode();
 
         let localSelectedNode = this.selectedNode == null ? this.defaultNode : this.selectedNode;
         this.service.selectNode(localSelectedNode);
