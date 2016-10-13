@@ -302,7 +302,7 @@ export class DropdownTreeFieldComponent implements OnInit, OnChanges, OnDestroy 
 
     private onStateChange(state: DropdownTreeState) {
         if(this.selectedNode !== state.selectedNode && !(this.selectedNode == null && state.selectedNode === this.defaultNode)) {
-            this.nodeSelected.next(state.selectedNode === this.defaultNode ? null : state.selectedNode);
+            this.nodeSelected.emit(state.selectedNode === this.defaultNode ? null : state.selectedNode);
         }
         this.resetVisibleNodes();
     }
