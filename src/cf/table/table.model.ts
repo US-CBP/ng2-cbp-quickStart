@@ -5,5 +5,5 @@ export interface Table {
     options: TableOptions;
     header: TableHeader[];
     data: any[];
-    totalCount: Number;
+    totalCount: number;
 }

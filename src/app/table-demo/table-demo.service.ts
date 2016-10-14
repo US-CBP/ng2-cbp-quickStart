@@ -7,7 +7,7 @@ import { Config } from '../shared';
 import { Table } from '../../cf';
 
 @Injectable()
-export class TableService {
+export class TableDemoService {
     data: BehaviorSubject<Table>;
     private url: string;
 

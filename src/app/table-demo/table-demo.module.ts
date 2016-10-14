@@ -3,23 +3,23 @@ import { BrowserModule }    from '@angular/platform-browser';
 import { FormsModule }      from '@angular/forms';
 
 import { CommonFrameworkModule }    from './../../cf';
-import { TableService }             from './table.service';
-import { TableComponent }           from './table.component';
-import { tableRouting  }            from './table.routing';
+import { TableDemoService }             from './table-demo.service';
+import { TableDemoComponent }           from './table-demo.component';
+import { tableDemoRouting  }            from './table-demo.routing';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     CommonFrameworkModule,
-    tableRouting
+    tableDemoRouting
   ],
   declarations: [
-    TableComponent
+    TableDemoComponent
   ],
   providers: [
-    TableService
+    TableDemoService
   ]
 })
-export class TableModule {
+export class TableDemoModule {
 }

@@ -1,7 +1,7 @@
 export interface TableHeader {
-    title: String;
-    html: String;
-    className: String;
-    attribute: String;
-    isSortable: Boolean;
+    title: string;
+    html: string;
+    className: string;
+    attribute: string;
+    isSortable: boolean;
 }

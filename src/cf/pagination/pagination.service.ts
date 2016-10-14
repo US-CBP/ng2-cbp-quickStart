@@ -1,11 +1,11 @@
 import { Injectable }            from '@angular/core';
 
-import { TablePager }   from './table-pager.model';
+import { Pager }   from './pagination-pager.model';
 
 const _ = require('lodash');
 
 @Injectable()
-export class TableService {
+export class PaginationService {
 
     constructor() { 
     }
@@ -47,7 +47,7 @@ export class TableService {
         var pages = _.range(startPage, endPage + 1);
 
         // return object with all pager properties required by the view
-        let pager = {} as TablePager;
+        let pager = {} as Pager;
         pager.totalItems = totalItems;
         pager.currentPage = currentPage;
         pager.pageSize = pageSize;

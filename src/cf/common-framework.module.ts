@@ -13,7 +13,8 @@ import { HeaderComponent }                  from './header';
 import { RadioButtonComponent }             from './radio-button';
 import { RadioGroupComponent }              from './radio-group';
 import { UniqueSelectionDispatcher }        from './shared';
-import { TableComponent }                  from './table';
+import { TableComponent }                   from './table';
+import { PaginationComponent }              from './pagination';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { TableComponent }                  from './table';
         HeaderComponent,
         RadioButtonComponent,
         RadioGroupComponent,
-        TableComponent
+        TableComponent,
+        PaginationComponent
     ],
     exports: [
         DropdownTreeFieldComponent,
@@ -36,7 +38,8 @@ import { TableComponent }                  from './table';
         HeaderComponent,
         RadioButtonComponent,
         RadioGroupComponent,
-        TableComponent
+        TableComponent,
+        PaginationComponent
     ],
     providers: [
         UniqueSelectionDispatcher
