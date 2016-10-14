@@ -21,7 +21,7 @@
                     "html": "Angular 2 - Redux - Webpack",
                     "title": "Angular 2 - Redux - Webpack",
                     "href": "",
-                    "route": null,
+                    "route": "home",
                     "target": "",
                     "divider": false
                 }, {
@@ -149,8 +149,8 @@
         "html": "Table + Pagination",
         "title": "Table + Pagination",
         "className": "dropdown",
-        "href": "#",
-        "route": null,
+        "href": "",
+        "route": "table",
         "target": "",
         "hasMenu": false
     }, {
