@@ -1,25 +1,6 @@
-﻿<label *ngIf="isInline" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" [attr.for]="inputId">
-    <input  type="radio"
-            class="mdl-radio__button"
-            [id]="inputId"
-            [checked]="checked"
-            [disabled]="disabled"
-            [name]="name"
-            [attr.aria-label]="ariaLabel"
-            [attr.aria-labelledby]="ariaLabelledby"
-            (change)="onInputChange($event)"
-            (click)="onInputClick($event)"
-            (blur)="onInputBlur()" />
-    <span class="mdl-radio__label">
-        <ng-content></ng-content>
-    </span>
-    <div *ngIf="hasHelpText" class="text-muted">
-        <ng-content select="cf-help-text"></ng-content>
-    </div>
-</label>
-<div *ngIf="!isInline" class="radio">
+﻿<div [class.radio]="!isInline" [style.display]="isInline ? 'inline' : 'block'">
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" [attr.for]="inputId">
-        <input  type="radio"
+        <input type="radio"
                 class="mdl-radio__button"
                 [id]="inputId"
                 [checked]="checked"
@@ -33,7 +14,7 @@
         <span class="mdl-radio__label">
             <ng-content></ng-content>
         </span>
-        <div *ngIf="hasHelpText" class="text-muted">
+        <div class="text-muted">
             <ng-content select="cf-help-text"></ng-content>
         </div>
     </label>
