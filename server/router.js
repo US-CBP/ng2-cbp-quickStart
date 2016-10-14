@@ -6,6 +6,7 @@ const path = require('path');
 const storage = require('lowdb/lib/file-sync');
 const uuid = require('node-uuid');
 const loadJsonFile = require('load-json-file');
+const _ = require('lodash');
 
 
 //=========================================================
@@ -14,10 +15,13 @@ const loadJsonFile = require('load-json-file');
 const db = low(path.join(__dirname, 'db.json'), {storage});
 
 //Load Header Data
-loadJsonFile(path.join(__dirname, 'data/headerData.json')).then(json => {
-    db.set('getHeaderData', json).value();
+loadJsonFile(path.join(__dirname, 'data/header-data.json')).then(json => {
+    db.set('headerData', json).value();
 });
 
+loadJsonFile(path.join(__dirname, 'data/table-data.json')).then(json => {
+    db.set('tableData', json).value();
+});
 
 
 //=========================================================
@@ -35,7 +39,23 @@ router.use((req, res, next) => {
 });
 
 router.get('/getHeaderData', (req, res) => {
-  res.status(200).json(db.get('getHeaderData').value());
+  res.status(200).json(db.get('headerData').value());
+});
+
+router.post('/getTableData', (req, res) => {
+    let query = JSON.parse(req.body); /* params --> limit -- offset -- pageCount -- page*/
+    let header = _.clone(db.get('tableData').value());
+
+    if (query) {
+        let offset = (query.limit * (query.page - 1));
+        let data = _.slice(header.data, offset, (offset + query.limit))
+        header.data = _.map(data, function(item) {
+          let nItem = _.clone(item);
+          nItem.name = item.name.last + ', ' + item.name.first;
+          return nItem;
+        });
+    }
+    res.status(200).json(header);
 });
 
 

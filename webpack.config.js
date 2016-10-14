@@ -45,11 +45,7 @@ const rules = {
     loader: 'style!css!postcss!sass',
     include: path.resolve('src/shared/styles')
   },
-  html: {
-    test: /\.html$/,
-    loader: 'raw'
-  },
-  typescript: {
+  javascript: {
     test: /\.js$/,
     loader: ['babel-loader'],
     exclude: /node_modules/
@@ -59,6 +55,10 @@ const rules = {
     loader: ['awesome-typescript-loader', 'angular2-template-loader'],
     exclude: /node_modules/
   },
+  html: {
+    test: /\.html$/,
+    loader: 'html?-minimize'
+  },
   fontFile: { 
     test: /\.(ttf|otf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loaders: ['file-loader'] 
@@ -66,8 +66,14 @@ const rules = {
   fontUrl: { 
     test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
     loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+  },
+  imagesFile: {
+    test: /\.(jpe?g|png|gif|svg)$/i,
+    loaders: [
+        'file?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+    ]
   }
-
 };
 
 
@@ -84,25 +90,28 @@ config.resolve = {
   ],
   alias: {
     jquery: 'node_modules/jquery/dist/jquery.js',
-    jqueryInputmask: 'node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask.js'
+    jqueryInputmask: 'node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask.js',
+    lodash: 'node_modules/lodash/lodash.min'
   }
 };
 
 config.module = {
   rules: [
+    rules.javascript,
     rules.typescript,
     rules.cssStyles,
     rules.componentStyles,
     rules.html,
     rules.fontFile,
-    rules.fontUrl
+    rules.fontUrl,
+    rules.imagesFile
   ]
 };
 
+
 config.plugins = [
   new ProvidePlugin({
-    //_: 'lodash',
-    //angular: 'angular',
+    _: 'lodash',
     jQuery: 'jquery',
     $: 'jquery',
     jquery: 'jquery',
@@ -123,7 +132,7 @@ config.plugins = [
         outputStyle: 'compressed',
         precision: 10,
         sourceComments: false
-      }
+      },
     }
   }),
   new ContextReplacementPlugin(
@@ -131,7 +140,6 @@ config.plugins = [
     path.resolve('src')
   )
 ];
-
 
 //=====================================
 //  DEVELOPMENT or PRODUCTION

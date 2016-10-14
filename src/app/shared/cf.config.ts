@@ -4,4 +4,5 @@ import { Injectable } from "@angular/core";
 export class Config {
     public apiUrl = 'http://localhost:3001/';
     public headerContext = 'getHeaderData';
+    public tableContext = 'getTableData';
 }
