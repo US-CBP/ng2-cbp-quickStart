@@ -7,6 +7,7 @@ import { FormsModule }                  from "@angular/forms";
 
 import { CommonFrameworkModule }        from "../../cf";
 import { DropdownTreeDemoComponent }    from "./dropdown-tree-demo";
+import { RadioButtonDemoComponent }     from "./radio-button-demo";
 import { formControlDemoRouting }       from "./form-control-demo.routing";
 
 @NgModule({
@@ -17,7 +18,8 @@ import { formControlDemoRouting }       from "./form-control-demo.routing";
         formControlDemoRouting
     ],
     declarations: [
-        DropdownTreeDemoComponent
+        DropdownTreeDemoComponent,
+        RadioButtonDemoComponent
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

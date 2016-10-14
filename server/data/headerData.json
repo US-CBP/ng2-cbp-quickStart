@@ -118,8 +118,8 @@
             {
                 "html": "Radio button",
                 "title": "Radio button ",
-                "href": "#",
-                "target": "",
+                "href": null,
+                "route": "form-control-demo/radio-button-demo",
                 "divider": false
             },
             {
