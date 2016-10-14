@@ -1,0 +1,13 @@
+.form-group{
+    .btn-group{
+        .btn{
+            &.ellipsis{
+                border:none;
+                cursor:default;
+                &:hover{
+                    background-color:transparent;
+                }
+            }
+        }
+    }
+}

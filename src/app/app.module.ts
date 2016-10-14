@@ -8,7 +8,7 @@ import { AppService }                      from './app.service';
 import { AppComponent }                    from './app.component';
 import { appRouting, appRoutingProviders } from './app.routing';
 import { HomeModule }                      from './home/home.module';
-import { TableModule }                      from './table/table.module';
+import { TableDemoModule }                 from './table-demo/table-demo.module';
 import { FormControlDemoModule }           from './form-control-demo';
 
 
@@ -22,7 +22,7 @@ import { CommonFrameworkModule }           from '../cf';
     CommonFrameworkModule,
     HomeModule,
     FormControlDemoModule,
-    TableModule
+    TableDemoModule
   ],
   declarations: [
     AppComponent

@@ -1,4 +1,4 @@
-export interface TablePager {
+export interface Pager {
     totalItems: Number;
     currentPage: Number;
     pageSize: Number;

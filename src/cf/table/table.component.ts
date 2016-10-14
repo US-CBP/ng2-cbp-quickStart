@@ -1,41 +1,57 @@
 import { Component,
     OnInit,
-    SimpleChanges,
     EventEmitter,
     Output,
     Input,
-    OnChanges  }        from '@angular/core';
+    ViewChild }                 from '@angular/core';
 
-import { Table }        from './table.model';
-import { TableQuery }   from './table-query.model';
-import { TablePager }   from './table-pager.model';
-import { TableService } from './table.service';
+import { Table }                from './table.model';
+import { PaginationComponent,
+    Query }                     from '../pagination';
 
+let nextId = 1;
 
 @Component({
     selector: "cf-table",
     templateUrl: 'table.component.html',
-    styleUrls: ['table.component.scss'],
-    providers: [
-        TableService
-    ]
+    styleUrls: ['table.component.scss']
 })
-export class TableComponent implements OnInit, OnChanges 
+export class TableComponent implements OnInit
 {
-    @Input() query: TableQuery;
-    @Input() data: Table;
-    @Output() getpagedata: EventEmitter<TableQuery> = new EventEmitter<TableQuery>();
+    @Input() id: string = `cf-table-${nextId++}`;
+    @Output() gettabledata: EventEmitter<Query> = new EventEmitter<Query>();
 
-    pager: TablePager;
-    private service: TableService;
+    @ViewChild(PaginationComponent) pagerObj:PaginationComponent;
 
-    constructor(service: TableService) {
-        this.service = service;
-        this.pager = {} as TablePager;
+    private _data: Table = null;
+    private _query: Query = null;
+
+    constructor() {
+    }
+
+    @Input()
+    get data(): Table {
+        return this._data;
+    }
+    set data(dt: Table) {
+        this._data = dt;
+        if (dt && this.query) {
+            this.pagerObj.totalCount = dt.totalCount;
+            this.pagerObj.setPage(this.query.page, false);
+        }
+    }
+
+    @Input()
+    get query(): Query {
+        return this._query;
+    }
+    set query(qy: Query) {
+        this._query = qy;
     }
 
     hasNoHeader() {
-        if (this.data.options && this.data.options.hasNoHeader) {
+        let dt = this.data;
+        if (dt.options && dt.options.hasNoHeader) {
             return false;
         } else {
             return true;
@@ -43,22 +59,8 @@ export class TableComponent implements OnInit, OnChanges
     }
 
     hasStripedAltRow() {
-        if (this.data.options && this.data.options.hasStripedAltRow) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    updateLimit(limit) {
-        if (this.query && this.query.limit && this.query.limit !== limit ) {
-            this.query.limit = limit;
-            this.setPage(this.query.page, true);
-        }
-    }
-
-    showPagination() {
-        if (this.data && this.data.totalCount > this.query.limit) {
+        let dt = this.data;
+        if (dt.options && dt.options.hasStripedAltRow) {
             return true;
         } else {
             return false;
@@ -66,35 +68,20 @@ export class TableComponent implements OnInit, OnChanges
     }
 
     showSelector() {
-        if (this.data.options && this.data.options.isRowSelectable) {
+        let dt = this.data;
+        if (dt.options && dt.options.isRowSelectable) {
             return true;
         } else {
             return false;
         }
     }
-    
-    setPage(page, forceRefresh) {
-        if (!this.data.totalCount || page < 1 || page > this.data.totalCount) {
-            return;
-        }
-
-        // get pager object from service
-        this.pager =  this.service.getPager(this.data.totalCount, page, this.query.limit);
-
-        if (this.query.page !== page || forceRefresh) {
-            this.query.page = page;
-            this.getpagedata.emit(this.query);
-        }
-        
-    }
 
     ngOnInit() {
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-        if(this.query.page) {
-            this.setPage(this.query.page, false);
-        }
+    loadPage(query){
+        this.query = query;
+        this.gettabledata.emit(query);
+    }
 
-  }
 }
