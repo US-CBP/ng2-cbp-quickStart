@@ -10,7 +10,6 @@ import { Header }            from '../cf';
     <header class="header">
       <cf-header [data]="headerData"></cf-header>
     </header>
-
     <main class="main container-fluid content">
       <div class="row">
         <div id="content">
@@ -18,7 +17,8 @@ import { Header }            from '../cf';
         </div>
       </div>
     </main>
-  `
+    `,
+  styleUrls: ['app.scss']
 })
 export class AppComponent {
     private service: AppService;

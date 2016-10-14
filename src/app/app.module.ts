@@ -8,7 +8,10 @@ import { AppService }                      from './app.service';
 import { AppComponent }                    from './app.component';
 import { appRouting, appRoutingProviders } from './app.routing';
 import { HomeModule }                      from './home/home.module';
+import { TableModule }                      from './table/table.module';
 import { FormControlDemoModule }           from './form-control-demo';
+
+
 import { CommonFrameworkModule }           from '../cf';
 
 @NgModule({
@@ -18,7 +21,8 @@ import { CommonFrameworkModule }           from '../cf';
     appRouting,
     CommonFrameworkModule,
     HomeModule,
-    FormControlDemoModule
+    FormControlDemoModule,
+    TableModule
   ],
   declarations: [
     AppComponent

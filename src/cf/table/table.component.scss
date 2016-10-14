@@ -1,0 +1,22 @@
+.form-group{
+    .btn-group{
+        .btn{
+            &.ellipsis{
+                border:none;
+                cursor:default;
+                &:hover{
+                    background-color:transparent;
+                }
+            }
+        }
+    }
+}
+
+.cbp-table{
+    th {
+        text-align:left;
+    }
+    td {
+        text-align:left;
+    }
+}

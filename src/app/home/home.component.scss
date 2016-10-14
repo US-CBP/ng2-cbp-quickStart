@@ -1,5 +1,20 @@
 ﻿.home-container{
-    h1{
-        color:red;
+    margin-left:50px;
+    h3{
+        text-decoration: underline;
+    }
+    .img-container{
+        height : 160px;
+        img{
+            &.center{
+                margin-top:50px;
+            }
+            margin: 0px auto;
+        }
+        h4{
+            position:absolute;
+            padding: 2px 10px;
+            bottom:0px;
+        }
     }
 }
