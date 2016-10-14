@@ -1,24 +1,24 @@
 import { Component, OnInit }    from '@angular/core';
 
-import { TableService }         from './table.service';
-import { Table, TableQuery }    from '../../cf';
+import { TableDemoService }         from './table-demo.service';
+import { Table, Query }    from '../../cf';
 
 @Component({
-  templateUrl: 'table.component.html',
-  styleUrls: ['table.component.scss']
+  templateUrl: 'table-demo.component.html',
+  styleUrls: ['table-demo.component.scss']
 })
 
-export class TableComponent implements OnInit {
-    private service: TableService;
-    tableData: Table;
-    tableQuery: TableQuery
+export class TableDemoComponent implements OnInit {
+    private service: TableDemoService;
+    private tableData: Table;
+    private tableQuery: Query
 
-    constructor(service: TableService) {
+    constructor(service: TableDemoService) {
         this.service = service;
         this.tableData = {} as Table;
         this.tableData.data = [];
 
-        this.tableQuery = {} as TableQuery;
+        this.tableQuery = {} as Query;
         this.tableQuery.page = 1;
         this.tableQuery.limit = 5;
         this.tableQuery.sortBy = '-name';
@@ -35,10 +35,10 @@ export class TableComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.service.callTableData(this.tableQuery);
     }
 
-    getData() {
+    getData(query) {
+        this.tableQuery = query;
         this.service.callTableData(this.tableQuery);
     }
 }

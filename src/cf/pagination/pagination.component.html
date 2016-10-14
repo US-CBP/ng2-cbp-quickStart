@@ -1,0 +1,90 @@
+<div class="form-inline" >
+    <div class="form-group">
+        <div class="btn-group dropdown">
+            <button type="button" id="dropdownMenu9" class="btn-link btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                {{ query.limit }} per page
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu9">
+                <li role="presentation" class="dropdown-header">Show up to</li>
+                <li role="presentation" class="active" *ngFor="let limit of query.limits" [ngClass]="{ 'active': limit === query.limit }" >
+                    <a role="menuitem" tabindex="-1" (click)="updateLimit(limit)">{{limit}} items</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <a class="btn btn-default" (click)="setPage(pager.currentPage - 1)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="btn btn-default" (click)="setPage(1)" [ngClass]="{ 'active': pager.currentPage === 1 }" >1</a>
+            <a class="btn btn-default ellipsis" *ngIf="pager.pages && pager.pages.indexOf(2) === -1" href="javascript:void(0)">...</a>
+            <a class="btn btn-default" *ngFor="let page of pager.pages" [ngClass]="{ 'active': pager.currentPage === page }" (click)="setPage(page)">
+                {{page}}
+            </a>
+            <a class="btn btn-default ellipsis" *ngIf="pager.pages && pager.pages.indexOf(pager.totalPages-1) === -1" href="javascript:void(0)">...</a>
+            <a class="btn btn-default" (click)="setPage(pager.totalPages)" [ngClass]="{ 'active': pager.currentPage === pager.totalPages }">
+                {{pager.totalPages}}
+            </a>
+            <a class="btn btn-default"(click)="setPage(pager.currentPage + 1)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+        <div class="mdl-textfield mdl-js-textfield" style="width: 150px;">
+            <label class="mdl-textfield__label">15 out of 40</label>
+            <input type="text" class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?">
+        </div>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go</button>
+        </span>
+    </div>
+</div>
+
+  <!-- <h3>Small</h3>
+  <div class="form-inline">
+    <div class="form-group dropdown">
+      <div class="btn-group">
+        <a href="#" class="btn btn-default">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="btn btn-default dropdown-toggle" id="dropdownMenu6" data-toggle="dropdown" href="">
+          15/25 <span class="caret"></span>
+        </a>
+        <a href="#" class="btn btn-default">
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu6">
+          <li class="divider"></li>
+          <li role="presentation" class="dropdown-header">Show up to</li>
+          <li role="presentation" class="active">
+            <a role="menuitem" tabindex="-1" href="#">10 items</a>
+          </li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">25 items</a>
+          </li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">50 items</a>
+          </li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">100 items</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="mdl-textfield mdl-js-textfield is-upgraded" style="width: 150px;" data-upgraded=",MaterialTextfield">
+          <label for="pagination999" class="mdl-textfield__label">15 out of 40</label>
+          <input id="pagination999" type="text" class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?">
+        </div>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go</button>
+        </span>
+      </div>
+    </div>
+  </div> -->
+</div>

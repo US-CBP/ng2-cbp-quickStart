@@ -16,8 +16,7 @@ import { Header }            from '../cf';
           <router-outlet></router-outlet>
         </div>
       </div>
-    </main>
-    `,
+    </main>`,
   styleUrls: ['app.scss']
 })
 export class AppComponent {
