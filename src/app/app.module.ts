@@ -12,7 +12,8 @@ import { TableDemoModule }                 from './table-demo/table-demo.module'
 import { FormControlDemoModule }           from './form-control-demo';
 
 
-import { CommonFrameworkModule }           from '../cf';
+import { CommonFrameworkModule }           from 'ng2-cf/ng2-cf';
+
 
 @NgModule({
   imports: [
