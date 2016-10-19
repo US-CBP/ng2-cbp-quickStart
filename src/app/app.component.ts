@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AppService }     from './app.service';
-import { Header }            from '../cf';
+//import { Header }         from 'ng2-cf/ng2-cf';
 
 
 @Component({
@@ -22,11 +22,11 @@ import { Header }            from '../cf';
 export class AppComponent {
     private service: AppService;
 
-    headerData: Header;
+    headerData: any;
 
     constructor(service: AppService) {
         this.service = service;
-        this.headerData = {} as Header;
+        this.headerData = {}; //as Header;
         this.headerData.cbpMenu = [];
         this.headerData.appMenu = [];
         this.headerData.userMenu = [];

@@ -6,6 +6,7 @@ node_modules/
 server/db.json
 target/
 tmp/
+ng2-cf/
 
 
 #======================================
