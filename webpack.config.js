@@ -86,12 +86,10 @@ config.resolve = {
   extensions: ['.ts', '.js', '.css', '.scss'],
   modules: [
     path.resolve('.'),
+    path.join(__dirname, 'node_modules'),
     'node_modules'
   ],
   alias: {
-    jquery: 'node_modules/jquery/dist/jquery.js',
-    jqueryInputmask: 'node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask.js',
-    lodash: 'node_modules/lodash/lodash.min'
   }
 };
 
@@ -177,8 +175,6 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 if (ENV_DEVELOPMENT) {
   config.devtool = 'inline-source-map';
 
-  config.module.rules.push(rules.sharedStyles);
-
   config.plugins.push(new ProgressPlugin());
 
   config.devServer = {
@@ -209,11 +205,11 @@ if (ENV_PRODUCTION) {
 
   config.output.filename = '[name].[chunkhash].js';
 
-  config.module.rules.push({
-    test: /\.scss$/,
-    loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass'),
-    include: path.resolve('src/shared/styles')
-  });
+  // config.module.rules.push({
+  //   test: /\.scss$/,
+  //   loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass'),
+  //   include: path.resolve('src/shared/styles')
+  // });
 
   config.plugins.push(
     new WebpackMd5Hash(),
@@ -239,6 +235,4 @@ if (ENV_PRODUCTION) {
 //-------------------------------------
 if (ENV_TEST) {
   config.devtool = 'inline-source-map';
-
-  config.module.rules.push(rules.sharedStyles);
 }

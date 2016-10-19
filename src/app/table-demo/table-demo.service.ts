@@ -4,19 +4,19 @@ import { Observable,
 import { Http } from "@angular/http";
 
 import { Config } from '../shared';
-import { Table } from '../../cf';
+//import { Table } from 'ng2-cbp-cf/ng2-cbp-cf';
 
 @Injectable()
 export class TableDemoService {
-    data: BehaviorSubject<Table>;
+    data: BehaviorSubject<any>;
     private url: string;
 
     constructor(private http: Http, private config : Config) { 
-        this.data = new BehaviorSubject<Table>(null);
+        this.data = new BehaviorSubject<any>(null);
         this.url = config.apiUrl + config.tableContext;
     }
 
-    getTableData(): Observable<Table> {
+    getTableData(): Observable<any> {
         return this.data.asObservable();
     }
 
