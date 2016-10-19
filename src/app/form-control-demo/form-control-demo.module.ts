@@ -5,9 +5,9 @@ import {
 import { BrowserModule }                from "@angular/platform-browser";
 import { FormsModule }                  from "@angular/forms";
 
-import { CommonFrameworkModule }        from "ng2-cf/ng2-cf";
+import { CommonFrameworkModule }        from "ng2-cbp-cf/ng2-cbp-cf";
 import { DropdownTreeDemoComponent }    from "./dropdown-tree-demo";
-//import { RadioButtonDemoComponent }     from "./radio-button-demo";
+import { RadioButtonDemoComponent }     from "./radio-button-demo";
 import { formControlDemoRouting }       from "./form-control-demo.routing";
 
 @NgModule({
@@ -18,8 +18,8 @@ import { formControlDemoRouting }       from "./form-control-demo.routing";
         formControlDemoRouting
     ],
     declarations: [
-        DropdownTreeDemoComponent//,
-        //RadioButtonDemoComponent
+        DropdownTreeDemoComponent,
+        RadioButtonDemoComponent
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
