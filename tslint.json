@@ -37,6 +37,7 @@
             "timeEnd",
             "trace"
         ],
+        "no-consecutive-blank-lines": true,
         "no-construct": true,
         "no-debugger": true,
         "no-duplicate-key": true,
@@ -63,7 +64,7 @@
         ],
         "quotemark": [
             true,
-            "double"
+            "single"
         ],
         "radix": true,
         "semicolon": [
@@ -91,7 +92,6 @@
             "check-separator",
             "check-type"
         ],
-
         "directive-selector-name": [ true, "camelCase" ],
         "component-selector-name": [ true, "kebab-case" ],
         "directive-selector-type": [ true, "attribute" ],
@@ -105,8 +105,8 @@
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
         "directive-class-suffix": true,
-        "directive-selector-prefix": [ true, "cf" ],
-        "component-selector-prefix": [ true, "cf" ],
-        "pipe-naming": [ true, "camelCase", "cf" ]
+        "directive-selector-prefix": [ true, "cbp" ],
+        "component-selector-prefix": [ true, "cbp" ],
+        "pipe-naming": [ true, "camelCase", "cbp" ]
     }
 }

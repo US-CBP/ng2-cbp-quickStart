@@ -1,4 +1,4 @@
-import { NgModule, 
+import { NgModule,
     CUSTOM_ELEMENTS_SCHEMA  }              from '@angular/core';
 import { BrowserModule }                   from '@angular/platform-browser';
 import { FormsModule }                     from '@angular/forms';
@@ -31,7 +31,7 @@ import { CommonFrameworkModule }           from 'ng2-cbp-cf/ng2-cbp-cf';
     Config,
     AppService
   ],
-  schemas:[
+  schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [ AppComponent ]

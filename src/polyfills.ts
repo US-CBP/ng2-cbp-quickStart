@@ -13,8 +13,7 @@ import 'zone.js/dist/zone';
 // Typescript helpers
 import 'ts-helpers';
 
-
-if (process.env.NODE_ENV === 'development') {
-  Error.stackTraceLimit = Infinity;
-  require('zone.js/dist/long-stack-trace-zone');
+if(process.env.NODE_ENV === 'development') {
+    Error.stackTraceLimit = Infinity;
+    require('zone.js/dist/long-stack-trace-zone');
 }

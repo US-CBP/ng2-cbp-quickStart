@@ -1,32 +1,38 @@
 {
-  "name": "angular2-ngrx-webpack-quickStart",
+  "name": "ng2-cbp-cf-quickStart",
   "version": "0.0.1",
-  "description": "angular2-ngrx-webpack-quickStart",
+  "description": "This is a quick start to use the ng2-cbp-cf (Common Framewor) with Angular2 and ngrx/store",
   "homepage": "",
   "repository": {
-    "type": "git",
+    "type": "https://github.com/US-CBP/ng2-cbp-quickStart.git",
     "url": ""
   },
-  "author": {
-    "name": "Xavier/Martin",
-    "email": ""
-  },
-  "license": "BEMS",
-  "private": true,
+  "contributors": [
+    {
+      "name": "Xavier Mouligneau",
+      "email": "xmouligneau@gmail.com"
+    },
+    {
+      "name": "Martin Francisco",
+      "email": "martin2great@yahoo.com"
+    }
+  ],
+  "author": "CBP Common Framework",
+  "license": "CC0-1.0",
   "engines": {
     "node": ">=6.4"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --display-chunks",
     "clean": "del-cli target",
-    "lint": "run-s lint:js lint:ts",
+    "lint": "npm run-s lint:js | npm run-s lint:ts",
     "lint:js": "eslint -c .eslintrc.yml *.js server",
-    "lint:ts": "tslint 'src/**/*.ts'",
+    "lint:ts": "tslint src/**/*.ts",
     "prebuild": "run-s clean test",
     "pretest": "run-s lint",
+    "start": "npm run-s server:api & npm run-s server:dev",
     "server:api": "cross-env NODE_ENV=development nodemon -w 'server/*.js' server/main.js",
-    "server:dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "start": "npm run server:api & npm run server:dev",
+    "server:dev": "cross-env NODE_ENV=development webpack-dev-server",  
     "test": "cross-env NODE_ENV=test karma start --single-run",
     "test:watch": "cross-env NODE_ENV=test karma start",
     "show": "webpack-dev-server --inline --hot"
@@ -98,5 +104,14 @@
     "webpack-dev-server": "2.1.0-beta.4",
     "webpack-md5-hash": "~0.0.5",
     "winston": "~2.2.0"
-  }
+  },
+  "keywords": [
+    "CBP",
+    "CF",
+    "Common",
+    "Frameworks",
+    "Team",
+    "UI",
+    "ANGULAR2"
+  ]
 }

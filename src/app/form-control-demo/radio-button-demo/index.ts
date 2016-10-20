@@ -1,1 +1,1 @@
-export * from "./radio-button-demo.component";
+export * from './radio-button-demo.component';

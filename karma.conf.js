@@ -1,31 +1,31 @@
 module.exports = config => {
-  config.set({
-    frameworks: ['jasmine'],
+    config.set({
+        frameworks: ['jasmine'],
 
-    files: ['karma.entry.js'],
+        files: ['karma.entry.js'],
 
-    preprocessors: {
-      'karma.entry.js': ['webpack', 'sourcemap']
-    },
+        preprocessors: {
+            'karma.entry.js': ['webpack', 'sourcemap']
+        },
 
-    webpack: require('./webpack.config'),
+        webpack: require('./webpack.config'),
 
-    webpackServer: {
-      noInfo: true
-    },
+        webpackServer: {
+            noInfo: true
+        },
 
-    webpackMiddleware: {
-        stats: 'minimal'
-    },
+        webpackMiddleware: {
+            stats: 'minimal'
+        },
 
-    reporters: ['progress'],
+        reporters: ['progress'],
 
-    logLevel: config.LOG_INFO,
+        logLevel: config.LOG_INFO,
 
-    autoWatch: true,
+        autoWatch: true,
 
-    singleRun: false,
+        singleRun: false,
 
-    browsers: ['Chrome']
-  });
+        browsers: ['Chrome']
+    });
 };
