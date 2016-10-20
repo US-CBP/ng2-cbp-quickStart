@@ -1,7 +1,7 @@
 import { Component, OnInit }    from '@angular/core';
 
 import { TableDemoService }         from './table-demo.service';
-//import { Table, Query }    from 'ng2-cf/ng2-cf';
+import { Table, Query }    from 'ng2-cf/ng2-cf';
 
 @Component({
   templateUrl: 'table-demo.component.html',
@@ -10,24 +10,23 @@ import { TableDemoService }         from './table-demo.service';
 
 export class TableDemoComponent implements OnInit {
     private service: TableDemoService;
-    private tableData: any;
-    private tableQuery: any;
+    private tableData: Table;
+    private tableQuery: Query;
 
     constructor(service: TableDemoService) {
         this.service = service;
-        this.tableData = {};// as Table;
+        this.tableData = {} as Table;
         this.tableData.data = [];
 
-        this.tableQuery = {};// as Query;
+        this.tableQuery = {} as Query;
         this.tableQuery.page = 1;
         this.tableQuery.limit = 5;
         this.tableQuery.sortBy = '-name';
-        this.tableQuery.limits = [5,10,15,25,50,100];
-
+        this.tableQuery.limits = [5, 10, 15, 25, 50, 100];
 
         this.service.getTableData().subscribe(
-            (data) => { 
-                if (data) {
+            (data) => {
+                if(data) {
                     this.tableData = data;
                 }
             }

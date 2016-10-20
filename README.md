@@ -1,7 +1,31 @@
-BEMS-SEED-PROJECT-ANGULAR2
+                                                                                                       
+                                 .d8888b.         .d8888b.  888888b.   8888888b.                       
+                                d88P  Y88b       d88P  Y88b 888  "88b  888   Y88b                      
+                                       888       888    888 888  .88P  888    888                      
+              88888b.   .d88b.       .d88P       888        8888888K.  888   d88P                      
+              888 "88b d88P"88b  .od888P"        888        888  "Y88b 8888888P"                       
+              888  888 888  888 d88P"            888    888 888    888 888                             
+              888  888 Y88b 888 888"             Y88b  d88P 888   d88P 888                             
+              888  888  "Y88888 888888888         "Y8888P"  8888888P"  888                             
+                            888                                                                        
+                       Y8b d88P                                                                        
+                        "Y88P"                                                                         
+                                                                                                       
+                                                                                                       
+     .d88888b.           d8b          888             .d8888b.  888                     888            
+    d88P" "Y88b          Y8P          888            d88P  Y88b 888                     888            
+    888     888                       888            Y88b.      888                     888            
+    888     888 888  888 888  .d8888b 888  888        "Y888b.   888888  8888b.  888d888 888888         
+    888     888 888  888 888 d88P"    888 .88P           "Y88b. 888        "88b 888P"   888            
+    888 Y8b 888 888  888 888 888      888888K              "888 888    .d888888 888     888            
+    Y88b.Y8b88P Y88b 888 888 Y88b.    888 "88b       Y88b  d88P Y88b.  888  888 888     Y88b.          
+     "Y888888"   "Y88888 888  "Y8888P 888  888        "Y8888P"   "Y888 "Y888888 888      "Y888         
+           Y8b                                                                                         
+                                                                                                       
+                                                                                                       
 
-# Angular2 and ngrx/store with Common Framework
-    RxJS powered state management inspired by Redux for Angular2 apps.
+This is a quick start to use the ng2-cbp-cf (Common Framewor) with Angular2 and ngrx/store
+--> RxJS powered state management inspired by Redux for Angular2 apps.
 
 
 Stack
@@ -15,6 +39,8 @@ Stack
 - SASS
 - Typescript 2
 - Webpack 2
+- Karma
+- Jasmine
 
 
 Getting Started
@@ -25,19 +51,21 @@ Getting Started
 
 #### Quick Start
 ```shell
-$ git clone https://github.com/r-park/todo-angular2-ngrx.git
-$ cd todo-angular2-ngrx
+$ git clone https://github.com/US-CBP/ng2-cbp-quickStart.git
+$ cd ng2-cbp-quickStart
 $ npm install
-$ npm start
+#open a new terminal to launch the node server api
+$ npm run server:api
+#open a new terminal to launch the webpack server to show the UI
+$ npm run server:dev
 ```
-
+#### go to http://localhost:3000
 
 Usage
 -----
 
 |Script|Description|
 |---|---|
-|`npm start`|Start webpack development server @ `localhost:3000` and api server @ `localhost:3001`|
 |`npm run build`|Lint, test, and build the application to `./target`|
 |`npm run lint`|Lint `.ts` and `.js` files|
 |`npm run lint:js`|Lint `.js` files with eslint|
@@ -60,3 +88,4 @@ To Do
     6. Make Dropdown Tree NgModel enabled
 
 -SCSS:
+    None for now
