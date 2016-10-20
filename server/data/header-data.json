@@ -95,6 +95,13 @@
         "className": "dropdown",
         "menu": [
             {
+                "html": "Button",
+                "title": "Button",
+                "href": null,
+                "route": "form-control-demo/button-demo",
+                "divider": false
+            },
+            {
                 "html": "Input Text",
                 "title": "Input Text",
                 "href": "#",
