@@ -2,14 +2,14 @@
     <h1 class="page-header">Dropdown Tree</h1>
     <div class="panel">
         <div class="panel-body">
-            <h2>Simple Example</h2>
+            <h2>Simple example</h2>
             <div class="container-fluid" style="max-width: 400px; margin: 0;">
                 <div class="row">
                     <cf-dropdown-tree-field id="demo-1" label="Demo 1" defaultLabel="Any Value" [selectedNode]="demo1SelectedNode" [nodes]="nodes" (nodeSelected)="demo1NodeSelected($event)"></cf-dropdown-tree-field>
                 </div>
             </div>
 
-            <h2>Show Entire Selected Path</h2>
+            <h2>Show entire selected path</h2>
             <div class="container-fluid" style="max-width: 400px; margin: 0;">
                 <div class="row">
                     <cf-dropdown-tree-field id="demo-2" label="Demo 2" defaultLabel="Any Value" [showFullSelectedPath]="true" [selectedNode]="demo2SelectedNode" [nodes]="nodes" (nodeSelected)="demo2NodeSelected($event)"></cf-dropdown-tree-field>

@@ -1,7 +1,5 @@
 ﻿import { Component } from "@angular/core";
 
-let currentId = 1;
-
 @Component({
     templateUrl: "radio-button-demo.component.html"
 })
