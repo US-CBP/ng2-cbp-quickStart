@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AppService }     from './app.service';
-import { Header }         from 'ng2-cf/ng2-cf';
+import { Header }         from 'ng2-cbp-cf/ng2-cbp-cf';
 
 @Component({
   selector: 'cbp-app',

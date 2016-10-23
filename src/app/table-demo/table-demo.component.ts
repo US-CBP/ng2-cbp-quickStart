@@ -1,7 +1,7 @@
 import { Component, OnInit }    from '@angular/core';
 
 import { TableDemoService }         from './table-demo.service';
-import { Table, Query }    from 'ng2-cf/ng2-cf';
+import { Table, Query }    from 'ng2-cbp-cf/ng2-cbp-cf';
 
 @Component({
   templateUrl: 'table-demo.component.html',
