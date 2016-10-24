@@ -118,7 +118,7 @@
             {
                 "html": "Checkbox",
                 "title": "Checkbox ",
-                "href": "null",
+                "href": null,
                 "route": "form-control-demo/checkbox-demo",
                 "divider": false
             },
