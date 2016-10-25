@@ -3,7 +3,7 @@
 import {
     ButtonRoles,
     ButtonSizes
-} from 'ng2-cbp-cf/ng2-cbp-cf';
+} from 'ng2-cbp-cf';
 
 @Component({
     templateUrl: 'button-demo.component.html'
