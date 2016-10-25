@@ -1,6 +1,6 @@
 {
     "options": {
-        "hasNoHeader":false,
+        "hasHeader":true,
         "hasStripedAltRow": true,
         "isRowSelectable": true,
         "isColSortable": false,

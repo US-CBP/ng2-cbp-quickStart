@@ -4,7 +4,7 @@ import { Observable,
 import { Http } from '@angular/http';
 
 import { Config } from '../shared';
-import { Table } from 'ng2-cbp-cf/ng2-cbp-cf';
+import { Table } from 'ng2-cbp-cf';
 
 @Injectable()
 export class TableDemoService {

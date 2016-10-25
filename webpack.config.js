@@ -29,18 +29,12 @@ const PORT = 3000;
 const rules = {
     cssStyles: {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader'],
-        exclude: path.resolve('src/shared/styles')
+        loader: ['style-loader', 'css-loader']
     },
     componentStyles: {
         test: /\.scss$/,
         loader: 'raw!postcss!sass',
         exclude: path.resolve('src/shared/styles')
-    },
-    sharedStyles: {
-        test: /\.scss$/,
-        loader: 'style!css!postcss!sass',
-        include: path.resolve('src/shared/styles')
     },
     javascript: {
         test: /\.js$/,

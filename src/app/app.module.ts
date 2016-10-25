@@ -11,7 +11,7 @@ import { HomeModule }                      from './home/home.module';
 import { TableDemoModule }                 from './table-demo/table-demo.module';
 import { FormControlDemoModule }           from './form-control-demo';
 
-import { CommonFrameworkModule }           from 'ng2-cbp-cf/ng2-cbp-cf';
+import { CommonFrameworkModule }           from 'ng2-cbp-cf';
 
 @NgModule({
   imports: [
