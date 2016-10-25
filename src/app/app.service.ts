@@ -3,7 +3,7 @@ import { Observable,
     BehaviorSubject }            from 'rxjs';
 import { Http } from '@angular/http';
 
-import { Header } from 'ng2-cbp-cf/ng2-cbp-cf';
+import { Header } from 'ng2-cbp-cf';
 import { Config } from './shared';
 
 @Injectable()
