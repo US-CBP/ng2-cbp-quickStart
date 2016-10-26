@@ -1,10 +1,72 @@
-﻿<div class="table-container">
-    <h1> Tables</h1>
-    <div class="row">
-        <h2>CBP Default Table</h2>
-        <cf-table [data]="tableData" 
-            [query]="tableQuery" 
-            (gettabledata)="getData($event)"></cf-table>
+﻿<div>
+    <h2 class="page-header">CBP Default Table</h2>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>
+                Includes Borderless, Comfortable, Hover stylings with MDL additions
+                <small>Just by using the classnames: "cbp-table mdl-js-data-table"</small>
+            </h3>
+            <div class="container-fluid">
+                <cf-table [data]="tableDefault" 
+                    [query]="tableQuery" 
+                    (gettabledata)="getData($event)"></cf-table>
+            </div>
+        </div>
     </div>
-    
+    <h2 class="page-header">Table Options</h2>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>
+                Striped Alternative Rows
+            </h3>
+            <div class="container-fluid">
+                <cf-table [data]="tableAltRows" 
+                    [query]="tableQuery" 
+                    (gettabledata)="getData($event)"></cf-table>
+            </div>
+        </div>
+        <div class="panel-body">
+            <h3>
+                Selectable Table
+                <small>With a selected row</small>
+            </h3>
+            <div class="container-fluid">
+                <cf-table [data]="tableSelRows" 
+                    [query]="tableQuery" 
+                    (gettabledata)="getData($event)"></cf-table>
+            </div>
+        </div>
+        <div class="panel-body">
+            <h3>
+                Floating Header
+                <small>Example w/o thirdparty just some css3 love</small>
+            </h3>
+            <div class="container-fluid">
+                <cf-table [data]="tableFloat" 
+                    [query]="tableQuery" 
+                    (gettabledata)="getData($event)"></cf-table>
+            </div>
+        </div>
+        <div class="panel-body">
+            <h3>
+                Table with Pagination
+                <small>Pagination can be done on the backend or frontend</small>
+            </h3>
+            <div class="container-fluid">
+                <cf-table [data]="tablePag" 
+                    [query]="tableQuery" 
+                    (gettabledata)="getData($event)"></cf-table>
+            </div>
+        </div>
+    </div>
+    <h2 class="page-header">Other Examples</h2>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>
+                Comming Soon -- Come Help Us
+                <small>Yes you can!!!</small>
+            </h3>
+        </div>
+    </div>
 </div>
+

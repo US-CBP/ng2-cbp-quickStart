@@ -1,8 +1,9 @@
 {
     "options": {
-        "hasHeader":true,
-        "hasStripedAltRow": true,
-        "isRowSelectable": true,
+        "hasHeader":false,
+        "hasStripedAltRow": false,
+        "hasFloatingHeader": false,
+        "isRowSelectable": false,
         "isColSortable": false,
         "isMultiColSortable" : false,
         "hasActionOnRow": false,
