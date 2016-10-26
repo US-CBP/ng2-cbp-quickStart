@@ -33,8 +33,7 @@ const rules = {
     },
     componentStyles: {
         test: /\.scss$/,
-        loader: 'raw!postcss!sass',
-        exclude: path.resolve('src/shared/styles')
+        loader: 'raw!sass'
     },
     javascript: {
         test: /\.js$/,
