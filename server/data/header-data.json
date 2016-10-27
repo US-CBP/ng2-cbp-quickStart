@@ -139,8 +139,8 @@
             {
                 "html": "Select",
                 "title": "Select",
-                "href": "#",
-                "target": "",
+                "href": null,
+                "route": "form-control-demo/select-demo",
                 "divider": false
             },
             {
