@@ -13,6 +13,7 @@ import {
     DropdownTreeDemoService
 }                                       from './dropdown-tree-demo';
 import { RadioButtonDemoComponent }     from './radio-button-demo';
+import { SelectDemoComponent }          from './select-demo';
 import { formControlDemoRouting }       from './form-control-demo.routing';
 
 @NgModule({
@@ -24,9 +25,10 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
     ],
     declarations: [
         ButtonDemoComponent,
+        CheckboxDemoComponent,
         DropdownTreeDemoComponent,
         RadioButtonDemoComponent,
-        CheckboxDemoComponent
+        SelectDemoComponent
     ],
     providers: [
         DropdownTreeDemoService
