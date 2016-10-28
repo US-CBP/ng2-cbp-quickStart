@@ -1,5 +1,5 @@
 import { NgModule,
-    CUSTOM_ELEMENTS_SCHEMA  }              from '@angular/core';
+    CUSTOM_ELEMENTS_SCHEMA }              from '@angular/core';
 import { BrowserModule }                   from '@angular/platform-browser';
 import { FormsModule }                     from '@angular/forms';
 
@@ -10,6 +10,7 @@ import { appRouting, appRoutingProviders } from './app.routing';
 import { HomeModule }                      from './home/home.module';
 import { TableDemoModule }                 from './table-demo/table-demo.module';
 import { FormControlDemoModule }           from './form-control-demo';
+import { ListDemoModule }                  from './list-demo';
 
 import { CommonFrameworkModule }           from 'ng2-cbp-cf';
 
@@ -21,7 +22,8 @@ import { CommonFrameworkModule }           from 'ng2-cbp-cf';
     CommonFrameworkModule,
     HomeModule,
     FormControlDemoModule,
-    TableDemoModule
+    TableDemoModule,
+    ListDemoModule
   ],
   declarations: [
     AppComponent

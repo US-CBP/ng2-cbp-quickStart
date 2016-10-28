@@ -161,7 +161,32 @@
         "target": "",
         "hasMenu": false
     }, {
-        "id": "app_2",
+        "id": "app_3",
+        "html": "List",
+        "title": "List",
+        "href": "",
+        "route": null,
+        "target": "",
+        "hasMenu": true,
+        "className": "dropdown",
+        "menu": [
+            {
+                "html": "List Group",
+                "title": "List Group",
+                "href": null,
+                "route": "list-demo/list-group-demo",
+                "divider": false
+            },
+            {
+                "html": "Dual List",
+                "title": "Dual List",
+                "href": null,
+                "route": "list-demo/dual-list-demo",
+                "divider": false
+            }
+        ]
+    }, {
+        "id": "app_4",
         "html": "Modal - Dialog - Overlay",
         "title": "Modal - Dialog - Overlay",
         "className": "dropdown",
