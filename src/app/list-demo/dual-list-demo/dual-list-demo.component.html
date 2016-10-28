@@ -1,0 +1,20 @@
+﻿<div>
+    <h2 class="page-header">Dual List</h2>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>Pick your Favorite NFL team</h3>
+            <div class="container-fluid">
+                <div class="row">
+                    <cf-dual-list 
+                        [attrToShow]="attrToShow"
+                        [sort]="sort"
+                        [attrToSort]="attrToSort"
+                        [source]="source"
+                        [selected]="selected"
+                        (change)="selectlistChange($event)">
+                    </cf-dual-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
