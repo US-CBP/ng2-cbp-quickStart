@@ -6,4 +6,5 @@ export class Config {
     public headerContext = 'getHeaderData';
     public tableContext = 'getTableData';
     public treeNodeContext = 'getTreeNodeData';
+    public nflContext = 'getNflData';
 }

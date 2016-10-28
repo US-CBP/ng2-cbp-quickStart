@@ -25,6 +25,10 @@ loadJsonFile(path.join(__dirname, 'data/tree-node-data.json')).then(json => {
     db.set('treeNodeData', json).value();
 });
 
+loadJsonFile(path.join(__dirname, 'data/nfl-data.json')).then(json => {
+    db.set('nflData', json).value();
+});
+
 //=========================================================
 //  ROUTER
 //---------------------------------------------------------
@@ -40,6 +44,10 @@ router.use((req, res, next) => {
 
 router.get('/getHeaderData', (req, res) => {
     res.status(200).json(db.get('headerData').value());
+});
+
+router.get('/getNflData', (req, res) => {
+    res.status(200).json(db.get('nflData').value());
 });
 
 router.post('/getTableData', (req, res) => {
