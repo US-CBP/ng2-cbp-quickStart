@@ -1,53 +1,28 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component }                from '@angular/core';
+import { Observable }               from 'rxjs';
 
-let currentId = 1;
+import { TreeNode }                 from 'ng2-cbp-cf';
+
+import { DropdownTreeDemoService }  from './dropdown-tree-demo.service';
 
 @Component({
     templateUrl: 'dropdown-tree-demo.component.html'
 })
 export class DropdownTreeDemoComponent {
-    nodes = this.createNodes();
+    treeNodeObservable: Observable<TreeNode[]>;
+    demo1SelectedNode: TreeNode = null;
+    demo2SelectedNode: TreeNode = null;
 
-    demo1SelectedNode = null;
-    demo2SelectedNode = null;
+    constructor(private _service: DropdownTreeDemoService) {
+        this.treeNodeObservable = _service.treeNodesObservable;
+        _service.refreshTreeNodes();
+    }
 
-    demo1NodeSelected(node) {
+    demo1NodeSelected(node: TreeNode) {
         this.demo1SelectedNode = node;
     }
 
-    demo2NodeSelected(node) {
+    demo2NodeSelected(node: TreeNode) {
         this.demo2SelectedNode = node;
-    }
-
-    createNode(text, ...children) {
-        let id = currentId++;
-
-        return {
-            id: id,
-            text: text,
-            children: children
-        };
-    }
-
-    private createNodes() {
-        return [
-            this.createNode('Root 1'),
-            this.createNode('Root 2',
-                this.createNode('Root 2 Child 1'),
-                this.createNode('Root 2 Child 2',
-                    this.createNode('Root 2 Grandchild 1')
-                )
-            ),
-            this.createNode('Root 3',
-                this.createNode('Root 3 Child 1'),
-                this.createNode('Root 3 Child 2',
-                    this.createNode('Root 3 Grandchild 1'),
-                    this.createNode('Root 3 Grandchild 2',
-                        this.createNode('Root 3 Great-Grandchild 1')
-                    ),
-                    this.createNode('Root 3 Grandchild 3')
-                )
-            )
-        ];
     }
 }

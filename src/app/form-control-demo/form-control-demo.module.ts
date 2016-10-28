@@ -7,9 +7,13 @@ import { FormsModule }                  from '@angular/forms';
 
 import { CommonFrameworkModule }        from 'ng2-cbp-cf';
 import { ButtonDemoComponent }          from './button-demo';
-import { DropdownTreeDemoComponent }    from './dropdown-tree-demo';
+import { CheckboxDemoComponent }        from './checkbox-demo';
+import {
+    DropdownTreeDemoComponent,
+    DropdownTreeDemoService
+}                                       from './dropdown-tree-demo';
 import { RadioButtonDemoComponent }     from './radio-button-demo';
-import { CheckboxDemoComponent }     from './checkbox-demo';
+import { SelectDemoComponent }          from './select-demo';
 import { formControlDemoRouting }       from './form-control-demo.routing';
 
 @NgModule({
@@ -21,9 +25,13 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
     ],
     declarations: [
         ButtonDemoComponent,
+        CheckboxDemoComponent,
         DropdownTreeDemoComponent,
         RadioButtonDemoComponent,
-        CheckboxDemoComponent
+        SelectDemoComponent
+    ],
+    providers: [
+        DropdownTreeDemoService
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
