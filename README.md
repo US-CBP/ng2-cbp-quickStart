@@ -54,7 +54,7 @@ Getting Started
 $ git clone https://github.com/US-CBP/ng2-cbp-quickStart.git
 $ cd ng2-cbp-quickStart
 $ npm install
-#open a new terminal and run the below link if its NOT already done 
+#open a new terminal and run the below link command if its NOT already done 
 $npm link ng2-cbp-cf
 #open a new terminal to launch the node server api
 $ npm run server:api
