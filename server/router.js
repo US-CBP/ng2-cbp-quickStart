@@ -29,6 +29,14 @@ loadJsonFile(path.join(__dirname, 'data/nfl-data.json')).then(json => {
     db.set('nflData', json).value();
 });
 
+loadJsonFile(path.join(__dirname, 'data/pay-period-data.json')).then(json => {
+    db.set('payPeriodData', json).value();
+});
+
+loadJsonFile(path.join(__dirname, 'data/pay-period-month-data.json')).then(json => {
+    db.set('payPeriodMonthData', json).value();
+});
+
 //=========================================================
 //  ROUTER
 //---------------------------------------------------------
@@ -48,6 +56,18 @@ router.get('/getHeaderData', (req, res) => {
 
 router.get('/getNflData', (req, res) => {
     res.status(200).json(db.get('nflData').value());
+});
+
+router.get('/getPayPeriodData', (req, res) => {
+    let year = req.query.year.toString();
+    let month = req.query.month.toString();
+    let payPeriods = db.get('payPeriodData').value()[year][month];
+
+    res.status(200).json(payPeriods);
+});
+
+router.get('/getPayPeriodMonthData', (req, res) => {
+    res.status(200).json(db.get('payPeriodMonthData').value());
 });
 
 router.post('/getTableData', (req, res) => {

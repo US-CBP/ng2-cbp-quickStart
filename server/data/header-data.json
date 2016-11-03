@@ -24,7 +24,8 @@
                     "route": "home",
                     "target": "",
                     "divider": false
-                }, {
+                },
+                {
                     "html": "React - Redux - Webpack",
                     "title": "React - Redux - Webpack",
                     "href": "",
@@ -35,165 +36,182 @@
             ]
         }
     ],
-    "userMenu": [{
-        "id": "user_name",
-        "html": "<span class='fa fa-user'></span><u title='david.strange@CBP.DHS.GOV' class='hidden-sm'>David, Strange</u> <span class='fa fa-caret-down'></span>",
-        "title": "User Info",
-        "href": "",
-        "route": null,
-        "target": "",
-        "toggle": "",
-        "className":"cbpUser",
-        "hasMenu": true,
-        "menu": [
-            {
-                "html": "Prefrences",
-                "title": "Recent Events",
-                "href": "",
-                "route": null,
-                "target": "",
-                "className": "",
-                "divider": false
-            }, {
-                "html": "",
-                "title": "",
-                "href": "#",
-                "route": null,
-                "target": "",
-                "className": "",
-                "divider": true
-            }, {
-                "html": "Logout",
-                "title": "Logout",
-                "href": "",
-                "route": null,
-                "target": "",
-                "className": "",
-                "divider": false
-            }
-        ]
-    },
-    {
-        "id": "header_user_station",
-        "html": "MCS",
-        "title": "Assigned Station",
-        "href": "#",
-        "route": null,
-        "target": "",
-        "toggle": "",
-        "hasMenu": true,
-        "className":"dropdown"
-    }],
-    "appMenu": [{
-        "id": "app_1",
-        "html": "Forms Controls",
-        "title": "Forms Controls",
-        "href": "",
-        "route": null,
-        "target": "",
-        "hasMenu": true,
-        "className": "dropdown",
-        "menu": [
-            {
-                "html": "Button",
-                "title": "Button",
-                "href": null,
-                "route": "form-control-demo/button-demo",
-                "divider": false
-            },
-            {
-                "html": "Input Text",
-                "title": "Input Text",
-                "href": "#",
-                "target": "",
-                "divider": false
-            },
-            {
-                "html": "Textarea",
-                "title": "Textarea ",
-                "href": "#",
-                "target": "",
-                "divider": false
-            },
-            {
-                "html": "Checkbox",
-                "title": "Checkbox ",
-                "href": null,
-                "route": "form-control-demo/checkbox-demo",
-                "divider": false
-            },
-            {
-                "html": "Radio button",
-                "title": "Radio button ",
-                "href": null,
-                "route": "form-control-demo/radio-button-demo",
-                "divider": false
-            },
-            {
-                "html": "Date Picker/Range",
-                "title": "Date Picker/Range",
-                "href": "#",
-                "target": "",
-                "divider": false
-            },
-            {
-                "html": "Select",
-                "title": "Select",
-                "href": null,
-                "route": "form-control-demo/select-demo",
-                "divider": false
-            },
-            {
-                "html": "Dropdown Tree",
-                "title": "Dropdown Tree",
-                "href": null,
-                "route": "form-control-demo/dropdown-tree-demo",
-                "divider": false
-            }
-        ]
-    }, {
-        "id": "app_2",
-        "html": "Table + Pagination",
-        "title": "Table + Pagination",
-        "className": "dropdown",
-        "href": "",
-        "route": "table",
-        "target": "",
-        "hasMenu": false
-    }, {
-        "id": "app_3",
-        "html": "List",
-        "title": "List",
-        "href": "",
-        "route": null,
-        "target": "",
-        "hasMenu": true,
-        "className": "dropdown",
-        "menu": [
-            {
-                "html": "List Group",
-                "title": "List Group",
-                "href": null,
-                "route": "list-demo/list-group-demo",
-                "divider": false
-            },
-            {
-                "html": "Dual List",
-                "title": "Dual List",
-                "href": null,
-                "route": "list-demo/dual-list-demo",
-                "divider": false
-            }
-        ]
-    }, {
-        "id": "app_4",
-        "html": "Modal - Dialog - Overlay",
-        "title": "Modal - Dialog - Overlay",
-        "className": "dropdown",
-        "href": "#",
-        "route": null,
-        "target": "",
-        "hasMenu": false
-    }
+    "userMenu": [
+        {
+            "id": "user_name",
+            "html": "<span class='fa fa-user'></span><u title='david.strange@CBP.DHS.GOV' class='hidden-sm'>David, Strange</u> <span class='fa fa-caret-down'></span>",
+            "title": "User Info",
+            "href": "",
+            "route": null,
+            "target": "",
+            "toggle": "",
+            "className": "cbpUser",
+            "hasMenu": true,
+            "menu": [
+                {
+                    "html": "Prefrences",
+                    "title": "Recent Events",
+                    "href": "",
+                    "route": null,
+                    "target": "",
+                    "className": "",
+                    "divider": false
+                },
+                {
+                    "html": "",
+                    "title": "",
+                    "href": "#",
+                    "route": null,
+                    "target": "",
+                    "className": "",
+                    "divider": true
+                },
+                {
+                    "html": "Logout",
+                    "title": "Logout",
+                    "href": "",
+                    "route": null,
+                    "target": "",
+                    "className": "",
+                    "divider": false
+                }
+            ]
+        },
+        {
+            "id": "header_user_station",
+            "html": "MCS",
+            "title": "Assigned Station",
+            "href": "#",
+            "route": null,
+            "target": "",
+            "toggle": "",
+            "hasMenu": true,
+            "className": "dropdown"
+        }
+    ],
+    "appMenu": [
+        {
+            "id": "app_1",
+            "html": "Forms Controls",
+            "title": "Forms Controls",
+            "href": "",
+            "route": null,
+            "target": "",
+            "hasMenu": true,
+            "className": "dropdown",
+            "menu": [
+                {
+                    "html": "Button",
+                    "title": "Button",
+                    "href": null,
+                    "route": "form-control-demo/button-demo",
+                    "divider": false
+                },
+                {
+                    "html": "Input Text",
+                    "title": "Input Text",
+                    "href": "#",
+                    "target": "",
+                    "divider": false
+                },
+                {
+                    "html": "Textarea",
+                    "title": "Textarea ",
+                    "href": "#",
+                    "target": "",
+                    "divider": false
+                },
+                {
+                    "html": "Checkbox",
+                    "title": "Checkbox ",
+                    "href": null,
+                    "route": "form-control-demo/checkbox-demo",
+                    "divider": false
+                },
+                {
+                    "html": "Radio button",
+                    "title": "Radio button ",
+                    "href": null,
+                    "route": "form-control-demo/radio-button-demo",
+                    "divider": false
+                },
+                {
+                    "html": "Date Picker/Range",
+                    "title": "Date Picker/Range",
+                    "href": "#",
+                    "target": "",
+                    "divider": false
+                },
+                {
+                    "html": "Select",
+                    "title": "Select",
+                    "href": null,
+                    "route": "form-control-demo/select-demo",
+                    "divider": false
+                },
+                {
+                    "html": "Dropdown Tree",
+                    "title": "Dropdown Tree",
+                    "href": null,
+                    "route": "form-control-demo/dropdown-tree-demo",
+                    "divider": false
+                }
+            ]
+        },
+        {
+            "id": "app_2",
+            "html": "Table + Pagination",
+            "title": "Table + Pagination",
+            "className": "dropdown",
+            "href": "",
+            "route": "table",
+            "target": "",
+            "hasMenu": false
+        },
+        {
+            "id": "app_3",
+            "html": "List",
+            "title": "List",
+            "href": "",
+            "route": null,
+            "target": "",
+            "hasMenu": true,
+            "className": "dropdown",
+            "menu": [
+                {
+                    "html": "List Group",
+                    "title": "List Group",
+                    "href": null,
+                    "route": "list-demo/list-group-demo",
+                    "divider": false
+                },
+                {
+                    "html": "Dual List",
+                    "title": "Dual List",
+                    "href": null,
+                    "route": "list-demo/dual-list-demo",
+                    "divider": false
+                }
+            ]
+        },
+        {
+            "id": "app_4",
+            "html": "Modal - Dialog - Overlay",
+            "title": "Modal - Dialog - Overlay",
+            "className": "dropdown",
+            "href": "#",
+            "route": null,
+            "target": "",
+            "hasMenu": false
+        },
+        {
+            "id": "app_5",
+            "html": "Pay Period Calendar",
+            "title": "Pay Period Calendar",
+            "className": "dropdown",
+            "href": null,
+            "route": "pay-period-calendar-demo",
+            "hasMenu": false
+        }
     ]
 }
