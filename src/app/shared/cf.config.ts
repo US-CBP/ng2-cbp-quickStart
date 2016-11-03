@@ -7,4 +7,6 @@ export class Config {
     public tableContext = 'getTableData';
     public treeNodeContext = 'getTreeNodeData';
     public nflContext = 'getNflData';
+    public payPeriodContext = 'getPayPeriodData';
+    public payPeriodMonthContext = 'getPayPeriodMonthData';
 }

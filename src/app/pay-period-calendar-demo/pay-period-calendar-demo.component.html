@@ -1,0 +1,15 @@
+﻿<div>
+    <h2 class="page-header">Pay Period Calendar</h2>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>At a minimum specify the visible months and payPeriodsOfMonth based on monthSelected</h3>
+            <div class="container-fluid">
+                <cf-pay-period-calendar *ngIf="demo1Months"
+                                        [months]="demo1Months"
+                                        [payPeriodsOfMonth]="demo1PayPeriodsOfMonth | async"
+                                        (monthSelected)="demo1MonthSelected($event)"></cf-pay-period-calendar>
+            </div>
+        </div>
+    </div>
+</div>
+
