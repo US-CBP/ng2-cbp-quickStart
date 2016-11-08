@@ -35,11 +35,6 @@ const rules = {
         test: /\.scss$/,
         loader: 'raw!sass'
     },
-    javascript: {
-        test: /\.js$/,
-        loader: ['babel-loader'],
-        exclude: /node_modules/
-    },
     typescript: {
         test: /\.ts$/,
         loader: ['awesome-typescript-loader', 'angular2-template-loader'],
@@ -84,7 +79,6 @@ config.resolve = {
 
 config.module = {
     rules: [
-        rules.javascript,
         rules.typescript,
         rules.cssStyles,
         rules.componentStyles,
