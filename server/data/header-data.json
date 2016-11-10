@@ -11,7 +11,7 @@
             "id": "global_1",
             "html": "Angular 2 - Redux - Webpack <span class='fa fa-caret-down'></span>",
             "title": "Angular 2 - Redux - Webpack",
-            "href": "",
+            "href": null,
             "target": "",
             "className": "dropdown",
             "hasMenu": true,
@@ -20,7 +20,7 @@
                 {
                     "html": "Angular 2 - Redux - Webpack",
                     "title": "Angular 2 - Redux - Webpack",
-                    "href": "",
+                    "href": null,
                     "route": "home",
                     "target": "",
                     "divider": false
@@ -28,7 +28,7 @@
                 {
                     "html": "React - Redux - Webpack",
                     "title": "React - Redux - Webpack",
-                    "href": "",
+                    "href": null,
                     "route": null,
                     "target": "",
                     "divider": false
@@ -41,7 +41,7 @@
             "id": "user_name",
             "html": "<span class='fa fa-user'></span><u title='angular2.ng2@test.com' class='hidden-sm'>Angular2, ng2</u> <span class='fa fa-caret-down'></span>",
             "title": "User Info",
-            "href": "",
+            "href": null,
             "route": null,
             "target": "",
             "toggle": "",
@@ -51,7 +51,7 @@
                 {
                     "html": "Prefrences",
                     "title": "Recent Events",
-                    "href": "",
+                    "href": null,
                     "route": null,
                     "target": "",
                     "className": "",
@@ -69,7 +69,7 @@
                 {
                     "html": "Logout",
                     "title": "Logout",
-                    "href": "",
+                    "href": null,
                     "route": null,
                     "target": "",
                     "className": "",
@@ -94,7 +94,7 @@
             "id": "app_1",
             "html": "Forms Controls",
             "title": "Forms Controls",
-            "href": "",
+            "href": null,
             "route": null,
             "target": "",
             "hasMenu": true,
@@ -163,7 +163,7 @@
             "html": "Table + Pagination",
             "title": "Table + Pagination",
             "className": "dropdown",
-            "href": "",
+            "href": null,
             "route": "table",
             "target": "",
             "hasMenu": false
@@ -172,7 +172,7 @@
             "id": "app_3",
             "html": "List",
             "title": "List",
-            "href": "",
+            "href": null,
             "route": null,
             "target": "",
             "hasMenu": true,

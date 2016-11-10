@@ -3,6 +3,7 @@ import {
     CUSTOM_ELEMENTS_SCHEMA
 }                                           from '@angular/core';
 import { FormsModule }                      from '@angular/forms';
+import { HttpModule }                       from '@angular/http';
 import { BrowserModule }                    from '@angular/platform-browser';
 
 import { CommonFrameworkModule }            from 'ng2-cbp-cf';
@@ -24,8 +25,9 @@ import { PayPeriodCalendarDemoModule }      from './pay-period-calendar-demo';
     imports: [
         BrowserModule,
         FormsModule,
+        HttpModule,
         appRouting,
-        CommonFrameworkModule,
+        CommonFrameworkModule.forRoot(),
         HomeModule,
         FormControlDemoModule,
         TableDemoModule,
