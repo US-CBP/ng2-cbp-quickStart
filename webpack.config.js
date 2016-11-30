@@ -37,8 +37,7 @@ const rules = {
     },
     typescript: {
         test: /\.ts$/,
-        loader: ['awesome-typescript-loader', 'angular2-template-loader'],
-        exclude: /node_modules/
+        loader: ['awesome-typescript-loader', 'angular2-template-loader']
     },
     html: {
         test: /\.html$/,
@@ -127,6 +126,7 @@ config.plugins = [
 if(ENV_DEVELOPMENT || ENV_PRODUCTION) {
     config.entry = {
         main: './src/main.ts',
+        vendor: './src/vendor.ts',
         polyfills: './src/polyfills.ts'
     };
 
@@ -138,7 +138,7 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION) {
 
     config.plugins.push(
         new CommonsChunkPlugin({
-            name: ['polyfills'],
+            name: ['main', 'vendor', 'polyfills'],
             minChunks: Infinity
         }),
         new HtmlWebpackPlugin({
