@@ -1,6 +1,5 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import 'ng2-cbp-cf/dist/ng2-cbp-cf.css';
 
 // Root module
 import { AppModule } from './app';
