@@ -1,5 +1,6 @@
 ﻿import 'moment';
 import 'lodash';
+import 'hammerjs';
 
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';

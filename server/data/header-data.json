@@ -52,7 +52,7 @@
                     "html": "Prefrences",
                     "title": "Recent Events",
                     "href": null,
-                    "route": null,
+                    "route": "recent",
                     "target": "",
                     "className": "",
                     "divider": false
@@ -70,7 +70,7 @@
                     "html": "Logout",
                     "title": "Logout",
                     "href": null,
-                    "route": null,
+                    "route": "logout",
                     "target": "",
                     "className": "",
                     "divider": false
