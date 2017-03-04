@@ -29,33 +29,43 @@ const PORT = 3000;
 const rules = {
     cssStyles: {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader']
     },
     componentStyles: {
         test: /\.scss$/,
-        loader: 'raw!sass'
+        use: ['raw-loader', 'sass-loader']
     },
     typescript: {
         test: /\.ts$/,
-        loader: ['awesome-typescript-loader', 'angular2-template-loader']
+        use: ['awesome-typescript-loader', 'angular2-template-loader']
     },
     html: {
         test: /\.html$/,
-        loader: 'html?-minimize'
+        use: ['html-loader?-minimize']
     },
     fontFile: {
         test: /\.(ttf|otf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loaders: ['file-loader']
+        use: ['file-loader']
     },
     fontUrl: {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        use: ['url-loader?limit=10000&mimetype=application/font-woff']
     },
     imagesFile: {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-            'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        use: [
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            {
+                loader: 'image-webpack-loader',
+                query: {
+                    gifsicle: {
+                        interlaced: false
+                    },
+                    optipng: {
+                        optimizationLevel: 7
+                    }
+                }
+            }
         ]
     }
 };
@@ -184,12 +194,6 @@ if(ENV_PRODUCTION) {
     config.devtool = 'hidden-source-map';
 
     config.output.filename = '[name].[chunkhash].js';
-
-  // config.module.rules.push({
-  //   test: /\.scss$/,
-  //   loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass'),
-  //   include: path.resolve('src/shared/styles')
-  // });
 
     config.plugins.push(
         new WebpackMd5Hash(),

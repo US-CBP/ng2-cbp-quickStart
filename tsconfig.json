@@ -1,27 +1,29 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es6"
-    ],
-    "module": "es6",
-    "moduleResolution": "node",
-    "noEmitHelpers": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "target": "es5",
-    "types": [
-      "jasmine",
-      "lodash",
-      "node"
+    "compilerOptions": {
+        "baseUrl": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "dom",
+            "es6"
+        ],
+        "module": "es6",
+        "moduleResolution": "node",
+        "noEmitHelpers": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "removeComments": true,
+        "sourceMap": true,
+        "target": "es5",
+        "types": [
+            "jasmine",
+            "lodash",
+            "node"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "target",
+        "tmp"
     ]
-  },
-  "exclude": [
-    "node_modules",
-    "target",
-    "tmp"
-  ]
 }

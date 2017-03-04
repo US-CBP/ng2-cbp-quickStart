@@ -1,23 +1,21 @@
 ﻿import {
     Component,
     OnInit,
-    ViewChild
-}                                           from '@angular/core';
+}                                       from '@angular/core';
 import {
     Observable,
-    Observer
-}                                           from 'rxjs';
+    Observer,
+}                                       from 'rxjs';
 
 import {
     PayPeriod,
-    PayPeriodCalendarComponent,
-    PayPeriodMonth
-}                                           from 'ng2-cbp-cf';
+    PayPeriodMonth,
+}                                       from 'ng2-cbp-cf';
 
-import { PayPeriodCalendarDemoService }     from './pay-period-calendar-demo.service';
+import { PayPeriodCalendarDemoService } from './pay-period-calendar-demo.service';
 
 @Component({
-    templateUrl: 'pay-period-calendar-demo.component.html'
+    templateUrl: 'pay-period-calendar-demo.component.html',
 })
 export class PayPeriodCalendarDemoComponent implements OnInit {
     demo1Months: PayPeriodMonth[];
@@ -34,10 +32,10 @@ export class PayPeriodCalendarDemoComponent implements OnInit {
     constructor(private _service: PayPeriodCalendarDemoService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._service.getPayPeriodMonths().subscribe(months => {
-            this.demo1Months = months
-            this.demo2Months = months
+            this.demo1Months = months;
+            this.demo2Months = months;
         });
         this.demo1PayPeriodsOfMonth = new Observable<PayPeriodMonth>(o => this._demo1MonthSelectedObserver = o)
             .switchMap(month => this._service.getPayPeriods(month));
@@ -49,15 +47,15 @@ export class PayPeriodCalendarDemoComponent implements OnInit {
             });
     }
 
-    demo1MonthSelected(month: PayPeriodMonth) {
+    demo1MonthSelected(month: PayPeriodMonth): void {
         this._demo1MonthSelectedObserver.next(month);
     }
 
-    demo2MonthSelected(month: PayPeriodMonth) {
+    demo2MonthSelected(month: PayPeriodMonth): void {
         this._demo2MonthSelectedObserver.next(month);
     }
 
-    private _demo2PayPeriodMap(payPeriod: PayPeriod) {
+    private _demo2PayPeriodMap(payPeriod: PayPeriod): void {
         if(payPeriod.isSelectable && (payPeriod.number % 3 === 0)) {
             payPeriod.isSelectable = false;
         }

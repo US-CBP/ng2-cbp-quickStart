@@ -1,41 +1,42 @@
 import {
+    CUSTOM_ELEMENTS_SCHEMA,
     NgModule,
-    CUSTOM_ELEMENTS_SCHEMA
 }                                       from '@angular/core';
-import { BrowserModule }                from '@angular/platform-browser';
 import { FormsModule }                  from '@angular/forms';
+import { BrowserModule }                from '@angular/platform-browser';
 
 import { CommonFrameworkModule }        from 'ng2-cbp-cf';
+
 import { ButtonDemoComponent }          from './button-demo';
 import { CheckboxDemoComponent }        from './checkbox-demo';
 import {
     DropdownTreeDemoComponent,
-    DropdownTreeDemoService
+    DropdownTreeDemoService,
 }                                       from './dropdown-tree-demo';
+import { formControlDemoRouting }       from './form-control-demo.routing';
 import { RadioButtonDemoComponent }     from './radio-button-demo';
 import { SelectDemoComponent }          from './select-demo';
-import { formControlDemoRouting }       from './form-control-demo.routing';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         CommonFrameworkModule,
-        formControlDemoRouting
+        formControlDemoRouting,
     ],
     declarations: [
         ButtonDemoComponent,
         CheckboxDemoComponent,
         DropdownTreeDemoComponent,
         RadioButtonDemoComponent,
-        SelectDemoComponent
+        SelectDemoComponent,
     ],
     providers: [
-        DropdownTreeDemoService
+        DropdownTreeDemoService,
     ],
     schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-    ]
+        CUSTOM_ELEMENTS_SCHEMA,
+    ],
 })
 export class FormControlDemoModule {
 }

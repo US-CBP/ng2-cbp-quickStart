@@ -1,15 +1,14 @@
 import { Injectable }           from '@angular/core';
 import {
     Http,
-    URLSearchParams
+    URLSearchParams,
 }                               from '@angular/http';
-import { Observable }           from 'rxjs';
-
 import * as moment              from 'moment/moment';
+import { Observable }           from 'rxjs';
 
 import {
     PayPeriod,
-    PayPeriodMonth
+    PayPeriodMonth,
 }                               from 'ng2-cbp-cf';
 
 import { Config }               from '../shared';
@@ -19,9 +18,9 @@ export class PayPeriodCalendarDemoService {
     private _payPeriodUrl: string;
     private _payPeriodMonthUrl: string;
 
-    constructor(private _http: Http, private _config: Config) {
-        this._payPeriodUrl = _config.apiUrl + _config.payPeriodContext;
-        this._payPeriodMonthUrl = _config.apiUrl + _config.payPeriodMonthContext;
+    constructor(private _http: Http, config: Config) {
+        this._payPeriodUrl = config.apiUrl + config.payPeriodContext;
+        this._payPeriodMonthUrl = config.apiUrl + config.payPeriodMonthContext;
     }
 
     getPayPeriodMonths(): Observable<PayPeriodMonth[]> {
@@ -29,7 +28,7 @@ export class PayPeriodCalendarDemoService {
     }
 
     getPayPeriods(month: PayPeriodMonth): Observable<PayPeriod[]> {
-        var search = new URLSearchParams();
+        let search = new URLSearchParams();
         search.set('year', month.year.toString());
         search.set('month', month.number.toString());
 
@@ -38,7 +37,7 @@ export class PayPeriodCalendarDemoService {
                 id: i.id,
                 number: i.number,
                 startDate: moment(i.startDate).toDate(),
-                isSelectable: i.isSelectable
+                isSelectable: i.isSelectable,
             }));
     }
 }
