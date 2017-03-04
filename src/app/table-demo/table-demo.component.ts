@@ -1,24 +1,27 @@
-import { Component, OnInit }    from '@angular/core';
+import { Component }        from '@angular/core';
+import * as _               from 'lodash';
 
-import { TableDemoService }         from './table-demo.service';
-import { Table, Query }    from 'ng2-cbp-cf';
+import {
+    Query,
+    Table,
+}                           from 'ng2-cbp-cf';
 
-import * as _ from 'lodash';
+import { TableDemoService } from './table-demo.service';
 
 @Component({
-  templateUrl: 'table-demo.component.html',
-  styleUrls: ['table-demo.component.scss']
+    templateUrl: 'table-demo.component.html',
+    styleUrls: ['table-demo.component.scss'],
 })
+export class TableDemoComponent {
+    tableDefault: Table;
+    tableAltRows: Table;
+    tableSelRows: Table;
+    tablePag: Table;
+    tableFloat: Table;
+    tableQuery: Query;
 
-export class TableDemoComponent implements OnInit {
     private service: TableDemoService;
     private tableData: Table;
-    private tableDefault: Table;
-    private tableAltRows: Table;
-    private tableSelRows: Table;
-    private tablePag: Table;
-    private tableFloat: Table;
-    private tableQuery: Query;
     private _isInit: boolean = true;
 
     constructor(service: TableDemoService) {
@@ -38,7 +41,7 @@ export class TableDemoComponent implements OnInit {
         this.tableQuery.limits = [5, 10, 15, 25, 50, 100];
 
         this.service.getTableData().subscribe(
-            (data) => {
+            data => {
                 if(data) {
                     this.tableData = data;
                     this.generatePagTable();
@@ -50,32 +53,29 @@ export class TableDemoComponent implements OnInit {
                         this._isInit = false;
                     }
                 }
-            }
+            },
         );
     }
 
-    ngOnInit() {
-    }
-
-    getData(query) {
+    getData(query: Query): void {
         this.tableQuery = query;
         this.service.callTableData(this.tableQuery);
     }
 
-    generateDefaultTable() {
+    generateDefaultTable(): void {
         this.tableDefault = _.cloneDeep(this.tableData);
         this.tableDefault.options.hasHeader = true;
         this.tableDefault.totalCount = 5;
     }
 
-    generateAltRowTable() {
+    generateAltRowTable(): void {
         this.tableAltRows = _.cloneDeep(this.tableData);
         this.tableAltRows.options.hasHeader = true;
         this.tableAltRows.options.hasStripedAltRow = true;
         this.tableAltRows.totalCount = 5;
     }
 
-    generateSelTable() {
+    generateSelTable(): void {
         this.tableSelRows = _.cloneDeep(this.tableData);
         this.tableSelRows.options.hasHeader = true;
         this.tableSelRows.options.hasStripedAltRow = true;
@@ -83,14 +83,14 @@ export class TableDemoComponent implements OnInit {
         this.tableSelRows.totalCount = 5;
     }
 
-    generatePagTable() {
+    generatePagTable(): void {
         this.tablePag = _.cloneDeep(this.tableData);
         this.tablePag.options.hasHeader = true;
         this.tablePag.options.hasStripedAltRow = true;
         this.tablePag.options.isRowSelectable = true;
     }
 
-    generateFloatTable() {
+    generateFloatTable(): void {
         this.tableFloat = _.cloneDeep(this.tableData);
         this.tableFloat.options.hasHeader = true;
         this.tableFloat.options.hasStripedAltRow = true;

@@ -15,5 +15,7 @@ import 'ts-helpers';
 
 if(process.env.NODE_ENV === 'development') {
     Error.stackTraceLimit = Infinity;
+    /* tslint:disable:no-var-requires */
     require('zone.js/dist/long-stack-trace-zone');
+    /* tslint:enable */
 }

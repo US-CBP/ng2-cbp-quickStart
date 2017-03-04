@@ -1,22 +1,15 @@
 {
+    "extends": "tslint:recommended",
     "rulesDirectory": [
         "node_modules/codelyzer"
     ],
     "rules": {
-        "class-name": true,
-        "comment-format": [
+        "arrow-parens": [
             true,
-            "check-space"
+            "ban-single-arg-parens"
         ],
-        "curly": true,
-        "eofline": true,
-        "forin": true,
-        "indent": [
-            true,
-            "spaces"
-        ],
-        "label-position": true,
-        "label-undefined": true,
+        "interface-name": [ true, "never-prefix" ],
+        "max-classes-per-file": [ false ],
         "max-line-length": [
             true,
             180
@@ -27,64 +20,40 @@
             "static-before-instance",
             "variables-before-functions"
         ],
-        "no-arg": true,
-        "no-bitwise": true,
-        "no-console": [
-            true,
-            "debug",
-            "info",
-            "time",
-            "timeEnd",
-            "trace"
-        ],
-        "no-consecutive-blank-lines": true,
-        "no-construct": true,
-        "no-debugger": true,
-        "no-duplicate-key": true,
         "no-duplicate-variable": true,
         "no-empty": false,
-        "no-eval": true,
-        "no-inferrable-types": true,
-        "no-shadowed-variable": true,
+        "no-inferrable-types": [ false ],
         "no-string-literal": false,
         "no-switch-case-fall-through": true,
-        "no-trailing-whitespace": true,
-        "no-unused-expression": true,
-        "no-unused-variable": true,
-        "no-unreachable": true,
-        "no-use-before-declare": true,
-        "no-var-keyword": true,
         "object-literal-sort-keys": false,
-        "one-line": [
+        "ordered-imports": [
             true,
-            "check-open-brace",
-            "check-catch",
-            "check-else",
-            "check-whitespace"
+            {
+                "import-sources-order": "case-insensitive",
+                "named-imports-order": "lowercase-last"
+            }
         ],
         "quotemark": [
             true,
             "single"
         ],
-        "radix": true,
-        "semicolon": [
-            "always"
-        ],
-        "triple-equals": [
+        "space-before-function-paren": [
             true,
-            "allow-null-check"
+            "never"
         ],
-        "typedef-whitespace": [
+        "typedef": [
             true,
-            {
-                "call-signature": "nospace",
-                "index-signature": "nospace",
-                "parameter": "nospace",
-                "property-declaration": "nospace",
-                "variable-declaration": "nospace"
-            }
+            "call-signature",
+            "member-variable-declaration",
+            "parameter",
+            "property-declaration"
         ],
-        "variable-name": false,
+        "variable-name": [
+            true,
+            "allow-leading-underscore",
+            "ban-keywords",
+            "check-format"
+        ],
         "whitespace": [
             true,
             "check-decl",
@@ -92,21 +61,24 @@
             "check-separator",
             "check-type"
         ],
-        "directive-selector-name": [ true, "camelCase" ],
-        "component-selector-name": [ true, "kebab-case" ],
-        "directive-selector-type": [ true, "attribute" ],
-        "component-selector-type": [ true, "element" ],
-        "use-input-property-decorator": true,
-        "use-output-property-decorator": true,
-        "use-host-property-decorator": true,
+
+        "component-class-suffix": true,
+        "component-selector": [ true, "element", "cbp", "kebab-case" ],
+        "directive-class-suffix": true,
+        "directive-selector": [ true, "attribute", "cbp", "camelCase" ],
+        "import-destructuring-spacing": true,
+        "invoke-injectable": true,
+        "no-access-missing-member": true,
+        "no-attribute-parameter-decorator": true,
+        "no-forward-ref": true,
         "no-input-rename": true,
         "no-output-rename": true,
+        "pipe-naming": [ true, "camelCase", "cbp" ],
+        "templates-use-public": true,
+        "use-host-property-decorator": true,
+        "use-input-property-decorator": true,
         "use-life-cycle-interface": true,
-        "use-pipe-transform-interface": true,
-        "component-class-suffix": true,
-        "directive-class-suffix": true,
-        "directive-selector-prefix": [ true, "cbp" ],
-        "component-selector-prefix": [ true, "cbp" ],
-        "pipe-naming": [ true, "camelCase", "cbp" ]
+        "use-output-property-decorator": true,
+        "use-pipe-transform-interface": true
     }
 }

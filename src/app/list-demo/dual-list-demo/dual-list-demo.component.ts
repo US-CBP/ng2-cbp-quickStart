@@ -1,9 +1,9 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component }            from '@angular/core';
 
-import { DualListDemoService }         from './dual-list.service';
+import { DualListDemoService }  from './dual-list.service';
 
 @Component({
-    templateUrl: 'dual-list-demo.component.html'
+    templateUrl: 'dual-list-demo.component.html',
 })
 export class DualListDemoComponent {
     private service: DualListDemoService;
@@ -19,15 +19,14 @@ export class DualListDemoComponent {
         this.service = service;
         this.service.callNflData();
         this.service.getNflData().subscribe(
-            (data) => {
+            data => {
                 if(data) {
                     this.source = data;
                 }
-            }
+            },
         );
     };
 
-    selectlistChange(evt) {
-        console.log(evt.items);
+    selectlistChange(evt: Event): void {
     }
 }

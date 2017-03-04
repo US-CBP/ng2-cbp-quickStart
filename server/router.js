@@ -3,7 +3,7 @@
 const express = require('express');
 const low = require('lowdb');
 const path = require('path');
-const storage = require('lowdb/lib/file-sync');
+const storage = require('lowdb/lib/storages/file-sync');
 const loadJsonFile = require('load-json-file');
 const _ = require('lodash');
 

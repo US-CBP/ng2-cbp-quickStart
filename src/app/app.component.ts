@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component }    from '@angular/core';
 
-import { AppService }     from './app.service';
-import { Header }         from 'ng2-cbp-cf';
+import { Header }       from 'ng2-cbp-cf';
+
+import { AppService }   from './app.service';
 
 @Component({
   selector: 'cbp-app',
@@ -16,7 +17,7 @@ import { Header }         from 'ng2-cbp-cf';
         </div>
       </div>
     </main>`,
-  styleUrls: ['app.scss']
+  styleUrls: ['app.scss'],
 })
 export class AppComponent {
     private service: AppService;
@@ -31,11 +32,11 @@ export class AppComponent {
         this.headerData.userMenu = [];
 
         this.service.getHeaderData().subscribe(
-            (data) => {
-                if (data) {
+            data => {
+                if(data) {
                     this.headerData = data;
                 }
-            }
+            },
         );
     }
 }

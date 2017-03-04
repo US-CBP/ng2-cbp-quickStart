@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: 'checkbox-demo.component.html'
+    templateUrl: 'checkbox-demo.component.html',
 })
 export class CheckboxDemoComponent {
     demo1Model: boolean = true;
