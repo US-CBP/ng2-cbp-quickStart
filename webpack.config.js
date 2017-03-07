@@ -29,11 +29,18 @@ const PORT = 3000;
 const rules = {
     cssStyles: {
         test: /\.css$/,
+        exclude: path.resolve('src/shared/styles'),
         use: ['style-loader', 'css-loader']
     },
     componentStyles: {
         test: /\.scss$/,
+        exclude: path.resolve('src/shared/styles'),
         use: ['raw-loader', 'sass-loader']
+    },
+    globalStyles: {
+        test: /\.scss$/,
+        include: path.resolve('src/shared/styles'),
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' })
     },
     typescript: {
         test: /\.ts$/,
@@ -94,11 +101,13 @@ config.module = {
         rules.html,
         rules.fontFile,
         rules.fontUrl,
-        rules.imagesFile
+        rules.imagesFile,
+        rules.globalStyles
     ]
 };
 
 config.plugins = [
+    new ExtractTextPlugin('[name].css'),
     new ProvidePlugin({
         _: 'lodash',
         jQuery: 'jquery',
