@@ -4,6 +4,7 @@ import 'moment';
 
 import '@angular/common';
 import '@angular/core';
+import '@angular/flex-layout';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/material';

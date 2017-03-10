@@ -7,9 +7,9 @@ import { AppModule } from './app';
 import './shared/styles/main.scss';
 
 if (process.env.NODE_ENV === 'production') {
-  enableProdMode();
+    enableProdMode();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule);
+    platformBrowserDynamic().bootstrapModule(AppModule);
 });

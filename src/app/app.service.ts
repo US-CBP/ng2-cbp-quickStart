@@ -5,8 +5,7 @@ import {
     Observable,
 }                       from 'rxjs';
 
-import { Header }       from 'ng2-cbp-cf';
-
+import { Header }       from './header-model';
 import { Config }       from './shared';
 
 @Injectable()

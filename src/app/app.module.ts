@@ -4,6 +4,7 @@ import {
 }                                           from '@angular/core';
 import { FormsModule }                      from '@angular/forms';
 import { HttpModule }                       from '@angular/http';
+import { MaterialModule }                   from '@angular/material';
 import { BrowserModule }                    from '@angular/platform-browser';
 
 import { CommonFrameworkModule }            from 'ng2-cbp-cf';
@@ -26,6 +27,7 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         BrowserModule,
         FormsModule,
         HttpModule,
+        MaterialModule,
         appRouting,
         CommonFrameworkModule.forRoot(),
         HomeModule,
