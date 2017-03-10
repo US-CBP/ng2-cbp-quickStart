@@ -13,7 +13,7 @@
             "title": "Angular 2 - Redux - Webpack",
             "href": null,
             "target": "",
-            "className": "dropdown",
+            "className": "global_1",
             "hasMenu": true,
             "toggle": "",
             "menu": [
@@ -77,7 +77,7 @@
             "target": "",
             "toggle": "",
             "hasMenu": false,
-            "className": "dropdown"
+            "className": "header_user_station"
         }
     ],
     "appMenu": [
@@ -89,14 +89,15 @@
             "route": null,
             "target": "",
             "hasMenu": true,
-            "className": "dropdown",
+            "className": "app_1",
             "menu": [
                 {
                     "html": "Button",
                     "title": "Button",
                     "href": null,
                     "route": "form-control-demo/button-demo",
-                    "divider": false
+                    "divider": false,
+                    "className": "button"
                 },
                 {
                     "html": "Input Text",
@@ -153,7 +154,7 @@
             "id": "app_2",
             "html": "Table + Pagination",
             "title": "Table + Pagination",
-            "className": "dropdown",
+            "className": "app_2",
             "href": null,
             "route": "table",
             "target": "",
@@ -167,7 +168,7 @@
             "route": null,
             "target": "",
             "hasMenu": true,
-            "className": "dropdown",
+            "className": "app_3",
             "menu": [
                 {
                     "html": "List Group",
@@ -189,7 +190,7 @@
             "id": "app_4",
             "html": "Modal - Dialog - Overlay",
             "title": "Modal - Dialog - Overlay",
-            "className": "dropdown",
+            "className": "app_4",
             "href": "#",
             "route": null,
             "target": "",
@@ -199,7 +200,7 @@
             "id": "app_5",
             "html": "Pay Period Calendar",
             "title": "Pay Period Calendar",
-            "className": "dropdown",
+            "className": "app_5",
             "href": null,
             "route": "pay-period-calendar-demo",
             "hasMenu": false
