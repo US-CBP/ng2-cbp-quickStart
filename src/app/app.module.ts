@@ -29,7 +29,7 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         HttpModule,
         MaterialModule,
         appRouting,
-        CommonFrameworkModule.forRoot(),
+        CommonFrameworkModule,
         HomeModule,
         FormControlDemoModule,
         TableDemoModule,

@@ -92,14 +92,6 @@
             "className": "app_1",
             "menu": [
                 {
-                    "html": "Button",
-                    "title": "Button",
-                    "href": null,
-                    "route": "form-control-demo/button-demo",
-                    "divider": false,
-                    "className": "button"
-                },
-                {
                     "html": "Input Text",
                     "title": "Input Text",
                     "href": "#",
@@ -121,24 +113,10 @@
                     "divider": false
                 },
                 {
-                    "html": "Radio button",
-                    "title": "Radio button ",
-                    "href": null,
-                    "route": "form-control-demo/radio-button-demo",
-                    "divider": false
-                },
-                {
                     "html": "Date Picker/Range",
                     "title": "Date Picker/Range",
                     "href": "#",
                     "target": "",
-                    "divider": false
-                },
-                {
-                    "html": "Select",
-                    "title": "Select",
-                    "href": null,
-                    "route": "form-control-demo/select-demo",
                     "divider": false
                 },
                 {
@@ -168,7 +146,7 @@
             "route": null,
             "target": "",
             "hasMenu": true,
-            "className": "app_3",
+            "className": null,
             "menu": [
                 {
                     "html": "List Group",

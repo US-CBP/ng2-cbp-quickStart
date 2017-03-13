@@ -7,15 +7,12 @@ import { BrowserModule }                from '@angular/platform-browser';
 
 import { CommonFrameworkModule }        from 'ng2-cbp-cf';
 
-import { ButtonDemoComponent }          from './button-demo';
 import { CheckboxDemoComponent }        from './checkbox-demo';
 import {
     DropdownTreeDemoComponent,
     DropdownTreeDemoService,
 }                                       from './dropdown-tree-demo';
 import { formControlDemoRouting }       from './form-control-demo.routing';
-import { RadioButtonDemoComponent }     from './radio-button-demo';
-import { SelectDemoComponent }          from './select-demo';
 
 @NgModule({
     imports: [
@@ -25,11 +22,8 @@ import { SelectDemoComponent }          from './select-demo';
         formControlDemoRouting,
     ],
     declarations: [
-        ButtonDemoComponent,
         CheckboxDemoComponent,
         DropdownTreeDemoComponent,
-        RadioButtonDemoComponent,
-        SelectDemoComponent,
     ],
     providers: [
         DropdownTreeDemoService,
