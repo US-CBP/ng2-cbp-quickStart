@@ -3,6 +3,7 @@ import {
     NgModule,
 }                                       from '@angular/core';
 import { FormsModule }                  from '@angular/forms';
+import { MaterialModule }               from '@angular/material';
 import { BrowserModule }                from '@angular/platform-browser';
 
 import { CommonFrameworkModule }        from 'ng2-cbp-cf';
@@ -19,6 +20,7 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
         BrowserModule,
         FormsModule,
         CommonFrameworkModule,
+        MaterialModule,
         formControlDemoRouting,
     ],
     declarations: [

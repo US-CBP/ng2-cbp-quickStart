@@ -15,6 +15,22 @@
                     <cf-dropdown-tree-field id="demo-2" label="Demo 2" defaultLabel="Any Value" [showFullSelectedPath]="true" [selectedNode]="demo2SelectedNode" [nodes]="treeNodeObservable | async" (nodeSelected)="demo2NodeSelected($event)"></cf-dropdown-tree-field>
                 </div>
             </div>
+
+            <h2>Dropdown Tree in a Dialog</h2>
+            <div class="container-fluid" style="max-width: 400px; margin: 0;">
+                <div class="row">
+                    <button type="button" md-raised-button color="primary" (click)="openDialog()">Open dialog</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<template #dialog>
+    <header md-dialog-title>
+        Dropdown Tree in a Dialog
+    </header>
+    <md-dialog-content>
+        <cf-dropdown-tree-field id="demo-3" label="Demo 3" defaultLabel="Any Value" [selectedNode]="demo3SelectedNode" [nodes]="treeNodeObservable | async" (nodeSelected)="demo3NodeSelected($event)"></cf-dropdown-tree-field>
+    </md-dialog-content>
+</template>
