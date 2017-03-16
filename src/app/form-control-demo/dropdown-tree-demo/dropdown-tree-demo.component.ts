@@ -26,21 +26,9 @@ export class DropdownTreeDemoComponent {
         service.refreshTreeNodes();
     }
 
-    demo1NodeSelected(node: TreeNode): void {
-        this.demo1SelectedNode = node;
-    }
-
-    demo2NodeSelected(node: TreeNode): void {
-        this.demo2SelectedNode = node;
-    }
-
-    demo3NodeSelected(node: TreeNode): void {
-        this.demo3SelectedNode = node;
-    }
-
     openDialog(): void {
         this._dialog.open(this.dialogTemplate, {
-            width: '400px'
+            width: '400px',
         });
     }
 }
