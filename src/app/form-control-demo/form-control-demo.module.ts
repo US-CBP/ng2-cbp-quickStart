@@ -8,6 +8,7 @@ import { BrowserModule }                from '@angular/platform-browser';
 
 import { CommonFrameworkModule }        from 'ng2-cbp-cf';
 
+import { BadgeDemoComponent }           from './badge-demo';
 import { CheckboxDemoComponent }        from './checkbox-demo';
 import {
     DropdownTreeDemoComponent,
@@ -24,6 +25,7 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
         formControlDemoRouting,
     ],
     declarations: [
+        BadgeDemoComponent,
         CheckboxDemoComponent,
         DropdownTreeDemoComponent,
     ],

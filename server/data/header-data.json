@@ -92,10 +92,10 @@
             "className": "app_1",
             "menu": [
                 {
-                    "html": "Input Text",
-                    "title": "Input Text",
-                    "href": "#",
-                    "target": "",
+                    "html": "Badge",
+                    "title": "Badge",
+                    "href": null,
+                    "route": "form-control-demo/badge-demo",
                     "divider": false
                 },
                 {
