@@ -4,10 +4,10 @@ import {
 }                                           from '@angular/core';
 import { FormsModule }                      from '@angular/forms';
 import { HttpModule }                       from '@angular/http';
-import { MaterialModule }                   from '@angular/material';
 import { BrowserModule }                    from '@angular/platform-browser';
+import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
 
-import { CommonFrameworkModule }            from 'ng2-cbp-cf';
+import { HeaderModule }                     from 'ng2-cbp-cf';
 
 import { AppComponent }                     from './app.component';
 import {
@@ -25,11 +25,11 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpModule,
-        MaterialModule,
         appRouting,
-        CommonFrameworkModule,
+        HeaderModule,
         HomeModule,
         FormControlDemoModule,
         TableDemoModule,

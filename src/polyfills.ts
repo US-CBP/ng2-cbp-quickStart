@@ -10,6 +10,9 @@ import 'core-js/fn/object/assign';
 // Zone
 import 'zone.js/dist/zone';
 
+// Animations
+import 'web-animations-js';
+
 // Typescript helpers
 import 'ts-helpers';
 

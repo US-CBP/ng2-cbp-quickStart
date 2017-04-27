@@ -3,10 +3,18 @@ import {
     NgModule,
 }                                       from '@angular/core';
 import { FormsModule }                  from '@angular/forms';
-import { MaterialModule }               from '@angular/material';
+import {
+    MdButtonModule,
+    MdDialogModule,
+    MdIconModule,
+}                                       from '@angular/material';
 import { BrowserModule }                from '@angular/platform-browser';
 
-import { CommonFrameworkModule }        from 'ng2-cbp-cf';
+import {
+    BadgeModule,
+    CheckboxModule,
+    DropdownTreeFieldModule,
+}                                       from 'ng2-cbp-cf';
 
 import { BadgeDemoComponent }           from './badge-demo';
 import { CheckboxDemoComponent }        from './checkbox-demo';
@@ -20,8 +28,12 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
     imports: [
         BrowserModule,
         FormsModule,
-        CommonFrameworkModule,
-        MaterialModule,
+        BadgeModule,
+        CheckboxModule,
+        DropdownTreeFieldModule,
+        MdButtonModule,
+        MdDialogModule,
+        MdIconModule,
         formControlDemoRouting,
     ],
     declarations: [

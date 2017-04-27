@@ -5,7 +5,10 @@ import {
 import { FormsModule }                  from '@angular/forms';
 import { BrowserModule }                from '@angular/platform-browser';
 
-import { CommonFrameworkModule }        from 'ng2-cbp-cf';
+import {
+    DualListModule,
+    ListGroupModule,
+}                                       from 'ng2-cbp-cf';
 
 import {
     DualListDemoComponent,
@@ -18,7 +21,8 @@ import { ListGroupDemoComponent }       from './list-group-demo';
     imports: [
         BrowserModule,
         FormsModule,
-        CommonFrameworkModule,
+        DualListModule,
+        ListGroupModule,
         listDemoRouting,
     ],
     declarations: [
