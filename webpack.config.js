@@ -221,7 +221,7 @@ if(ENV_PRODUCTION) {
         })
     );
 
-    config.output.publicPath = '/ng2-cbp-quickStart/';
+    config.output.publicPath = 'https://cbp-ryan-kim.github.io/ng2-cbp-quickStart/';
 }
 
 //=====================================
