@@ -220,6 +220,8 @@ if(ENV_PRODUCTION) {
             }
         })
     );
+
+    config.output.publicPath = '/ng2-cbp-quickStart/';
 }
 
 //=====================================
