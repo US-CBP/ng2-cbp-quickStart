@@ -1,24 +1,21 @@
-﻿import { Injectable }   from '@angular/core';
-import { Http }         from '@angular/http';
+﻿import { Injectable }       from '@angular/core';
 import {
     BehaviorSubject,
     Observable,
-}                       from 'rxjs';
+}                           from 'rxjs';
 
-import { TreeNode }     from 'ng2-cbp-cf';
+import { TreeNode }         from 'ng2-cbp-cf';
 
-import { Config }       from '../../shared';
+import { MockServerService }    from '../../shared';
 
 @Injectable()
 export class DropdownTreeDemoService {
     private _data: BehaviorSubject<TreeNode[]>;
     private _observable: Observable<TreeNode[]>;
-    private _url: string;
 
-    constructor(private _http: Http, config: Config) {
+    constructor(private _serverService: MockServerService) {
         this._data = new BehaviorSubject<TreeNode[]>([]);
         this._observable = this._data.asObservable();
-        this._url = config.apiUrl + config.treeNodeContext;
     }
 
     get treeNodesObservable(): Observable<TreeNode[]> {
@@ -26,8 +23,6 @@ export class DropdownTreeDemoService {
     }
 
     refreshTreeNodes(): void {
-        this._http.get(this._url).subscribe(respData => {
-            this._data.next(respData.json().data);
-        });
+        this._data.next(this._serverService.getTreeNodeData().data);
     }
 }

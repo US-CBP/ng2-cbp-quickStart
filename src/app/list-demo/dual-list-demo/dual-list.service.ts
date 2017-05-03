@@ -1,27 +1,21 @@
-import { Injectable }   from '@angular/core';
-import { Http }         from '@angular/http';
+import { Injectable }           from '@angular/core';
 import {
     BehaviorSubject,
     Observable,
-}                       from 'rxjs';
+}                               from 'rxjs';
 
-import { Config }       from '../../shared';
+import { MockServerService }    from '../../shared';
 
 @Injectable()
 export class DualListDemoService {
     data: BehaviorSubject<any>;
-    private url: string;
 
-    constructor(private http: Http, config: Config) {
+    constructor(private _serverService: MockServerService) {
         this.data = new BehaviorSubject<any>(null);
-        this.url = config.apiUrl + config.nflContext;
     }
 
     callNflData(): void {
-        this.http.get(this.url).subscribe(
-            respData => {
-                this.data.next(respData.json());
-        });
+        this.data.next(this._serverService.getNflData());
     }
 
     getNflData(): Observable<any> {

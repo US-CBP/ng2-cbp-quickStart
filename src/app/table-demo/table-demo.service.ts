@@ -1,22 +1,19 @@
-import { Injectable }   from '@angular/core';
-import { Http }         from '@angular/http';
+import { Injectable }           from '@angular/core';
 import {
     BehaviorSubject,
     Observable,
-}                       from 'rxjs';
+}                               from 'rxjs';
 
-import { Table }        from 'ng2-cbp-cf';
+import { Table }                from 'ng2-cbp-cf';
 
-import { Config }       from '../shared';
+import { MockServerService }    from '../shared';
 
 @Injectable()
 export class TableDemoService {
     data: BehaviorSubject<Table>;
-    private url: string;
 
-    constructor(private http: Http, config: Config) {
+    constructor(private _serverService: MockServerService) {
         this.data = new BehaviorSubject<Table>(null);
-        this.url = config.apiUrl + config.tableContext;
     }
 
     getTableData(): Observable<Table> {
@@ -24,9 +21,10 @@ export class TableDemoService {
     }
 
     callTableData(obj: any): void {
-        this.http.post(this.url, JSON.stringify(obj)).subscribe(
-            respData => {
-                this.data.next(respData.json());
-            });
+        this.data.next(this._serverService.getTableData(JSON.stringify(obj)));
+        // this.http.post(this.url, JSON.stringify(obj)).subscribe(
+        //     respData => {
+        //         this.data.next(respData.json());
+        //     });
     }
 }

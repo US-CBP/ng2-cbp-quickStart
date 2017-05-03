@@ -19,7 +19,10 @@ import { FormControlDemoModule }            from './form-control-demo';
 import { HomeModule }                       from './home/home.module';
 import { ListDemoModule }                   from './list-demo';
 import { PayPeriodCalendarDemoModule }      from './pay-period-calendar-demo';
-import { Config }                           from './shared';
+import {
+    MockData,
+    MockServerService,
+}                                           from './shared';
 import { TableDemoModule }                  from './table-demo/table-demo.module';
 
 @NgModule({
@@ -40,9 +43,10 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         AppComponent,
     ],
     providers: [
-        appRoutingProviders,
-        Config,
         AppService,
+        MockData,
+        MockServerService,
+        appRoutingProviders,
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

@@ -1,8 +1,5 @@
 import { Injectable }           from '@angular/core';
-import {
-    Http,
-    URLSearchParams,
-}                               from '@angular/http';
+import { URLSearchParams }      from '@angular/http';
 import * as moment              from 'moment/moment';
 import { Observable }           from 'rxjs';
 
@@ -11,20 +8,16 @@ import {
     PayPeriodMonth,
 }                               from 'ng2-cbp-cf';
 
-import { Config }               from '../shared';
+import { MockServerService }        from '../shared';
 
 @Injectable()
 export class PayPeriodCalendarDemoService {
-    private _payPeriodUrl: string;
-    private _payPeriodMonthUrl: string;
 
-    constructor(private _http: Http, config: Config) {
-        this._payPeriodUrl = config.apiUrl + config.payPeriodContext;
-        this._payPeriodMonthUrl = config.apiUrl + config.payPeriodMonthContext;
+    constructor(private _serverService: MockServerService) {
     }
 
     getPayPeriodMonths(): Observable<PayPeriodMonth[]> {
-        return this._http.get(this._payPeriodMonthUrl).map(response => <PayPeriodMonth[]>response.json());
+        return this._serverService.getPayPeriodMonthData().map(response => <PayPeriodMonth[]>response);
     }
 
     getPayPeriods(month: PayPeriodMonth): Observable<PayPeriod[]> {
@@ -32,8 +25,8 @@ export class PayPeriodCalendarDemoService {
         search.set('year', month.year.toString());
         search.set('month', month.number.toString());
 
-        return this._http.get(this._payPeriodUrl, { search })
-            .map(response => (<any[]>response.json()).map(i => <PayPeriod>{
+        return this._serverService.getPayPeriodData({ search })
+            .map(response => (<any[]>response).map(i => <PayPeriod>{
                 id: i.id,
                 number: i.number,
                 startDate: moment(i.startDate).toDate(),
