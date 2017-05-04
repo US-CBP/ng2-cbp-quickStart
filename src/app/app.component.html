@@ -1,19 +1,19 @@
 ﻿<header class="main-header" *ngIf="headerData">
     <cf-cbp-header homeUrl="../">
         <cf-header-menu-group cf-cbp-menu>
-            <template ngFor let-item [ngForOf]="headerData.cbpMenu">
+            <ng-template ngFor let-item [ngForOf]="headerData.cbpMenu">
                 <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
                     <span [innerHTML]="item.html"></span>
 
                     <cf-header-submenu>
-                        <template ngFor let-subitem [ngForOf]="item.menu">
+                        <ng-template ngFor let-subitem [ngForOf]="item.menu">
                             <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
                                                 [url]="subitem.href || subitem.route"
                                                 [class]="subitem.className">
 
                                 <span [innerHTML]="subitem.html"></span>
                             </cf-header-nav-item>
-                        </template>
+                        </ng-template>
                     </cf-header-submenu>
                 </cf-header-menu>
 
@@ -24,23 +24,23 @@
 
                     <span [innerHTML]="item.html"></span>
                 </cf-header-nav-item>
-            </template>
+            </ng-template>
         </cf-header-menu-group>
 
         <cf-header-menu-group cf-user-menu>
-            <template ngFor let-item [ngForOf]="headerData.userMenu">
+            <ng-template ngFor let-item [ngForOf]="headerData.userMenu">
                 <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
                     <span [innerHTML]="item.html"></span>
 
                     <cf-header-submenu>
-                        <template ngFor let-subitem [ngForOf]="item.menu">
+                        <ng-template ngFor let-subitem [ngForOf]="item.menu">
                             <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
                                                 [url]="subitem.href || subitem.route"
                                                 [class]="subitem.className">
 
                                 <span [innerHTML]="subitem.html"></span>
                             </cf-header-nav-item>
-                        </template>
+                        </ng-template>
                     </cf-header-submenu>
                 </cf-header-menu>
 
@@ -51,25 +51,25 @@
 
                     <span [innerHTML]="item.html"></span>
                 </cf-header-nav-item>
-            </template>
+            </ng-template>
         </cf-header-menu-group>
     </cf-cbp-header>
 
     <cf-app-header>
         <cf-header-menu-group cf-app-menu>
-            <template ngFor let-item [ngForOf]="headerData.appMenu">
+            <ng-template ngFor let-item [ngForOf]="headerData.appMenu">
                 <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
                     <span [innerHTML]="item.html"></span>
 
                     <cf-header-submenu>
-                        <template ngFor let-subitem [ngForOf]="item.menu">
+                        <ng-template ngFor let-subitem [ngForOf]="item.menu">
                             <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
                                                 [url]="subitem.href || subitem.route"
                                                 [class]="subitem.className">
 
                                 <span [innerHTML]="subitem.html"></span>
                             </cf-header-nav-item>
-                        </template>
+                        </ng-template>
                     </cf-header-submenu>
                 </cf-header-menu>
 
@@ -80,7 +80,7 @@
 
                     <span [innerHTML]="item.html"></span>
                 </cf-header-nav-item>
-            </template>
+            </ng-template>
         </cf-header-menu-group>
     </cf-app-header>
 </header>

@@ -30,7 +30,7 @@ const rules = {
     cssStyles: {
         test: /\.css$/,
         exclude: path.resolve('src/shared/styles'),
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
     },
     componentStyles: {
         test: /\.scss$/,
