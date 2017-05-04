@@ -152,7 +152,7 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION) {
     config.output = {
         filename: '[name].js',
         path: path.resolve('./target'),
-        publicPath: '/'
+        publicPath: ENV_PRODUCTION ? './' : '/'
     };
 
     config.plugins.push(
@@ -220,8 +220,6 @@ if(ENV_PRODUCTION) {
             }
         })
     );
-
-    config.output.publicPath = 'https://cbp-ryan-kim.github.io/ng2-cbp-quickStart/';
 }
 
 //=====================================
