@@ -22,9 +22,5 @@ export class TableDemoService {
 
     callTableData(obj: any): void {
         this.data.next(this._serverService.getTableData(JSON.stringify(obj)));
-        // this.http.post(this.url, JSON.stringify(obj)).subscribe(
-        //     respData => {
-        //         this.data.next(respData.json());
-        //     });
     }
 }
