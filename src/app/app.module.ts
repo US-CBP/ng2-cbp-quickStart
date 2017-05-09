@@ -4,10 +4,17 @@ import {
 }                                           from '@angular/core';
 import { FormsModule }                      from '@angular/forms';
 import { HttpModule }                       from '@angular/http';
+import {
+    MdButtonModule,
+    MdIconModule,
+    MdSidenavModule,
+}                                           from '@angular/material';
 import { BrowserModule }                    from '@angular/platform-browser';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
-
-import { HeaderModule }                     from 'ng2-cbp-cf';
+import {
+    HeaderModule,
+    ToolbarModule,
+}                                           from 'ng2-cbp-cf';
 
 import { AppComponent }                     from './app.component';
 import {
@@ -34,8 +41,12 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         appRouting,
         HeaderModule,
         HomeModule,
+        MdButtonModule,
+        MdIconModule,
+        MdSidenavModule,
         FormControlDemoModule,
         TableDemoModule,
+        ToolbarModule,
         ListDemoModule,
         PayPeriodCalendarDemoModule,
     ],

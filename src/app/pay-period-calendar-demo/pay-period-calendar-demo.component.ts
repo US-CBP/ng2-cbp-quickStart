@@ -2,6 +2,7 @@
     Component,
     OnInit,
 }                                       from '@angular/core';
+import { ToolbarService }               from 'ng2-cbp-cf';
 import {
     Observable,
     Observer,
@@ -29,10 +30,14 @@ export class PayPeriodCalendarDemoComponent implements OnInit {
     private _demo1MonthSelectedObserver: Observer<PayPeriodMonth>;
     private _demo2MonthSelectedObserver: Observer<PayPeriodMonth>;
 
-    constructor(private _service: PayPeriodCalendarDemoService) {
+    constructor(
+        private _service: PayPeriodCalendarDemoService,
+        private _toolbarService: ToolbarService) {
     }
 
     ngOnInit(): void {
+        this._toolbarService.setTitle('Pay Period Calendar');
+
         this._service.getPayPeriodMonths().subscribe(months => {
             this.demo1Months = months;
             this.demo2Months = months;

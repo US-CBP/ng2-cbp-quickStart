@@ -31,7 +31,7 @@ This is a quick start to use the ng2-cbp-cf (Common Framewor) with Angular2 and 
 Stack
 -----
 
-- Angular 2
+- Angular
 - [ngrx/store](https://github.com/ngrx/store)
 - [ngrx/effects](https://github.com/ngrx/effects)
 - [ngrx/store-devtools](https://github.com/ngrx/store-devtools)

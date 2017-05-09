@@ -1,89 +1,79 @@
-﻿<header class="main-header" *ngIf="headerData">
-    <cf-cbp-header homeUrl="../">
-        <cf-header-menu-group cf-cbp-menu>
-            <ng-template ngFor let-item [ngForOf]="headerData.cbpMenu">
-                <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
-                    <span [innerHTML]="item.html"></span>
+﻿<md-sidenav-container>
+    <md-sidenav #sideNav>
+        <cf-side-nav [appMenu]="headerData.appMenu" (onRouteClicked)="onRouteClicked()">
+            Example application
+            <span>With Angular + Material Design</span>
+        </cf-side-nav>
+    </md-sidenav>
+    <div class="cf-app">
+        <header class="main-header" *ngIf="headerData">
+            <cf-cbp-header homeUrl="../" [disableFeedback]="true">
+                <cf-header-menu-group cf-cbp-menu>
+                    <ng-template ngFor let-item [ngForOf]="headerData.cbpMenu">
+                        <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
+                            <span [innerHTML]="item.html"></span>
 
-                    <cf-header-submenu>
-                        <ng-template ngFor let-subitem [ngForOf]="item.menu">
-                            <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
-                                                [url]="subitem.href || subitem.route"
-                                                [class]="subitem.className">
+                            <cf-header-submenu>
+                                <ng-template ngFor let-subitem [ngForOf]="item.menu">
+                                    <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
+                                                        [url]="subitem.href || subitem.route"
+                                                        [class]="subitem.className">
 
-                                <span [innerHTML]="subitem.html"></span>
-                            </cf-header-nav-item>
-                        </ng-template>
-                    </cf-header-submenu>
-                </cf-header-menu>
+                                        <span [innerHTML]="subitem.html"></span>
+                                    </cf-header-nav-item>
+                                </ng-template>
+                            </cf-header-submenu>
+                        </cf-header-menu>
 
-                <cf-header-nav-item *ngIf="!item.hasMenu"
-                                    [type]="item.href == null ? 'route' : 'href'"
-                                    [url]="item.href || item.route"
-                                    [class]="item.className">
+                        <cf-header-nav-item *ngIf="!item.hasMenu"
+                                            [type]="item.href == null ? 'route' : 'href'"
+                                            [url]="item.href || item.route"
+                                            [class]="item.className">
 
-                    <span [innerHTML]="item.html"></span>
-                </cf-header-nav-item>
-            </ng-template>
-        </cf-header-menu-group>
+                            <span [innerHTML]="item.html"></span>
+                        </cf-header-nav-item>
+                    </ng-template>
+                </cf-header-menu-group>
 
-        <cf-header-menu-group cf-user-menu>
-            <ng-template ngFor let-item [ngForOf]="headerData.userMenu">
-                <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
-                    <span [innerHTML]="item.html"></span>
+                <cf-header-menu-group cf-user-menu>
+                    <ng-template ngFor let-item [ngForOf]="headerData.userMenu">
+                        <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
+                            <span [innerHTML]="item.html"></span>
 
-                    <cf-header-submenu>
-                        <ng-template ngFor let-subitem [ngForOf]="item.menu">
-                            <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
-                                                [url]="subitem.href || subitem.route"
-                                                [class]="subitem.className">
+                            <cf-header-submenu>
+                                <ng-template ngFor let-subitem [ngForOf]="item.menu">
+                                    <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
+                                                        [url]="subitem.href || subitem.route"
+                                                        [class]="subitem.className">
 
-                                <span [innerHTML]="subitem.html"></span>
-                            </cf-header-nav-item>
-                        </ng-template>
-                    </cf-header-submenu>
-                </cf-header-menu>
+                                        <span [innerHTML]="subitem.html"></span>
+                                    </cf-header-nav-item>
+                                </ng-template>
+                            </cf-header-submenu>
+                        </cf-header-menu>
 
-                <cf-header-nav-item *ngIf="!item.hasMenu"
-                                    [type]="item.href == null ? 'route' : 'href'"
-                                    [url]="item.href || item.route"
-                                    [class]="item.className">
+                        <cf-header-nav-item *ngIf="!item.hasMenu"
+                                            [type]="item.href == null ? 'route' : 'href'"
+                                            [url]="item.href || item.route"
+                                            [class]="item.className">
 
-                    <span [innerHTML]="item.html"></span>
-                </cf-header-nav-item>
-            </ng-template>
-        </cf-header-menu-group>
-    </cf-cbp-header>
+                            <span [innerHTML]="item.html"></span>
+                        </cf-header-nav-item>
+                    </ng-template>
+                </cf-header-menu-group>
+            </cf-cbp-header>
 
-    <cf-app-header>
-        <cf-header-menu-group cf-app-menu>
-            <ng-template ngFor let-item [ngForOf]="headerData.appMenu">
-                <cf-header-menu *ngIf="item.hasMenu" [class]="item.className">
-                    <span [innerHTML]="item.html"></span>
-
-                    <cf-header-submenu>
-                        <ng-template ngFor let-subitem [ngForOf]="item.menu">
-                            <cf-header-nav-item [type]="subitem.href == null ? 'route' : 'href'"
-                                                [url]="subitem.href || subitem.route"
-                                                [class]="subitem.className">
-
-                                <span [innerHTML]="subitem.html"></span>
-                            </cf-header-nav-item>
-                        </ng-template>
-                    </cf-header-submenu>
-                </cf-header-menu>
-
-                <cf-header-nav-item *ngIf="!item.hasMenu"
-                                    [type]="item.href == null ? 'route' : 'href'"
-                                    [url]="item.href || item.route"
-                                    [class]="item.className">
-
-                    <span [innerHTML]="item.html"></span>
-                </cf-header-nav-item>
-            </ng-template>
-        </cf-header-menu-group>
-    </cf-app-header>
-</header>
-<main>
-    <router-outlet></router-outlet>
-</main>
+            <div id="toolbar">
+                <cf-toolbar>
+                    <button md-icon-button title="Help" (click)="onHelpClicked()">
+                        <md-icon>help</md-icon>
+                        <span class="sr-only">Help</span>
+                    </button>
+                </cf-toolbar>
+            </div>
+        </header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</md-sidenav-container>

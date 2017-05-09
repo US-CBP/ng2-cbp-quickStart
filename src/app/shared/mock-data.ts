@@ -15,8 +15,8 @@ export class MockData {
         "cbpMenu": [
             {
                 "id": "global_1",
-                "html": "Angular 2 - Redux - Webpack",
-                "title": "Angular 2 - Redux - Webpack",
+                "html": "Angular - Redux - Webpack",
+                "title": "Angular - Redux - Webpack",
                 "href": null,
                 "target": "",
                 "className": "global_1",
@@ -24,8 +24,8 @@ export class MockData {
                 "toggle": "",
                 "menu": [
                     {
-                        "html": "Angular 2 - Redux - Webpack",
-                        "title": "Angular 2 - Redux - Webpack",
+                        "html": "Angular - Redux - Webpack",
+                        "title": "Angular - Redux - Webpack",
                         "href": null,
                         "route": "home",
                         "target": "",
@@ -45,7 +45,7 @@ export class MockData {
         "userMenu": [
             {
                 "id": "user_name",
-                "html": "<span class='fa fa-user'></span><u title='angular2.ng2@test.com' class='hidden-sm'>Angular2, ng2</u>",
+                "html": "<span class='fa fa-user'></span><u title='angular.mat@test.com' class='hidden-sm'> Angular, Material</u>",
                 "title": "User Info",
                 "href": null,
                 "route": null,
@@ -73,121 +73,77 @@ export class MockData {
                         "divider": false
                     }
                 ]
-            },
-            {
-                "id": "header_user_station",
-                "html": "MCS",
-                "title": "Assigned Station",
-                "href": "#",
-                "route": null,
-                "target": "",
-                "toggle": "",
-                "hasMenu": false,
-                "className": "header_user_station"
             }
         ],
         "appMenu": [
             {
-                "id": "app_1",
                 "html": "Forms Controls",
-                "title": "Forms Controls",
-                "href": null,
-                "route": null,
-                "target": "",
-                "hasMenu": true,
-                "className": "app_1",
+                "name": "Forms Controls",
+                "type": null,
+                "url": null,
                 "menu": [
                     {
                         "html": "Badge",
-                        "title": "Badge",
-                        "href": null,
-                        "route": "form-control-demo/badge-demo",
-                        "divider": false
+                        "type": "route",
+                        "url": "form-control-demo/badge-demo"
                     },
                     {
                         "html": "Textarea",
-                        "title": "Textarea ",
-                        "href": "#",
-                        "target": "",
-                        "divider": false
+                        "type": "route",
+                        "url": "#"
                     },
                     {
                         "html": "Checkbox",
-                        "title": "Checkbox ",
-                        "href": null,
-                        "route": "form-control-demo/checkbox-demo",
-                        "divider": false
+                        "type": "route",
+                        "url": "form-control-demo/checkbox-demo",
                     },
                     {
                         "html": "Date Picker/Range",
-                        "title": "Date Picker/Range",
-                        "href": "#",
-                        "target": "",
-                        "divider": false
+                        "type": "route",
+                        "url": "#"
                     },
                     {
                         "html": "Dropdown Tree",
-                        "title": "Dropdown Tree",
-                        "href": null,
-                        "route": "form-control-demo/dropdown-tree-demo",
-                        "divider": false
+                        "type": "route",
+                        "url": "form-control-demo/dropdown-tree-demo"
                     }
                 ]
             },
             {
-                "id": "app_2",
                 "html": "Table + Pagination",
-                "title": "Table + Pagination",
-                "className": "app_2",
-                "href": null,
-                "route": "table",
-                "target": "",
-                "hasMenu": false
+                "name": "Table + Pagination",
+                "type": "route",
+                "url": "table"
             },
             {
-                "id": "app_3",
                 "html": "List",
-                "title": "List",
-                "href": null,
-                "route": null,
-                "target": "",
-                "hasMenu": true,
-                "className": null,
+                "name": "List",
+                "type": null,
+                "url": null,
                 "menu": [
                     {
                         "html": "List Group",
-                        "title": "List Group",
-                        "href": null,
-                        "route": "list-demo/list-group-demo",
-                        "divider": false
+                        "type": "route",
+                        "url": "list-demo/list-group-demo"
                     },
                     {
                         "html": "Dual List",
-                        "title": "Dual List",
-                        "href": null,
-                        "route": "list-demo/dual-list-demo",
-                        "divider": false
+                        "type": "route",
+                        "url": "list-demo/dual-list-demo"
                     }
                 ]
             },
             {
-                "id": "app_4",
                 "html": "Modal - Dialog - Overlay",
-                "title": "Modal - Dialog - Overlay",
-                "className": "app_4",
-                "href": "#",
-                "route": null,
-                "target": "",
-                "hasMenu": false
+                "name": "Modal - Dialog - Overlay",
+                "type": "route",
+                "url": "#"
             },
             {
-                "id": "app_5",
                 "html": "Pay Period Calendar",
-                "title": "Pay Period Calendar",
-                "className": "app_5",
-                "href": null,
-                "route": "pay-period-calendar-demo",
-                "hasMenu": false
+                "name": "Pay Period Calendar",
+                "type": "route",
+                "url": "pay-period-calendar-demo"
             }
         ]
     };

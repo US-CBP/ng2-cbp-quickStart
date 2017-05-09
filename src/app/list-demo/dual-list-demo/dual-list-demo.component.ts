@@ -1,11 +1,15 @@
-﻿import { Component }            from '@angular/core';
+﻿import {
+    Component,
+    OnInit,
+}                               from '@angular/core';
+import { ToolbarService }       from 'ng2-cbp-cf';
 
 import { DualListDemoService }  from './dual-list.service';
 
 @Component({
     templateUrl: 'dual-list-demo.component.html',
 })
-export class DualListDemoComponent {
+export class DualListDemoComponent implements OnInit {
     private service: DualListDemoService;
 
     attrToShow: string[] = ['name', 'division'];
@@ -15,7 +19,10 @@ export class DualListDemoComponent {
     source: any[] = [];
     selected: any[] = [];
 
-    constructor(service: DualListDemoService) {
+    constructor(
+        private _toolbarService: ToolbarService,
+        service: DualListDemoService) {
+
         this.service = service;
         this.service.callNflData();
         this.service.getNflData().subscribe(
@@ -26,6 +33,10 @@ export class DualListDemoComponent {
             },
         );
     };
+
+    ngOnInit(): void {
+        this._toolbarService.setTitle('Dual List');
+    }
 
     selectlistChange(evt: Event): void {
     }
