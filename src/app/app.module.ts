@@ -25,6 +25,7 @@ import { AppService }                       from './app.service';
 import { FormControlDemoModule }            from './form-control-demo';
 import { HomeModule }                       from './home/home.module';
 import { ListDemoModule }                   from './list-demo';
+import { NavigationDemoModule }              from './navigation-demo';
 import { PayPeriodCalendarDemoModule }      from './pay-period-calendar-demo';
 import {
     MockData,
@@ -36,6 +37,7 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        NavigationDemoModule,
         FormsModule,
         HttpModule,
         appRouting,

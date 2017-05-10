@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+@import '~ng2-cbp-cf/theme/_theme.scss';
+
+md-radio-button {
+    display: block;
+}
+
+.title-section {
+    padding-bottom: 2em;
+}
+
+.under-construction {
+    color: mat-color($cbp-warn);
+}
+
+md-sidenav-container.inside-main {
+    background-color: rgba(0,0,0,0);
+    // .cf-app main style applies a 10px padding to all
+    // of our content but when in a sidenav container it is removed
+    // so we put it back here
+    padding-left: 10px;
+}
+
+md-sidenav {
+    border-left: 1px solid rgb(238, 238, 238);
+    width: 60px;
+    min-width: 60px;
+}
+
+md-sidenav button {
+    display: block;
+    text-align: center;
+}
+
+md-sidenav button.mat-menu-item .mat-icon {
+    margin-right: 0px;
+}
+
+section p, section md-radio-button {
+    padding-left: 16px;
+}
+
+.action {
+    font-weight: bolder;
+    color: green;
+}
+
+.force-auto-show {
+    padding-left: 32px;
+}
