@@ -24,15 +24,15 @@ import {
 import { AppService }                       from './app.service';
 import { FormControlDemoModule }            from './form-control-demo';
 import { HomeModule }                       from './home/home.module';
+import { IconsModule }                      from './icons/icons.module';
 import { ListDemoModule }                   from './list-demo';
-import { NavigationDemoModule }              from './navigation-demo';
+import { NavigationDemoModule }             from './navigation-demo';
 import { PayPeriodCalendarDemoModule }      from './pay-period-calendar-demo';
 import {
     MockData,
     MockServerService,
 }                                           from './shared';
 import { TableDemoModule }                  from './table-demo/table-demo.module';
-import { IconsModule }                      from './icons/icons.module';
 
 @NgModule({
     imports: [

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 export class IconsComponent {
 
-    public iconList = [
+    public iconList: any[] = [
         { icon: 'menu', name: 'Menu', description: 'Open and Close side nav' },
         { icon: 'person', name: 'User', description: 'User Accoun' },
         { icon: 'people', name: 'Users', description: 'Multiple users' },

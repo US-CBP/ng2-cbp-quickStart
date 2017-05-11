@@ -162,6 +162,12 @@ export class MockData {
                         "url": "navigation-demo/tabs-demo",
                     }
                 ]
+            },
+            {
+                "html": "Icons",
+                "name": "Icons",
+                "type": "route",
+                "url": "icons"
             }
         ]
     };
