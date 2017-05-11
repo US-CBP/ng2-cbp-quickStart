@@ -32,6 +32,7 @@ import {
     MockServerService,
 }                                           from './shared';
 import { TableDemoModule }                  from './table-demo/table-demo.module';
+import { IconsModule }                      from './icons/icons.module';
 
 @NgModule({
     imports: [
@@ -51,6 +52,7 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         ToolbarModule,
         ListDemoModule,
         PayPeriodCalendarDemoModule,
+        IconsModule,
     ],
     declarations: [
         AppComponent,
