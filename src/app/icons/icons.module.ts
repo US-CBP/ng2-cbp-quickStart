@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '@angular/material';
 
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { IconsComponent } from './icons.component';
 import { iconsRouting } from './icons.routing';
@@ -12,16 +12,16 @@ import { iconsRouting } from './icons.routing';
     imports: [
         BrowserModule,
         FormsModule,
+        FlexLayoutModule,
         iconsRouting,
         MaterialModule,
-        FlexLayoutModule,
     ],
     declarations: [
-        IconsComponent
+        IconsComponent,
     ],
-    providers: []
+    providers: [],
 })
 
-export class IconsModule{
+export class IconsModule {
 
 }
