@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import {
     RouterModule,
-    Routes
+    Routes,
 } from '@angular/router';
 
 import { IconsComponent } from './icons.component';
