@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MockData {
     /* tslint:disable */
-    public headerJson: any = 
+    public headerJson: any =
     {
         "user": {
             "fullName": "Angular2, ng2",
@@ -144,6 +144,24 @@ export class MockData {
                 "name": "Pay Period Calendar",
                 "type": "route",
                 "url": "pay-period-calendar-demo"
+            },
+            {
+                "html": "Navigation",
+                "name": "Navigation",
+                "type": null,
+                "url": null,
+                "menu": [
+                    {
+                        "html": "Side Bars",
+                        "type": "route",
+                        "url": "navigation-demo/side-bars-demo",
+                    },
+                    {
+                        "html": "Tabs",
+                        "type": "route",
+                        "url": "navigation-demo/tabs-demo",
+                    }
+                ]
             }
         ]
     };

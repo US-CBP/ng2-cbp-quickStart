@@ -29,7 +29,7 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --display-chunks",
         "clean": "del-cli target",
-        "lint": "npm run-s lint:js | npm run-s lint:ts",
+        "lint": "npm run-s lint:js && npm run-s lint:ts",
         "lint:js": "eslint -c .eslintrc.yml *.js server",
         "lint:ts": "tslint src/**/*.ts",
         "prebuild": "run-s clean test",

@@ -1,0 +1,43 @@
+<md-sidenav-container fullscreen class="inside-main">
+    <section class="title-section">
+        <header><h1 class="page-header">Side Bars</h1></header>
+        This page demonstrates the various modes and uses of the material side bar navigation patterns.
+    </section>
+
+    <section>
+        <header><h3>Right Nav / Tool Bar</h3></header>
+        <button md-raised-button color="primary" (click)="onToggleRightNav(rightSideToolbar)">
+            <span *ngIf="rightSideToolbar.opened">Hide</span>
+            <span *ngIf="!rightSideToolbar.opened">Show</span>
+        </button>
+        <span *ngIf="isRightNavValuePresent()">
+            Last right nav action selected: <span class="action">{{rightNavValue}}</span>
+        </span>
+
+        <section>
+            <header><h6>Select Mode ({{leftNavOption}})</h6></header>
+            <md-radio-group name="left_nav_option" [(ngModel)]="leftNavOption" (change)="checkAutoShow()">
+                <md-radio-button value="side"> Side - Show with content</md-radio-button>
+                <md-checkbox class="force-auto-show" [disabled]="leftNavOption !== 'side'"
+                    (change)="checkAutoShowOptionChanged()" [(ngModel)]="forceAutoShow">Auto show if screen width > {{autoShowWidth}}px</md-checkbox>
+                <md-radio-button value="over"> Over - 'Modal' mode over content.</md-radio-button>
+                <md-radio-button value="push"> Push - Similar to 'Over' but pushes content</md-radio-button>
+            </md-radio-group>
+        </section>
+    </section>
+
+    <md-sidenav #rightSideToolbar [mode]="leftNavOption" align="end" [opened]="startOpened">
+        <button md-menu-item (click)="setRightNavValue('Bookmark', rightSideToolbar)"
+            mdTooltipPosition="left" mdTooltip="Boookmark">
+                <md-icon>bookmark</md-icon>
+        </button>
+        <button md-menu-item (click)="setRightNavValue('Build', rightSideToolbar)"
+            mdTooltipPosition="left" mdTooltip="Build">
+                <md-icon>build</md-icon>
+        </button>
+        <button md-menu-item (click)="setRightNavValue('Save', rightSideToolbar)"
+            mdTooltipPosition="left" mdTooltip="Save">
+                <md-icon>save</md-icon>
+        </button>
+    </md-sidenav>
+</md-sidenav-container>
