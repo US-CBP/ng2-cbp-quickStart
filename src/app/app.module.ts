@@ -21,6 +21,7 @@ import { ListDemoModule }                   from './list-demo';
 import { PayPeriodCalendarDemoModule }      from './pay-period-calendar-demo';
 import { Config }                           from './shared';
 import { TableDemoModule }                  from './table-demo/table-demo.module';
+import { IconsModule }                      from './icons/icons.module';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         TableDemoModule,
         ListDemoModule,
         PayPeriodCalendarDemoModule,
+        IconsModule,
     ],
     declarations: [
         AppComponent,
