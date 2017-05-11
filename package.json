@@ -1,31 +1,22 @@
 {
-    "name": "ng2-cbp-cf-quickStart",
-    "version": "0.0.1",
-    "description": "This is a quick start to use the ng2-cbp-cf (Common Framewor) with Angular2 and ngrx/store",
-    "homepage": "",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/US-CBP/ng2-cbp-quickStart.git"
+  "name": "ng2-cbp-cf-quickStart",
+  "version": "0.0.1",
+  "description": "This is a quick start to use the ng2-cbp-cf (Common Framewor) with Angular2 and ngrx/store",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/US-CBP/ng2-cbp-quickStart.git"
+  },
+  "contributors": [
+    {
+      "name": "Xavier Mouligneau",
+      "email": "xmouligneau@gmail.com"
     },
-    "contributors": [
-        {
-            "name": "Xavier Mouligneau",
-            "email": "xmouligneau@gmail.com"
-        },
-        {
-            "name": "Martin Francisco",
-            "email": "martin2great@yahoo.com"
-        },
-        {
-            "name": "Aruna Chinthakindi",
-            "email": "arunachinthakindi@gmail.com"
-        }
-    ],
-    "author": "CBP Common Framework",
-    "license": "CC0-1.0",
-    "engines": {
-        "node": ">=6.4"
+    {
+      "name": "Martin Francisco",
+      "email": "martin2great@yahoo.com"
     },
+<<<<<<< HEAD
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --display-chunks",
         "clean": "del-cli target",
@@ -124,4 +115,116 @@
         "ANGULAR2",
         "QUICKSTART"
     ]
+=======
+    {
+      "name": "Aruna Chinthakindi",
+      "email": "arunachinthakindi@gmail.com"
+    }
+  ],
+  "author": "CBP Common Framework",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": ">=6.4"
+  },
+  "scripts": {
+    "clean": "del-cli target",
+    "lint": "npm run-s lint:js | npm run-s lint:ts",
+    "lint:js": "eslint -c .eslintrc.yml *.js server",
+    "lint:ts": "tslint src/**/*.ts",
+    "prebuild": "run-s clean test",
+    "pretest": "run-s lint",
+    "start": "npm run-s server:api & npm run-s server:dev",
+    "server:api": "cross-env NODE_ENV=development nodemon -w 'server/*.js' server/main.js",
+    "server:dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "test": "cross-env NODE_ENV=test karma start --single-run",
+    "test:watch": "cross-env NODE_ENV=test karma start",
+    "show": "webpack-dev-server --inline --hot"
+  },
+  "dependencies": {
+    "@angular/animations": "^4.1.0",
+    "@angular/common": "^4.1.0",
+    "@angular/compiler": "^4.1.0",
+    "@angular/core": "^4.1.0",
+    "@angular/flex-layout": "2.0.0-beta.8",
+    "@angular/forms": "^4.1.0",
+    "@angular/http": "^4.1.0",
+    "@angular/material": "2.0.0-beta.3",
+    "@angular/platform-browser": "^4.1.0",
+    "@angular/platform-browser-dynamic": "^4.1.0",
+    "@angular/router": "^4.1.0",
+    "@ngrx/core": "~1.2.0",
+    "@ngrx/effects": "~2.0.3",
+    "@ngrx/store": "~2.2.2",
+    "core-js": "^2.4.1",
+    "flex-layout": "^1.0.1",
+    "hammerjs": "~2.0.8",
+    "lodash": "^4.17.4",
+    "moment": "~2.17.1",
+    "ng2-cbp-cf": "us-cbp/ng2-cbp-cf#v0.0.1-alpha.3",
+    "reflect-metadata": "~0.1.9",
+    "rxjs": "^5.3.0",
+    "web-animations-js": "^2.2.5",
+    "zone.js": "^0.8.9"
+  },
+  "devDependencies": {
+    "@ngrx/store-devtools": "~3.2.4",
+    "@types/hammerjs": "~2.0.8",
+    "@types/jasmine": "~2.5.41",
+    "@types/lodash": "4.14.50",
+    "@types/node": "~6.0.41",
+    "angular2-template-loader": "0.6.0",
+    "autoprefixer": "~6.7.6",
+    "awesome-typescript-loader": "~3.0.3",
+    "babel-core": "~6.22.1",
+    "babel-loader": "~6.2.10",
+    "body-parser": "~1.16.0",
+    "codelyzer": "~2.0.0-beta.4",
+    "cross-env": "~3.1.4",
+    "css-loader": "~0.26.1",
+    "del-cli": "~0.2.1",
+    "eslint": "~3.15.0",
+    "express": "~4.15.0",
+    "extract-text-webpack-plugin": "2.0.0-rc.3",
+    "file-loader": "~0.10.0",
+    "html-loader": "~0.4.4",
+    "html-webpack-plugin": "~2.28.0",
+    "image-webpack-loader": "~3.2.0",
+    "jasmine-core": "~2.5.2",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-coverage": "~1.1.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-sourcemap-loader": "~0.3.7",
+    "karma-webpack": "~2.0.2",
+    "load-json-file": "~2.0.0",
+    "lowdb": "~0.15.5",
+    "minx": "r-park/minx.git",
+    "morgan": "~1.8.0",
+    "nodemon": "~1.11.0",
+    "node-sass": "~4.5.0",
+    "node-uuid": "~1.4.7",
+    "npm-run-all": "~4.0.1",
+    "raw-loader": "~0.5.1",
+    "sass-loader": "~4.1.1",
+    "style-loader": "~0.13.1",
+    "ts-helpers": "~1.1.2",
+    "tslint": "~4.4.2",
+    "typescript": "~2.1.5",
+    "url-loader": "~0.5.7",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "2.4.1",
+    "webpack-md5-hash": "~0.0.5",
+    "winston": "~2.3.1"
+  },
+  "keywords": [
+    "CBP",
+    "CF",
+    "Common",
+    "Frameworks",
+    "Team",
+    "UI",
+    "ANGULAR2",
+    "QUICKSTART"
+  ]
+>>>>>>> origin/master
 }
