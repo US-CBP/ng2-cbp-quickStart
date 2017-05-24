@@ -29,7 +29,7 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack --display-chunks",
         "clean": "del-cli target",
-        "lint": "npm run-s lint:js | npm run-s lint:ts",
+        "lint": "npm run-s lint:js && npm run-s lint:ts",
         "lint:js": "eslint -c .eslintrc.yml *.js server",
         "lint:ts": "tslint src/**/*.ts",
         "prebuild": "run-s clean test",
@@ -56,6 +56,7 @@
         "@ngrx/effects": "~2.0.3",
         "@ngrx/store": "~2.2.2",
         "core-js": "^2.4.1",
+        "flex-layout": "^1.0.1",
         "hammerjs": "~2.0.8",
         "lodash": "^4.17.4",
         "moment": "~2.17.1",

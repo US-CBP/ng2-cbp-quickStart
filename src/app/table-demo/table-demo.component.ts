@@ -1,9 +1,13 @@
-import { Component }        from '@angular/core';
+import {
+    Component,
+    OnInit,
+}                           from '@angular/core';
 import * as _               from 'lodash';
 
 import {
     Query,
     Table,
+    ToolbarService,
 }                           from 'ng2-cbp-cf';
 
 import { TableDemoService } from './table-demo.service';
@@ -12,7 +16,7 @@ import { TableDemoService } from './table-demo.service';
     templateUrl: 'table-demo.component.html',
     styleUrls: ['table-demo.component.scss'],
 })
-export class TableDemoComponent {
+export class TableDemoComponent implements OnInit {
     tableDefault: Table;
     tableAltRows: Table;
     tableSelRows: Table;
@@ -24,7 +28,10 @@ export class TableDemoComponent {
     private tableData: Table;
     private _isInit: boolean = true;
 
-    constructor(service: TableDemoService) {
+    constructor(
+        private _toolbarService: ToolbarService,
+        service: TableDemoService) {
+
         this.service = service;
         this.tableData  = {} as Table;
         this.tableData.data = [];
@@ -55,6 +62,10 @@ export class TableDemoComponent {
                 }
             },
         );
+    }
+
+    ngOnInit(): void {
+        this._toolbarService.setTitle('Table + Pagination');
     }
 
     getData(query: Query): void {
