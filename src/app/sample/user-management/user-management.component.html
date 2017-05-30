@@ -1,0 +1,42 @@
+<md-card>
+    <md-input-container>
+        <input mdInput placeholder="First name" maxlength="20" [(ngModel)]="firstName" #firstName1>
+        <md-hint align="end">{{firstName1.value.length}} / 20</md-hint>
+    </md-input-container>
+
+    <md-input-container>
+        <input mdInput placeholder="Last name" maxlength="20" [(ngModel)]="lastName" #lastName1>
+        <md-hint align="end">{{lastName1.value.length}} / 20</md-hint>
+    </md-input-container>
+
+    <md-select placeholder="Role" [(ngModel)]="role">
+        <md-option *ngFor="let role of roles" [value]="role.value">{{role.text}}</md-option>
+    </md-select>
+
+    <button md-raised-button color="primary" (click)="searchClicked()">Search</button>
+</md-card>
+
+<md-card *ngIf="users.length > 0">
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Role</th>
+            <th>Edit</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.address}}</td>
+            <td>{{displayRole(user.role)}}</td>
+            <td>
+                <button md-icon-button title="Edit user" (click)="editUser(user)">
+                    <md-icon>edit</md-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
+</md-card>
