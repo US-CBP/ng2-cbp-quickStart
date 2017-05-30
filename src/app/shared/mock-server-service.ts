@@ -49,4 +49,12 @@ export class MockServerService {
 
         return header;
     }
+
+    public getUserData(firstName: string, lastName: string, role: string): any[] {
+        return this._mockData.userJson.filter(u => {
+            return (firstName == null || u.firstName.toUpperCase().includes(firstName.toUpperCase())) &&
+                (lastName == null || u.lastName.toUpperCase().includes(lastName.toUpperCase())) &&
+                (role == null || u.role === role);
+        });
+    }
 }

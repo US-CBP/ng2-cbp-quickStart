@@ -28,6 +28,7 @@ import { IconsModule }                      from './icons/icons.module';
 import { ListDemoModule }                   from './list-demo';
 import { NavigationDemoModule }             from './navigation-demo';
 import { PayPeriodCalendarDemoModule }      from './pay-period-calendar-demo';
+import { SampleModule }                     from './sample';
 import {
     MockData,
     MockServerService,
@@ -48,6 +49,7 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         MdIconModule,
         MdSidenavModule,
         FormControlDemoModule,
+        SampleModule,
         TableDemoModule,
         ToolbarModule,
         ListDemoModule,

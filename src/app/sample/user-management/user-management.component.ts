@@ -5,20 +5,14 @@ import {
 import { MdDialog }             from '@angular/material';
 import { ToolbarService }       from 'ng2-cbp-cf';
 
+import { MockServerService }    from '../../shared';
 import { EditUserComponent }    from './edit-user';
 import { User }                 from './user.model';
-import { MockServerService }    from '../../shared';
 
 @Component({
     templateUrl: 'user-management.component.html',
 })
 export class UserManagementComponent implements OnInit {
-    constructor(
-        private _dialogService: MdDialog,
-        private _serverService: MockServerService,
-        private _toolbarService: ToolbarService) {
-    }
-
     firstName: string;
     lastName: string;
     role: string;
@@ -30,6 +24,12 @@ export class UserManagementComponent implements OnInit {
     ];
 
     users: User[] = [];
+
+    constructor(
+        private _dialogService: MdDialog,
+        private _serverService: MockServerService,
+        private _toolbarService: ToolbarService) {
+    }
 
     ngOnInit(): void {
         this._toolbarService.setTitle('User Management');

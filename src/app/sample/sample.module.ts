@@ -2,7 +2,7 @@ import {
     CUSTOM_ELEMENTS_SCHEMA,
     NgModule,
 }                                       from '@angular/core';
-import { FormsModule }                  from "@angular/forms";
+import { FormsModule }                  from '@angular/forms';
 import {
     MdButtonModule,
     MdCardModule,
@@ -13,11 +13,11 @@ import {
 }                                       from '@angular/material';
 import { BrowserModule }                from '@angular/platform-browser';
 
-import { 
+import { sampleRouting }                from './sample.routing';
+import {
     EditUserComponent,
     UserManagementComponent,
 }                                       from './user-management';
-import { SampleRouting }                from './sample.routing';
 
 @NgModule({
     imports: [
@@ -29,7 +29,7 @@ import { SampleRouting }                from './sample.routing';
         MdIconModule,
         MdInputModule,
         MdSelectModule,
-        SampleRouting,
+        sampleRouting,
     ],
     declarations: [
         EditUserComponent,

@@ -10,4 +10,4 @@ const navRoutes: Routes = [
     { path: 'sample/user-management', component: UserManagementComponent },
 ];
 
-export const SampleRouting: ModuleWithProviders = RouterModule.forChild(navRoutes);
+export const sampleRouting: ModuleWithProviders = RouterModule.forChild(navRoutes);

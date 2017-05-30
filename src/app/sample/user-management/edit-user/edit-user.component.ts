@@ -22,7 +22,7 @@ export class EditUserComponent {
     }
 
     @Output() userUpdated: EventEmitter<User> = new EventEmitter<User>();
-    
+
     firstName: string;
     lastName: string;
     email: string;
@@ -37,7 +37,7 @@ export class EditUserComponent {
     }
 
     onSaveClick(): void {
-        this.userUpdated.emit(<User>{ 
+        this.userUpdated.emit(<User>{
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
