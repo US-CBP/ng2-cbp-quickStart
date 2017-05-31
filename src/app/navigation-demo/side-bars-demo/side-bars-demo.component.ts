@@ -41,7 +41,7 @@ export class SideBarsDemoComponent implements OnInit {
     }
 
     checkAutoShow(): void {
-        let clientWidth: number = document.documentElement.clientWidth;
+        let clientWidth: number = this.getWindowWidth();
         let oldValue = this.autoShowAvailable;
         this.autoShowAvailable = clientWidth > this.autoShowWidth;
         if (this.forceAutoShow && this.autoShowAvailable ) {
@@ -55,14 +55,15 @@ export class SideBarsDemoComponent implements OnInit {
         }
     }
 
+    getWindowWidth(): number {
+        return document.documentElement.clientWidth;
+    }
+
     onToggleLeftNav(event: MdRadioChange): void {
-        /*tslint:disable:no-console*/
-        console.log(event);
         this.leftNavOption = event.value;
     }
 
     onToggleRightNav(sideBar: MdSidenav): void {
-        /*tslint:disable:no-console*/
         sideBar.toggle();
     }
 
