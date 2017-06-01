@@ -1,0 +1,32 @@
+<header md-dialog-title>
+    Edit {{firstName1.value}} {{lastName1.value}}
+</header>
+<md-dialog-content>
+    <md-input-container>
+        <input mdInput placeholder="First name" maxlength="20" size="23" [(ngModel)]="firstName" #firstName1>
+        <md-hint align="end">{{firstName1.value.length}} / 20</md-hint>
+    </md-input-container>
+
+    <md-input-container>
+        <input mdInput placeholder="Last name" maxlength="20" size="23" [(ngModel)]="lastName" #lastName1>
+        <md-hint align="end">{{lastName1.value.length}} / 20</md-hint>
+    </md-input-container>
+
+    <br />
+
+    <md-input-container>
+        <input mdInput placeholder="Email" maxlength="20" size="50" [(ngModel)]="email" #email1>
+        <md-hint align="end">{{email1.value.length}} / 20</md-hint>
+    </md-input-container>
+
+    <br />
+
+    <md-input-container>
+        <input mdInput placeholder="Address" maxlength="40" size="50" [(ngModel)]="address" #address1>
+        <md-hint align="end">{{address1.value.length}} / 40</md-hint>
+    </md-input-container>
+</md-dialog-content>
+<md-dialog-actions align="end">
+    <button md-button color="primary" (click)="onCancelClick()">CANCEL</button>
+    <button md-button color="primary" (click)="onSaveClick()">SAVE</button>
+</md-dialog-actions>
