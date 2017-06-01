@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdRadioChange, MdSidenav }     from '@angular/material';
+import { ToolbarService }               from 'ng2-cbp-cf';
 import { Observable }                   from 'rxjs';
 
 @Component({
@@ -24,7 +25,10 @@ export class SideBarsDemoComponent implements OnInit {
 
     @ViewChild('rightSideToolbar') sideBar: MdSidenav;
 
+    constructor(private _toolbarService: ToolbarService) {}
+
     ngOnInit(): void {
+        this._toolbarService.setTitle('Side Bars');
         this.$resizeEvent = Observable.fromEvent(window, 'resize')
             .debounceTime(200);
 
