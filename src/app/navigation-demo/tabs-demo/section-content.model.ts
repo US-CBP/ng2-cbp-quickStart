@@ -7,7 +7,26 @@ export class Section {
     ) {
     }
 }
-
+export const OVERVIEW_CONTENT: string =
+`<p>
+    This demo shows off the basic uses of the tab component.
+</p>
+<p>
+    There are many more variations and features available when
+    using the material tab components.  More information can
+    be found at the following locations:
+</p>
+<ul>
+    <li>
+        The offical Angular 2 material tabs API:
+        <a>https://material.angular.io/components/component/tabs</a>
+    </li>
+    <li>
+        The material2 project's demo-app section on tabs:
+        <a>https://github.com/angular/material2/tree/master/src/demo-app/tabs</a>
+    </li>
+</ul>
+`;
 export const SECTION_1_CONTENT: string =
 `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac tempus nulla. Nam justo felis, sollicitudin a pretium in, pulvinar non tortor. Praesent consequat leo erat, vel blandit purus cursus non. Phasellus a dui ullamcorper, maximus sapien eget, faucibus arcu. Etiam vehicula varius ante, et finibus mauris rhoncus ac. Mauris ut massa porta arcu pretium sagittis. Phasellus convallis nibh magna, et venenatis lectus cursus sed. Fusce ac interdum elit. Sed aliquet, libero nec ornare accumsan, leo felis scelerisque lorem, at cursus sem magna elementum nunc. Nunc eu tempor mauris. Quisque id tellus lectus.</p>
 
@@ -41,6 +60,7 @@ export const SECTION_3_CONTENT: string =
 <p>Ut dui turpis, varius eu viverra vitae, commodo vitae nulla. Duis vestibulum condimentum eros in facilisis. Nulla bibendum, lacus vitae molestie laoreet, libero nulla finibus nunc, lobortis iaculis enim purus sed sapien. Nulla quis erat tortor. Donec id commodo lectus. Praesent neque nulla, eleifend at dolor id, lobortis luctus nibh. Curabitur non mauris tempor, pharetra lorem id, auctor mauris. Phasellus lacinia sollicitudin congue. In imperdiet ante mauris, in vestibulum ligula fermentum ac. Proin id vehicula urna, eu maximus tellus. Quisque convallis arcu ante, in commodo ante vehicula quis. Vivamus blandit consequat est ut tristique. Fusce hendrerit pulvinar suscipit. Mauris erat neque, interdum sit amet magna id, imperdiet rutrum lectus.</p>`;
 
 export const SECTIONS: Section[] = [
+    new Section('Overview', OVERVIEW_CONTENT),
     new Section('Section 1', SECTION_1_CONTENT),
     new Section('Section 2', SECTION_2_CONTENT),
     new Section('Section 3', SECTION_3_CONTENT)];

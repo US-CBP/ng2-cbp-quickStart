@@ -9,6 +9,9 @@ import { NavExampleComponent }          from './nav-example';
 import { navigationDemoRouting }        from './navigation-demo.routing';
 import { SideBarsDemoComponent }        from './side-bars-demo';
 import { TabsDemoComponent }            from './tabs-demo';
+import { TabsDemoToolbarComponent }     from './tabs-demo/toolbar';
+
+import { ToolbarModule }                from 'ng2-cbp-cf';
 
 @NgModule({
     imports: [
@@ -16,11 +19,13 @@ import { TabsDemoComponent }            from './tabs-demo';
         MaterialModule,
         navigationDemoRouting,
         FormsModule,
+        ToolbarModule,
     ],
     declarations: [
         NavExampleComponent,
         SideBarsDemoComponent,
         TabsDemoComponent,
+        TabsDemoToolbarComponent,
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,

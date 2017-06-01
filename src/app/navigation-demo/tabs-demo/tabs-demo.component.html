@@ -1,29 +1,8 @@
 
-<md-card>
+<md-card *ngIf="tabsVisible">
     <md-card-title>Tabbed Sections</md-card-title>
     <md-card-content>
         <md-tab-group md-stretch-tabs>
-            <md-tab>
-                <ng-template md-tab-label>Overview</ng-template>
-                <p>
-                    This demo shows off the basic uses of the tab component.
-                </p>
-                <p>
-                    There are many more variations and features available when
-                    using the material tab components.  More information can
-                    be found at the following locations:
-                </p>
-                <ul>
-                    <li>
-                        The offical Angular 2 material tabs API:
-                        <a>https://material.angular.io/components/component/tabs</a>
-                    </li>
-                    <li>
-                        The material2 project's demo-app section on tabs:
-                        <a>https://github.com/angular/material2/tree/master/src/demo-app/tabs</a>
-                    </li>
-                </ul>
-            </md-tab>
             <md-tab *ngFor="let section of sections">
                 <ng-template md-tab-label>{{section.header}}</ng-template>
                 <section [innerHTML]="section.content"></section>
@@ -32,3 +11,20 @@
         </md-tab-group>
     </md-card-content>
 </md-card>
+
+<md-card *ngIf="!tabsVisible">
+    <md-card-title>Vertical Sections (no tabs)</md-card-title>
+    <md-card-content>
+        <section>
+            <section *ngFor="let section of sections">
+                <h5>{{section.header}}</h5>
+                <section [innerHTML]="section.content"></section>
+                <br>
+            </section>
+        </section>
+    </md-card-content>
+</md-card>
+
+<ng-template cfToolbarPortal #toolbarPortal="toolbarPortal">
+    <cbp-tabs-demo-toolbar (tabsVisible)="onTabsVisibleChange($event)"></cbp-tabs-demo-toolbar>
+</ng-template>
