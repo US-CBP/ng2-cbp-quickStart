@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import {
+    Component,
+    OnInit,
+}                           from '@angular/core';
+import { ToolbarService }   from 'ng2-cbp-cf';
 
 @Component({
     templateUrl: 'icons.component.html',
     styleUrls: ['icons.component.scss'],
 })
 
-export class IconsComponent {
+export class IconsComponent implements OnInit {
+    constructor(private _toolbarService: ToolbarService) {
+    }
+
+    ngOnInit(): void {
+        this._toolbarService.setTitle('Material Design Icons - Guidelines');
+    }
 
     public iconList: any[] = [
         { icon: 'menu', name: 'Menu', description: 'Open and Close side nav' },
@@ -30,7 +40,4 @@ export class IconsComponent {
         { icon: 'attach_file', name: 'Attachment', description: 'Uploading a document' },
         { icon: 'file_download', name: 'Download', description: 'Open document' },
     ];
-
-    constructor() {
-    }
 }

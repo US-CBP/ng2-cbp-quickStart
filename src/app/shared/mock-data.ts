@@ -100,7 +100,7 @@ export class MockData {
                     {
                         "html": "Date Picker/Range",
                         "type": "route",
-                        "url": "#"
+                        "url": "form-control-demo/datepicker-demo"
                     },
                     {
                         "html": "Dropdown Tree",

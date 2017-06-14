@@ -1,0 +1,40 @@
+<md-card>
+    <md-card-header>
+        <md-card-title>Standard</md-card-title>
+    </md-card-header>
+    <md-card-content>
+        <md-input-container>
+            <input mdInput [mdDatepicker]="picker1" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="picker1"></button>
+        </md-input-container>
+        <md-datepicker #picker1></md-datepicker>
+    </md-card-content>
+</md-card>
+<br />
+<md-card>
+    <md-card-header>
+        <md-card-title>startView = "Year"</md-card-title>
+    </md-card-header>
+    <md-card-content>
+        <md-input-container>
+            <input mdInput [mdDatepicker]="picker2" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="picker2"></button>
+        </md-input-container>
+        <md-datepicker startView="year" #picker2></md-datepicker>
+    </md-card-content>
+</md-card>
+<br />
+<md-card>
+    <md-card-header>
+        <md-card-title>With default value</md-card-title>
+    </md-card-header>
+    <md-card-content>
+        <md-input-container>
+            <input mdInput [mdDatepicker]="picker3" [value]="defaultDate" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="picker3"></button>
+        </md-input-container>
+        <md-datepicker #picker3></md-datepicker>
+        <br />
+        <button md-raised-button color="primary" (click)="toggleDatepicker()">Toggle Datepicker</button>
+    </md-card-content>
+</md-card>
