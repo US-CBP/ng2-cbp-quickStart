@@ -16,6 +16,7 @@ export class IconsComponent implements OnInit {
     ngOnInit(): void {
         this._toolbarService.setTitle('Material Design Icons - Guidelines');
     }
+
     public iconList: any[] = [
         { icon: 'menu', name: 'Menu', description: 'Open and Close side nav' },
         { icon: 'person', name: 'User', description: 'User Accoun' },

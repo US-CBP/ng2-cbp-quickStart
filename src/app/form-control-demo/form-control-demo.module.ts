@@ -5,8 +5,12 @@ import {
 import { FormsModule }                  from '@angular/forms';
 import {
     MdButtonModule,
+    MdCardModule,
+    MdDatepickerModule,
     MdDialogModule,
     MdIconModule,
+    MdInputModule,
+    MdNativeDateModule,
 }                                       from '@angular/material';
 import { BrowserModule }                from '@angular/platform-browser';
 
@@ -18,6 +22,7 @@ import {
 
 import { BadgeDemoComponent }           from './badge-demo';
 import { CheckboxDemoComponent }        from './checkbox-demo';
+import { DatepickerDemoComponent }        from './datepicker-demo';
 import {
     DropdownTreeDemoComponent,
     DropdownTreeDemoService,
@@ -32,13 +37,18 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
         CheckboxModule,
         DropdownTreeFieldModule,
         MdButtonModule,
+        MdCardModule,
+        MdDatepickerModule,
         MdDialogModule,
         MdIconModule,
+        MdInputModule,
+        MdNativeDateModule,
         formControlDemoRouting,
     ],
     declarations: [
         BadgeDemoComponent,
         CheckboxDemoComponent,
+        DatepickerDemoComponent,
         DropdownTreeDemoComponent,
     ],
     providers: [
