@@ -1,0 +1,9 @@
+<md-card>
+    <button type="button" md-raised-button color="primary" (click)="setLeftActionToClose()">Close action</button>
+    <button type="button" md-raised-button color="primary" (click)="setLeftActionToBack()">Back action</button>
+</md-card>
+
+<ng-template cfToolbarPortal #toolbarPortal="toolbarPortal">
+    <cbp-toolbar-demo-toolbar>
+    </cbp-toolbar-demo-toolbar>
+</ng-template>
