@@ -106,6 +106,11 @@ export class MockData {
                         "html": "Dropdown Tree",
                         "type": "route",
                         "url": "form-control-demo/dropdown-tree-demo"
+                    },
+                    {
+                        "html": "Toolbar",
+                        "type": "route",
+                        "url": "form-control-demo/toolbar-demo"
                     }
                 ]
             },

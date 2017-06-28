@@ -14,6 +14,7 @@ import {
     BadgeModule,
     CheckboxModule,
     DropdownTreeFieldModule,
+    ToolbarModule,
 }                                       from 'ng2-cbp-cf';
 
 import { BadgeDemoComponent }           from './badge-demo';
@@ -23,6 +24,10 @@ import {
     DropdownTreeDemoService,
 }                                       from './dropdown-tree-demo';
 import { formControlDemoRouting }       from './form-control-demo.routing';
+import {
+    ToolbarDemoComponent,
+    ToolbarDemoToolbarComponent,
+}                                       from './toolbar-demo';
 
 @NgModule({
     imports: [
@@ -34,12 +39,15 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
         MdButtonModule,
         MdDialogModule,
         MdIconModule,
+        ToolbarModule,
         formControlDemoRouting,
     ],
     declarations: [
         BadgeDemoComponent,
         CheckboxDemoComponent,
         DropdownTreeDemoComponent,
+        ToolbarDemoComponent,
+        ToolbarDemoToolbarComponent,
     ],
     providers: [
         DropdownTreeDemoService,
