@@ -16,8 +16,47 @@
     <button md-raised-button color="primary" (click)="searchClicked()">Search</button>
 </md-card>
 
-<md-card *ngIf="users.length > 0">
-    <div role="grid" class="mat-table mat-table-condensed">
+<md-card>
+    <div class="example-container mat-elevation-z8">
+        <md-table #table [dataSource]="dataSource">
+            <ng-container cdkColumnDef="firstName">
+                <md-header-cell *cdkHeaderCellDef>First Name</md-header-cell>
+                <md-cell *cdkCellDef="let row">{{row.firstName}}</md-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="lastName">
+                <md-header-cell *cdkHeaderCellDef>Last Name</md-header-cell>
+                <md-cell *cdkCellDef="let row">{{row.lastName}}</md-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="email">
+                <md-header-cell *cdkHeaderCellDef>Email</md-header-cell>
+                <md-cell *cdkCellDef="let row">{{row.email}}</md-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="address">
+                <md-header-cell *cdkHeaderCellDef>Address</md-header-cell>
+                <md-cell *cdkCellDef="let row">{{row.address}}</md-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="role">
+                <md-header-cell *cdkHeaderCellDef>Role</md-header-cell>
+                <md-cell *cdkCellDef="let row">{{displayRole(row.role)}}</md-cell>
+            </ng-container>
+
+            <ng-container cdkColumnDef="action">
+                <md-header-cell *cdkHeaderCellDef>Action</md-header-cell>
+                <md-cell *cdkCellDef="let row">
+                    <button md-icon-button title="Edit user" (click)="editUser(row)"><md-icon>edit</md-icon></button>
+                </md-cell>
+            </ng-container>
+
+            <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+            <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+        </md-table>
+    </div>
+
+    <!--<div role="grid" class="mat-table mat-table-condensed">
         <div role="rowgroup" class="mat-table-head">
             <div role="row" class="mat-table-row">
                 <div role="columnheader" class="mat-table-columnheader mat-table-cell first-name">First Name</div>
@@ -42,5 +81,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </md-card>

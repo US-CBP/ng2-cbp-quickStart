@@ -93,11 +93,6 @@ export class MockData {
                         "url": "#"
                     },
                     {
-                        "html": "Checkbox",
-                        "type": "route",
-                        "url": "form-control-demo/checkbox-demo",
-                    },
-                    {
                         "html": "Date Picker/Range",
                         "type": "route",
                         "url": "#"
@@ -108,12 +103,6 @@ export class MockData {
                         "url": "form-control-demo/dropdown-tree-demo"
                     }
                 ]
-            },
-            {
-                "html": "Table + Pagination",
-                "name": "Table + Pagination",
-                "type": "route",
-                "url": "table"
             },
             {
                 "html": "List",

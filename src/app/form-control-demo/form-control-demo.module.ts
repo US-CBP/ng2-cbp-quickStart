@@ -12,12 +12,10 @@ import { BrowserModule }                from '@angular/platform-browser';
 
 import {
     BadgeModule,
-    CheckboxModule,
     DropdownTreeFieldModule,
 }                                       from 'ng2-cbp-cf';
 
 import { BadgeDemoComponent }           from './badge-demo';
-import { CheckboxDemoComponent }        from './checkbox-demo';
 import {
     DropdownTreeDemoComponent,
     DropdownTreeDemoService,
@@ -29,7 +27,6 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
         BrowserModule,
         FormsModule,
         BadgeModule,
-        CheckboxModule,
         DropdownTreeFieldModule,
         MdButtonModule,
         MdDialogModule,
@@ -38,7 +35,6 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
     ],
     declarations: [
         BadgeDemoComponent,
-        CheckboxDemoComponent,
         DropdownTreeDemoComponent,
     ],
     providers: [
