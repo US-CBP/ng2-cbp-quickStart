@@ -1,3 +1,4 @@
+import { CdkTableModule }               from '@angular/cdk';
 import {
     CUSTOM_ELEMENTS_SCHEMA,
     NgModule,
@@ -10,6 +11,7 @@ import {
     MdIconModule,
     MdInputModule,
     MdSelectModule,
+    MdTableModule,
 }                                       from '@angular/material';
 import { BrowserModule }                from '@angular/platform-browser';
 
@@ -22,6 +24,7 @@ import {
 @NgModule({
     imports: [
         BrowserModule,
+        CdkTableModule,
         FormsModule,
         MdButtonModule,
         MdCardModule,
@@ -29,6 +32,7 @@ import {
         MdIconModule,
         MdInputModule,
         MdSelectModule,
+        MdTableModule,
         sampleRouting,
     ],
     declarations: [

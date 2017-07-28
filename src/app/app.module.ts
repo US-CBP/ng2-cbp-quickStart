@@ -33,7 +33,6 @@ import {
     MockData,
     MockServerService,
 }                                           from './shared';
-import { TableDemoModule }                  from './table-demo/table-demo.module';
 
 @NgModule({
     imports: [
@@ -50,7 +49,6 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         MdSidenavModule,
         FormControlDemoModule,
         SampleModule,
-        TableDemoModule,
         ToolbarModule,
         ListDemoModule,
         PayPeriodCalendarDemoModule,

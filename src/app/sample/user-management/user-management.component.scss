@@ -1,29 +1,10 @@
-.mat-table-cell {
-    border-left: 1px solid #d5d5d5;
-    justify-content: center;
-    width: 250px;
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
 }
 
-.first-name {
-    flex: 0 0 auto;
-}
-
-.last-name {
-    flex: 0 0 auto;
-}
-
-.email {
-    flex: 0 0 auto;
-}
-
-.address {
-    flex: 0 0 auto;
-}
-
-.role {
-    flex: 0 0 auto;
-}
-
-.action {
-    flex: 0 0 auto;
+.mat-table {
+    overflow: auto;
 }
