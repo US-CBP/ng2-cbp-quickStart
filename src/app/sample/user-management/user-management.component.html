@@ -55,31 +55,4 @@
             <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
         </md-table>
     </div>
-
-    <!--<div role="grid" class="mat-table mat-table-condensed">
-        <div role="rowgroup" class="mat-table-head">
-            <div role="row" class="mat-table-row">
-                <div role="columnheader" class="mat-table-columnheader mat-table-cell first-name">First Name</div>
-                <div role="columnheader" class="mat-table-columnheader mat-table-cell last-name">Last Name</div>
-                <div role="columnheader" class="mat-table-columnheader mat-table-cell email">Email</div>
-                <div role="columnheader" class="mat-table-columnheader mat-table-cell address">Address</div>
-                <div role="columnheader" class="mat-table-columnheader mat-table-cell role">Role</div>
-                <div role="columnheader" class="mat-table-columnheader mat-table-cell action">Edit</div>
-            </div>
-        </div>
-        <div role="rowgroup" class="mat-table-body">
-            <div *ngFor="let user of users" role="row" class="mat-table-row">
-                <div role="rowheader" class="mat-table-rowheader mat-table-cell first-name">{{user.firstName}}</div>
-                <div role="gridcell" class="mat-table-cell last-name">{{user.lastName}}</div>
-                <div role="gridcell" class="mat-table-cell email">{{user.email}}</div>
-                <div role="gridcell" class="mat-table-cell address">{{user.address}}</div>
-                <div role="gridcell" class="mat-table-cell role">{{displayRole(user.role)}}</div>
-                <div role="gridcell" class="mat-table-cell action">
-                    <button md-icon-button title="Edit user" (click)="editUser(user)">
-                        <md-icon>edit</md-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>-->
 </md-card>

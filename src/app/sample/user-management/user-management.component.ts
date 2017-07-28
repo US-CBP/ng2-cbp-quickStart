@@ -19,8 +19,8 @@ import { User }                 from './user.model';
     styleUrls: ['user-management.component.scss'],
 })
 export class UserManagementComponent implements OnInit {
-    displayedColumns = ['firstName', 'lastName', 'email', 'address', 'role', 'action'];
-    userDatabase = new UserDatabase(this._serverService);
+    displayedColumns: string[] = ['firstName', 'lastName', 'email', 'address', 'role', 'action'];
+    userDatabase: UserDatabase = new UserDatabase(this._serverService);
     dataSource: UserDataSource | null;
 
     firstName: string;
@@ -80,7 +80,7 @@ export class UserDatabase {
         this.filter(null, null, null);
     }
 
-    filter(firstName: string, lastName: string, role: string) {
+    filter(firstName: string, lastName: string, role: string): void {
         let userData = this._serverService.getUserData(firstName, lastName, role).map(d => <User>{
             firstName: d.firstName,
             lastName: d.lastName,
@@ -110,5 +110,5 @@ export class UserDataSource extends DataSource<any> {
         return this._userDatabase.dataChange;
     }
 
-    disconnect() { }
+    disconnect(): void { }
 }
