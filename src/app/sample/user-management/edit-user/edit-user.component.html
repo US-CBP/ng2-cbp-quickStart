@@ -1,32 +1,32 @@
-<header md-dialog-title>
+<header mat-dialog-title>
     Edit {{firstName1.value}} {{lastName1.value}}
 </header>
-<md-dialog-content>
-    <md-input-container>
-        <input mdInput placeholder="First name" maxlength="20" size="23" [(ngModel)]="firstName" #firstName1>
-        <md-hint align="end">{{firstName1.value.length}} / 20</md-hint>
-    </md-input-container>
+<mat-dialog-content>
+    <mat-form-field>
+        <input matInput placeholder="First name" maxlength="20" size="23" [(ngModel)]="firstName" #firstName1>
+        <mat-hint align="end">{{firstName1.value.length}} / 20</mat-hint>
+    </mat-form-field>
 
-    <md-input-container>
-        <input mdInput placeholder="Last name" maxlength="20" size="23" [(ngModel)]="lastName" #lastName1>
-        <md-hint align="end">{{lastName1.value.length}} / 20</md-hint>
-    </md-input-container>
-
-    <br />
-
-    <md-input-container>
-        <input mdInput placeholder="Email" maxlength="20" size="50" [(ngModel)]="email" #email1>
-        <md-hint align="end">{{email1.value.length}} / 20</md-hint>
-    </md-input-container>
+    <mat-form-field>
+        <input matInput placeholder="Last name" maxlength="20" size="23" [(ngModel)]="lastName" #lastName1>
+        <mat-hint align="end">{{lastName1.value.length}} / 20</mat-hint>
+    </mat-form-field>
 
     <br />
 
-    <md-input-container>
-        <input mdInput placeholder="Address" maxlength="40" size="50" [(ngModel)]="address" #address1>
-        <md-hint align="end">{{address1.value.length}} / 40</md-hint>
-    </md-input-container>
-</md-dialog-content>
-<md-dialog-actions align="end">
-    <button md-button color="primary" (click)="onCancelClick()">CANCEL</button>
-    <button md-button color="primary" (click)="onSaveClick()">SAVE</button>
-</md-dialog-actions>
+    <mat-form-field>
+        <input matInput placeholder="Email" maxlength="20" size="50" [(ngModel)]="email" #email1>
+        <mat-hint align="end">{{email1.value.length}} / 20</mat-hint>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+        <input matInput placeholder="Address" maxlength="40" size="50" [(ngModel)]="address" #address1>
+        <mat-hint align="end">{{address1.value.length}} / 40</mat-hint>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button color="primary" (click)="onCancelClick()">CANCEL</button>
+    <button mat-button color="primary" (click)="onSaveClick()">SAVE</button>
+</mat-dialog-actions>

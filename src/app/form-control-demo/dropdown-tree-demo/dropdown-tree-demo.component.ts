@@ -1,14 +1,11 @@
 ﻿import {
     Component,
-    OnInit,
     TemplateRef,
     ViewChild,
 }                                   from '@angular/core';
-import { MdDialog }                 from '@angular/material';
-import {
-    ToolbarService,
-    TreeNode,
-}                                   from 'ng2-cbp-cf';
+import { MatDialog }                from '@angular/material';
+import { TreeNode }                 from 'ng2-cbp-cf/src/dropdown-tree';
+import { ToolbarService }           from 'ng2-cbp-cf/src/toolbar';
 import { Observable }               from 'rxjs';
 
 import { DropdownTreeDemoService }  from './dropdown-tree-demo.service';
@@ -16,7 +13,7 @@ import { DropdownTreeDemoService }  from './dropdown-tree-demo.service';
 @Component({
     templateUrl: 'dropdown-tree-demo.component.html',
 })
-export class DropdownTreeDemoComponent implements OnInit {
+export class DropdownTreeDemoComponent {
     treeNodeObservable: Observable<TreeNode[]>;
     demo1SelectedNode: TreeNode = null;
     demo2SelectedNode: TreeNode = null;
@@ -25,15 +22,13 @@ export class DropdownTreeDemoComponent implements OnInit {
     @ViewChild('dialog') dialogTemplate: TemplateRef<any>;
 
     constructor(
-        private _dialog: MdDialog,
+        private _dialog: MatDialog,
         private _toolbarService: ToolbarService,
         service: DropdownTreeDemoService) {
 
         this.treeNodeObservable = service.treeNodesObservable;
         service.refreshTreeNodes();
-    }
 
-    ngOnInit(): void {
         this._toolbarService.setTitle('Dropdown tree');
     }
 

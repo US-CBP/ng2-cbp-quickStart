@@ -1,20 +1,20 @@
 
-<md-card *ngIf="tabsVisible">
-    <md-card-title>Tabbed Sections</md-card-title>
-    <md-card-content>
-        <md-tab-group md-stretch-tabs>
-            <md-tab *ngFor="let section of sections">
-                <ng-template md-tab-label>{{section.header}}</ng-template>
+<mat-card *ngIf="tabsVisible">
+    <mat-card-title>Tabbed Sections</mat-card-title>
+    <mat-card-content>
+        <mat-tab-group mat-stretch-tabs>
+            <mat-tab *ngFor="let section of sections">
+                <ng-template mat-tab-label>{{section.header}}</ng-template>
                 <section [innerHTML]="section.content"></section>
                 <br>
-            </md-tab>
-        </md-tab-group>
-    </md-card-content>
-</md-card>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>
 
-<md-card *ngIf="!tabsVisible">
-    <md-card-title>Vertical Sections (no tabs)</md-card-title>
-    <md-card-content>
+<mat-card *ngIf="!tabsVisible">
+    <mat-card-title>Vertical Sections (no tabs)</mat-card-title>
+    <mat-card-content>
         <section>
             <section *ngFor="let section of sections">
                 <h5>{{section.header}}</h5>
@@ -22,9 +22,9 @@
                 <br>
             </section>
         </section>
-    </md-card-content>
-</md-card>
+    </mat-card-content>
+</mat-card>
 
-<ng-template cfToolbarPortal #toolbarPortal="toolbarPortal">
+<ng-template cdkPortal #toolbarPortal="cdkPortal">
     <cbp-tabs-demo-toolbar (tabsVisible)="onTabsVisibleChange($event)"></cbp-tabs-demo-toolbar>
 </ng-template>

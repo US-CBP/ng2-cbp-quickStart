@@ -4,17 +4,13 @@ import {
 }                                           from '@angular/core';
 import { FormsModule }                      from '@angular/forms';
 import { HttpModule }                       from '@angular/http';
-import {
-    MdButtonModule,
-    MdIconModule,
-    MdSidenavModule,
-}                                           from '@angular/material';
+import { MatButtonModule }                  from '@angular/material/button';
+import { MatIconModule }                    from '@angular/material/icon';
+import { MatSidenavModule }                 from '@angular/material/sidenav';
 import { BrowserModule }                    from '@angular/platform-browser';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
-import {
-    HeaderModule,
-    ToolbarModule,
-}                                           from 'ng2-cbp-cf';
+import { HeaderModule }                     from 'ng2-cbp-cf/src/header';
+import { ToolbarModule }                    from 'ng2-cbp-cf/src/toolbar';
 
 import { AppComponent }                     from './app.component';
 import {
@@ -33,7 +29,6 @@ import {
     MockData,
     MockServerService,
 }                                           from './shared';
-import { TableDemoModule }                  from './table-demo/table-demo.module';
 
 @NgModule({
     imports: [
@@ -45,12 +40,11 @@ import { TableDemoModule }                  from './table-demo/table-demo.module
         appRouting,
         HeaderModule,
         HomeModule,
-        MdButtonModule,
-        MdIconModule,
-        MdSidenavModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
         FormControlDemoModule,
         SampleModule,
-        TableDemoModule,
         ToolbarModule,
         ListDemoModule,
         PayPeriodCalendarDemoModule,

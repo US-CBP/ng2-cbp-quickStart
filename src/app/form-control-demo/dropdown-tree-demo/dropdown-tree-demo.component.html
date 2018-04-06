@@ -4,14 +4,14 @@
             <h2>Simple example</h2>
             <div class="container-fluid" style="max-width: 400px; margin: 0;">
                 <div class="row" style="padding-top: 15px;">
-                    <cf-dropdown-tree-field id="demo-1" placeholder="Demo 1" defaultLabel="Any Value" [(ngModel)]="demo1SelectedNode" [nodes]="treeNodeObservable | async" style="width: 200px;"></cf-dropdown-tree-field>
+                    <cf-dropdown-tree id="demo-1" placeholder="Demo 1" defaultLabel="Any Value" [(ngModel)]="demo1SelectedNode" [nodes]="treeNodeObservable | async" style="width: 200px;"></cf-dropdown-tree>
                 </div>
             </div>
 
             <h2>Show entire selected path</h2>
             <div class="container-fluid" style="max-width: 400px; margin: 0;">
                 <div class="row" style="padding-top: 15px;">
-                    <cf-dropdown-tree-field id="demo-2" placeholder="Demo 2" defaultLabel="Any Value" [showFullSelectedPath]="true" [(ngModel)]="demo2SelectedNode" [nodes]="treeNodeObservable | async" style="width: 200px;"></cf-dropdown-tree-field>
+                    <cf-dropdown-tree id="demo-2" placeholder="Demo 2" defaultLabel="Any Value" [showFullSelectedPath]="true" [(ngModel)]="demo2SelectedNode" [nodes]="treeNodeObservable | async" style="width: 200px;"></cf-dropdown-tree>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
     </header>
     <md-dialog-content>
         <div style="padding-top: 15px;">
-            <cf-dropdown-tree-field id="demo-3" placeholder="Demo 3" defaultLabel="Any Value" [(ngModel)]="demo3SelectedNode" [nodes]="treeNodeObservable | async" style="width: 200px;"></cf-dropdown-tree-field>
+            <cf-dropdown-tree id="demo-3" placeholder="Demo 3" defaultLabel="Any Value" [(ngModel)]="demo3SelectedNode" [nodes]="treeNodeObservable | async" style="width: 200px;"></cf-dropdown-tree>
         </div>
     </md-dialog-content>
 </ng-template>

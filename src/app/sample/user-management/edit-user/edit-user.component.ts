@@ -4,7 +4,7 @@ import {
     Input,
     Output,
 }                           from '@angular/core';
-import { MdDialogRef }      from '@angular/material';
+import { MatDialogRef }     from '@angular/material';
 
 import { User }             from '../';
 
@@ -29,7 +29,7 @@ export class EditUserComponent {
     address: string;
     role: string;
 
-    constructor(private _dialog: MdDialogRef<EditUserComponent>) {
+    constructor(private _dialog: MatDialogRef<EditUserComponent>) {
     }
 
     onCancelClick(): void {
@@ -37,13 +37,13 @@ export class EditUserComponent {
     }
 
     onSaveClick(): void {
-        this.userUpdated.emit(<User>{
+        this.userUpdated.emit({
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
             address: this.address,
             role: this.role,
-        });
+        } as User);
 
         this._dialog.close();
     }

@@ -1,33 +1,24 @@
-﻿import {
-    AfterViewInit,
+﻿import { TemplatePortalDirective }  from '@angular/cdk/portal';
+import {
     Component,
     OnDestroy,
     OnInit,
     ViewChild,
-}                           from '@angular/core';
-import {
-    ToolbarService,
-    ToolbarTemplatePortalDirective,
-}                           from 'ng2-cbp-cf';
+}                                   from '@angular/core';
+
+import { ToolbarService }           from 'ng2-cbp-cf/src/toolbar';
 
 @Component({
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.scss'],
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-    @ViewChild('toolbarPortal') toolbarPortal: ToolbarTemplatePortalDirective;
+export class HomeComponent implements OnInit, OnDestroy {
+    @ViewChild('toolbarPortal') toolbarPortal: TemplatePortalDirective;
 
-    constructor(private _toolbarService: ToolbarService) {
-    }
+    constructor(private _toolbarService: ToolbarService) { }
 
     ngOnInit(): void {
         this._toolbarService.setPortal(this.toolbarPortal);
-    }
-
-    ngAfterViewInit(): void {
-        if(this.toolbarPortal) {
-            this.toolbarPortal.detectChangesInView();
-        }
     }
 
     ngOnDestroy(): void {

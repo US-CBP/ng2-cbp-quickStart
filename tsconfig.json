@@ -13,17 +13,17 @@
         "noUnusedLocals": true,
         "noUnusedParameters": false,
         "removeComments": true,
-        "sourceMap": true,
         "target": "es5",
         "types": [
             "jasmine",
-            "lodash",
             "node"
         ]
     },
     "exclude": [
         "node_modules",
-        "target",
-        "tmp"
-    ]
+        "dist"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "useWebpackText": true
+    }
 }

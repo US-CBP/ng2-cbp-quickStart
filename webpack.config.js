@@ -1,15 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //=========================================================
 //  VARS
@@ -20,9 +14,6 @@ const ENV_DEVELOPMENT = NODE_ENV === 'development';
 const ENV_PRODUCTION = NODE_ENV === 'production';
 const ENV_TEST = NODE_ENV === 'test';
 
-const HOST = '0.0.0.0';
-const PORT = 3000;
-
 //=========================================================
 //  LOADERS
 //---------------------------------------------------------
@@ -30,7 +21,7 @@ const rules = {
     cssStyles: {
         test: /\.css$/,
         exclude: path.resolve('src/shared/styles'),
-        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+        use: ['style-loader', 'css-loader']
     },
     componentStyles: {
         test: /\.scss$/,
@@ -40,39 +31,34 @@ const rules = {
     globalStyles: {
         test: /\.scss$/,
         include: path.resolve('src/shared/styles'),
-        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' })
+        use: [
+            {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: './'
+                }
+            },
+            'css-loader',
+            'sass-loader'
+        ]
     },
     typescript: {
         test: /\.ts$/,
-        use: ['awesome-typescript-loader', 'angular2-template-loader']
+        use: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader']
     },
     html: {
         test: /\.html$/,
         use: ['html-loader?-minimize']
     },
     fontFile: {
-        test: /\.(ttf|otf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(ttf|otf|eot|svg|woff|woff2|cur|ani)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: ['file-loader']
-    },
-    fontUrl: {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: ['url-loader?limit=10000&mimetype=application/font-woff']
     },
     imagesFile: {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
             'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
-            {
-                loader: 'image-webpack-loader',
-                query: {
-                    gifsicle: {
-                        interlaced: false
-                    },
-                    optipng: {
-                        optimizationLevel: 7
-                    }
-                }
-            }
+            'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false'
         ]
     }
 };
@@ -82,8 +68,10 @@ const rules = {
 //---------------------------------------------------------
 const config = module.exports = {};
 
+config.mode = 'none';
+
 config.resolve = {
-    extensions: ['.ts', '.js', '.css', '.scss'],
+    extensions: ['.ts', '.js'],
     modules: [
         path.resolve('.'),
         path.join(__dirname, 'node_modules'),
@@ -100,25 +88,44 @@ config.module = {
         rules.componentStyles,
         rules.html,
         rules.fontFile,
-        rules.fontUrl,
         rules.imagesFile,
         rules.globalStyles
     ]
 };
 
+config.optimization = {
+    splitChunks: {
+        cacheGroups: {
+            'default': false,
+            'vendors': {
+                test: function(module) {
+                    if(module.context && module.context.indexOf('node_modules') !== -1) {
+                        let current = module;
+                        while(current.issuer !== null) {
+                            current = current.issuer;
+                        }
+                        return current.rawRequest !== './src/polyfills.ts';
+                    } else {
+                        return false;
+                    }
+                },
+                name: 'vendor',
+                chunks: 'all'
+            }
+        }
+    }
+};
+
 config.plugins = [
-    new ExtractTextPlugin('[name].css'),
-    new ProvidePlugin({
-        _: 'lodash',
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery',
-        'jquery.inputmask': 'jqueryInputmask'
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css'
     }),
-    new DefinePlugin({
+    new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
     }),
-    new LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({
         debug: false,
         minimize: true,
         options: {
@@ -133,7 +140,7 @@ config.plugins = [
             }
         }
     }),
-    new ContextReplacementPlugin(
+    new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)@angular/,
         path.resolve('src')
     )
@@ -144,22 +151,11 @@ config.plugins = [
 //-------------------------------------
 if(ENV_DEVELOPMENT || ENV_PRODUCTION) {
     config.entry = {
-        main: './src/main.ts',
-        vendor: './src/vendor.ts',
-        polyfills: './src/polyfills.ts'
-    };
-
-    config.output = {
-        filename: '[name].js',
-        path: path.resolve('./target'),
-        publicPath: ENV_PRODUCTION ? './' : '/'
+        'main': './src/main.ts',
+        'polyfills': './src/polyfills.ts'
     };
 
     config.plugins.push(
-        new CommonsChunkPlugin({
-            name: ['main', 'vendor', 'polyfills'],
-            minChunks: Infinity
-        }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             hash: false,
@@ -167,6 +163,12 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION) {
             template: './src/index.html'
         })
     );
+
+    config.output = {
+        filename: '[name].js',
+        path: path.resolve('dist'),
+        publicPath: '/'
+    };
 }
 
 //=====================================
@@ -175,25 +177,13 @@ if(ENV_DEVELOPMENT || ENV_PRODUCTION) {
 if(ENV_DEVELOPMENT) {
     config.devtool = 'inline-source-map';
 
-    config.plugins.push(new ProgressPlugin());
+    config.plugins.push(new webpack.ProgressPlugin());
+    config.plugins.push(new webpack.WatchIgnorePlugin([
+        path.join(__dirname, 'node_modules'),
+        'node_modules'
+    ]));
 
-    config.devServer = {
-        contentBase: './src',
-        historyApiFallback: true,
-        host: HOST,
-        port: PORT,
-        stats: {
-            cached: true,
-            cachedAssets: true,
-            chunks: true,
-            chunkModules: false,
-            colors: true,
-            hash: false,
-            reasons: true,
-            timings: true,
-            version: false
-        }
-    };
+    config.watch = true;
 }
 
 //=====================================
@@ -205,20 +195,7 @@ if(ENV_PRODUCTION) {
     config.output.filename = '[name].[chunkhash].js';
 
     config.plugins.push(
-        new WebpackMd5Hash(),
-        new ExtractTextPlugin('styles.[contenthash].css'),
-        new UglifyJsPlugin({
-            comments: false,
-            compress: {
-                dead_code: true, // eslint-disable-line camelcase
-                screw_ie8: true, // eslint-disable-line camelcase
-                unused: true,
-                warnings: false
-            },
-            mangle: {
-                screw_ie8: true  // eslint-disable-line camelcase
-            }
-        })
+        new UglifyJsPlugin()
     );
 }
 

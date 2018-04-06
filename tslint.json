@@ -8,6 +8,7 @@
             true,
             "ban-single-arg-parens"
         ],
+        "import-spacing": false,
         "interface-name": [ true, "never-prefix" ],
         "max-classes-per-file": [ false ],
         "max-line-length": [
@@ -67,14 +68,11 @@
         "directive-class-suffix": true,
         "directive-selector": [ true, "attribute", "cbp", "camelCase" ],
         "import-destructuring-spacing": true,
-        "invoke-injectable": true,
-        "no-access-missing-member": true,
         "no-attribute-parameter-decorator": true,
         "no-forward-ref": true,
         "no-input-rename": true,
         "no-output-rename": true,
         "pipe-naming": [ true, "camelCase", "cbp" ],
-        "templates-use-public": true,
         "use-host-property-decorator": true,
         "use-input-property-decorator": true,
         "use-life-cycle-interface": true,

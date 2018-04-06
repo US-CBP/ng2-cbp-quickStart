@@ -1,37 +1,29 @@
+import { TemplatePortalDirective }  from '@angular/cdk/portal';
 import {
-    AfterViewInit,
     Component,
     OnDestroy,
-    OnInit,
     ViewChild,
-}            from '@angular/core';
-import { SECTIONS, Section }    from './section-content.model';
+}                                   from '@angular/core';
+
+import { ToolbarService }           from 'ng2-cbp-cf/src/toolbar';
 
 import {
-    ToolbarService,
-    ToolbarTemplatePortalDirective,
-} from 'ng2-cbp-cf';
+    SECTIONS,
+    Section,
+}                                   from './section-content.model';
 
 @Component({
     templateUrl: 'tabs-demo.component.html',
 })
-export class TabsDemoComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TabsDemoComponent implements OnDestroy {
     sections: Section[] = SECTIONS;
     tabsVisible: boolean = true;
 
-    @ViewChild('toolbarPortal') toolbarPortal: ToolbarTemplatePortalDirective;
+    @ViewChild('toolbarPortal') toolbarPortal: TemplatePortalDirective;
 
-    constructor(private _toolbarService: ToolbarService) {}
-
-    ngOnInit(): void {
+    constructor(private _toolbarService: ToolbarService) {
         this._toolbarService.setPortal(this.toolbarPortal);
         this._toolbarService.setTitle('Tabs');
-    }
-
-    ngAfterViewInit(): void {
-        if(this.toolbarPortal) {
-            this.toolbarPortal.detectChangesInView();
-        }
     }
 
     ngOnDestroy(): void {
