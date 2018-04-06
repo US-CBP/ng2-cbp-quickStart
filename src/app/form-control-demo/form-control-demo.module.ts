@@ -3,21 +3,15 @@ import {
     NgModule,
 }                                       from '@angular/core';
 import { FormsModule }                  from '@angular/forms';
-import {
-    MdButtonModule,
-    MdDialogModule,
-    MdIconModule,
-}                                       from '@angular/material';
+import { MatButtonModule }              from '@angular/material/button';
+import { MatDialogModule }              from '@angular/material/dialog';
+import { MatIconModule }                from '@angular/material/icon';
 import { BrowserModule }                from '@angular/platform-browser';
 
-import {
-    BadgeModule,
-    CheckboxModule,
-    DropdownTreeFieldModule,
-}                                       from 'ng2-cbp-cf';
+import { BadgeModule }                  from 'ng2-cbp-cf/src/badge';
+import { DropdownTreeModule }           from 'ng2-cbp-cf/src/dropdown-tree';
 
 import { BadgeDemoComponent }           from './badge-demo';
-import { CheckboxDemoComponent }        from './checkbox-demo';
 import {
     DropdownTreeDemoComponent,
     DropdownTreeDemoService,
@@ -29,16 +23,14 @@ import { formControlDemoRouting }       from './form-control-demo.routing';
         BrowserModule,
         FormsModule,
         BadgeModule,
-        CheckboxModule,
-        DropdownTreeFieldModule,
-        MdButtonModule,
-        MdDialogModule,
-        MdIconModule,
+        DropdownTreeModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatIconModule,
         formControlDemoRouting,
     ],
     declarations: [
         BadgeDemoComponent,
-        CheckboxDemoComponent,
         DropdownTreeDemoComponent,
     ],
     providers: [

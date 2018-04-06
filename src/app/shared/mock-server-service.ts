@@ -1,6 +1,9 @@
 import { Injectable }   from '@angular/core';
 import * as _           from 'lodash';
-import { Observable }   from 'rxjs';
+import {
+    Observable,
+    of,
+} from 'rxjs';
 
 import { MockData }     from  './mock-data';
 
@@ -26,22 +29,22 @@ export class MockServerService {
         const year = request.search.paramsMap.get('year')[0];
         const month = request.search.paramsMap.get('month')[0];
 
-        return Observable.of(this._mockData.payPeriodJson[year][month]);
+        return of(this._mockData.payPeriodJson[year][month]);
     }
 
-    public getPayPeriodMonthData(): Observable<any> {
-        return Observable.of(this._mockData.payPeriodMonthJson);
+    public getPayPeriodMonthData(): Observable<any[]> {
+        return of(this._mockData.payPeriodMonthJson);
     }
 
     public getTableData(request: any): any {
-        let query = JSON.parse(request); /* params --> limit -- offset -- pageCount -- page*/
-        let header = _.clone(this._mockData.tableJson);
+        const query = JSON.parse(request); /* params --> limit -- offset -- pageCount -- page*/
+        const header = _.clone(this._mockData.tableJson);
 
         if(query) {
-            let offset = (query.limit * (query.page - 1));
-            let data = _.slice<any>(header.data, offset, (offset + query.limit));
+            const offset = (query.limit * (query.page - 1));
+            const data = _.slice<any>(header.data, offset, (offset + query.limit));
             header.data = _.map(data, item => {
-                let nItem = _.clone(item);
+                const nItem = _.clone(item);
                 nItem.name = item.name.last + ', ' + item.name.first;
                 return nItem;
             });

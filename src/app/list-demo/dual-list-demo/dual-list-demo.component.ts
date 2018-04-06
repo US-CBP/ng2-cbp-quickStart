@@ -1,15 +1,12 @@
-﻿import {
-    Component,
-    OnInit,
-}                               from '@angular/core';
-import { ToolbarService }       from 'ng2-cbp-cf';
+﻿import { Component }            from '@angular/core';
+import { ToolbarService }       from 'ng2-cbp-cf/src/toolbar';
 
 import { DualListDemoService }  from './dual-list.service';
 
 @Component({
     templateUrl: 'dual-list-demo.component.html',
 })
-export class DualListDemoComponent implements OnInit {
+export class DualListDemoComponent {
     private service: DualListDemoService;
 
     attrToShow: string[] = ['name', 'division'];
@@ -32,9 +29,7 @@ export class DualListDemoComponent implements OnInit {
                 }
             },
         );
-    };
 
-    ngOnInit(): void {
         this._toolbarService.setTitle('Dual List');
     }
 

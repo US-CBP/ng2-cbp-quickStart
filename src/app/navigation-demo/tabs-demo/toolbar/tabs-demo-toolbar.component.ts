@@ -5,7 +5,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 
-import { MdTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
     templateUrl: 'tabs-demo-toolbar.component.html',
@@ -24,7 +24,7 @@ export class TabsDemoToolbarComponent {
         this.tabsVisible.emit(false);
     }
 
-    selectionChanged(event: MdTabChangeEvent): void {
+    selectionChanged(event: MatTabChangeEvent): void {
         this.tabsVisible.emit(event.tab.textLabel === 'Inner Tabs');
     }
 }

@@ -1,17 +1,17 @@
 <div>
     <h4> <a href="https://material.io/icons/">Material Design Icons - Guidelines</a></h4>
 </div>
-<md-card>
-    <md-card-content>
-        <md-grid-list cols="4" rowHeight="50px" *ngFor="let icon of iconList" style="width: 80%">
-            <md-grid-tile [colspan]="1" [rowspan]="1">
-                <md-icon>{{icon.icon}}</md-icon>
-            </md-grid-tile>
-            <md-grid-tile [colspan]="1" [rowspan]="1">{{icon.name}}</md-grid-tile>
-            <md-grid-tile [colspan]="1" [rowspan]="1">{{icon.description}}</md-grid-tile>
-            <md-grid-tile [colspan]="1" [rowspan]="1">
-                <span class="hljs-tag">&lt;<span class="hljs-name">md-icon</span>&gt;{{icon.icon}}&lt;/<span class="hljs-name">md-icon</span>&gt;</span>
-            </md-grid-tile>
-        </md-grid-list>
-    </md-card-content>
-</md-card>
+<mat-card>
+    <mat-card-content>
+        <mat-grid-list cols="4" rowHeight="50px" *ngFor="let icon of iconList" style="width: 80%">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-icon>{{icon.icon}}</mat-icon>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">{{icon.name}}</mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">{{icon.description}}</mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <span class="hljs-tag">&lt;<span class="hljs-name">mat-icon</span>&gt;{{icon.icon}}&lt;/<span class="hljs-name">mat-icon</span>&gt;</span>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>

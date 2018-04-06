@@ -2,16 +2,20 @@
     Component,
     OnInit,
 }                                       from '@angular/core';
-import { ToolbarService }               from 'ng2-cbp-cf';
+import { ToolbarService }               from 'ng2-cbp-cf/src/toolbar';
 import {
     Observable,
     Observer,
 }                                       from 'rxjs';
+import {
+    map,
+    switchMap,
+}                                       from 'rxjs/operators';
 
 import {
     PayPeriod,
     PayPeriodMonth,
-}                                       from 'ng2-cbp-cf';
+}                                       from 'ng2-cbp-cf/src/pay-period-calendar';
 
 import { PayPeriodCalendarDemoService } from './pay-period-calendar-demo.service';
 
@@ -42,14 +46,17 @@ export class PayPeriodCalendarDemoComponent implements OnInit {
             this.demo1Months = months;
             this.demo2Months = months;
         });
+
         this.demo1PayPeriodsOfMonth = new Observable<PayPeriodMonth>(o => this._demo1MonthSelectedObserver = o)
-            .switchMap(month => this._service.getPayPeriods(month));
+            .pipe(switchMap(month => this._service.getPayPeriods(month)));
         this.demo2PayPeriodsOfMonth = new Observable<PayPeriodMonth>(o => this._demo2MonthSelectedObserver = o)
-            .switchMap(month => this._service.getPayPeriods(month))
-            .map(pps => {
-                pps.forEach(this._demo2PayPeriodMap);
-                return pps;
-            });
+            .pipe(
+                switchMap(month => this._service.getPayPeriods(month)),
+                map(pps => {
+                    pps.forEach(this._demo2PayPeriodMap);
+                    return pps;
+                }),
+            );
     }
 
     demo1MonthSelected(month: PayPeriodMonth): void {

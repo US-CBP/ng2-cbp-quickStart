@@ -3,14 +3,13 @@ import {
     NgModule,
 }                                       from '@angular/core';
 import { FormsModule }                  from '@angular/forms';
-import {
-    MdButtonModule,
-    MdCardModule,
-    MdDialogModule,
-    MdIconModule,
-    MdInputModule,
-    MdSelectModule,
-}                                       from '@angular/material';
+import { MatButtonModule }              from '@angular/material/button';
+import { MatCardModule }                from '@angular/material/card';
+import { MatDialogModule }              from '@angular/material/dialog';
+import { MatIconModule }                from '@angular/material/icon';
+import { MatInputModule }               from '@angular/material/input';
+import { MatSelectModule }              from '@angular/material/select';
+import { MatTableModule }               from '@angular/material/table';
 import { BrowserModule }                from '@angular/platform-browser';
 
 import { sampleRouting }                from './sample.routing';
@@ -23,12 +22,13 @@ import {
     imports: [
         BrowserModule,
         FormsModule,
-        MdButtonModule,
-        MdCardModule,
-        MdDialogModule,
-        MdIconModule,
-        MdInputModule,
-        MdSelectModule,
+        MatButtonModule,
+        MatCardModule,
+        MatDialogModule,
+        MatIconModule,
+        MatInputModule,
+        MatSelectModule,
+        MatTableModule,
         sampleRouting,
     ],
     declarations: [

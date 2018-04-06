@@ -1,7 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdRadioChange, MdSidenav }     from '@angular/material';
-import { ToolbarService }               from 'ng2-cbp-cf';
-import { Observable }                   from 'rxjs';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+}                                       from '@angular/core';
+import {
+    MatRadioChange,
+    MatSidenav,
+}                                       from '@angular/material';
+import { ToolbarService }               from 'ng2-cbp-cf/src/toolbar';
+import {
+    Observable,
+    fromEvent,
+}                                       from 'rxjs';
+import { debounceTime }                 from 'rxjs/operators';
 
 @Component({
     templateUrl: 'side-bars-demo.component.html',
@@ -23,14 +34,14 @@ export class SideBarsDemoComponent implements OnInit {
 
     forceAutoShow: boolean = true;
 
-    @ViewChild('rightSideToolbar') sideBar: MdSidenav;
+    @ViewChild('rightSideToolbar') sideBar: MatSidenav;
 
-    constructor(private _toolbarService: ToolbarService) {}
+    constructor(private _toolbarService: ToolbarService) {
+        this._toolbarService.setTitle('Side Bars');
+    }
 
     ngOnInit(): void {
-        this._toolbarService.setTitle('Side Bars');
-        this.$resizeEvent = Observable.fromEvent(window, 'resize')
-            .debounceTime(200);
+        this.$resizeEvent = fromEvent(window, 'resize').pipe(debounceTime(200));
 
         this.$resizeEvent.subscribe( () => { this.checkAutoShow(); });
         this.checkAutoShow();
@@ -45,8 +56,8 @@ export class SideBarsDemoComponent implements OnInit {
     }
 
     checkAutoShow(): void {
-        let clientWidth: number = this.getWindowWidth();
-        let oldValue = this.autoShowAvailable;
+        const clientWidth: number = this.getWindowWidth();
+        const oldValue = this.autoShowAvailable;
         this.autoShowAvailable = clientWidth > this.autoShowWidth;
         if (this.forceAutoShow && this.autoShowAvailable ) {
             if (!this.sideBar.opened) {
@@ -63,15 +74,15 @@ export class SideBarsDemoComponent implements OnInit {
         return document.documentElement.clientWidth;
     }
 
-    onToggleLeftNav(event: MdRadioChange): void {
+    onToggleLeftNav(event: MatRadioChange): void {
         this.leftNavOption = event.value;
     }
 
-    onToggleRightNav(sideBar: MdSidenav): void {
+    onToggleRightNav(sideBar: MatSidenav): void {
         sideBar.toggle();
     }
 
-    setRightNavValue(val: string, sideBar: MdSidenav): void {
+    setRightNavValue(val: string, sideBar: MatSidenav): void {
         this.rightNavValue = val;
         if (this.leftNavOption !== 'side') {
             sideBar.close();

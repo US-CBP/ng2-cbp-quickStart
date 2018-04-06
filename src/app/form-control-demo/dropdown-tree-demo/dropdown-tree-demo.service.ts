@@ -4,7 +4,7 @@ import {
     Observable,
 }                           from 'rxjs';
 
-import { TreeNode }         from 'ng2-cbp-cf';
+import { TreeNode }         from 'ng2-cbp-cf/src/dropdown-tree';
 
 import { MockServerService }    from '../../shared';
 

@@ -4,12 +4,12 @@ import {
     ViewChild,
     ViewEncapsulation,
 }                       from '@angular/core';
-import { MdSidenav }    from '@angular/material';
+import { MatSidenav }   from '@angular/material';
 import {
     NavigationAction,
     Toolbar,
     ToolbarService,
-}                       from 'ng2-cbp-cf';
+}                       from 'ng2-cbp-cf/src/toolbar';
 
 import { AppService }   from './app.service';
 import { Header }       from './header-model';
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
     headerData: Header;
 
-    @ViewChild('sideNav') sideNav: MdSidenav;
+    @ViewChild('sideNav') sideNav: MatSidenav;
 
     constructor(
         private _toolbarService: ToolbarService,
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        let toolbar = new Toolbar(
+        const toolbar = new Toolbar(
             new NavigationAction(this._toolbarService),
             null,
             'Home');

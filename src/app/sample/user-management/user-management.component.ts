@@ -2,8 +2,8 @@ import {
     Component,
     OnInit,
 }                               from '@angular/core';
-import { MdDialog }             from '@angular/material';
-import { ToolbarService }       from 'ng2-cbp-cf';
+import { MatDialog }            from '@angular/material';
+import { ToolbarService }       from 'ng2-cbp-cf/src/toolbar';
 
 import { MockServerService }    from '../../shared';
 import { EditUserComponent }    from './edit-user';
@@ -14,6 +14,9 @@ import { User }                 from './user.model';
     styleUrls: ['user-management.component.scss'],
 })
 export class UserManagementComponent implements OnInit {
+    displayedColumns: string[] = ['firstName', 'lastName', 'email', 'address', 'role', 'action'];
+    dataSource: any;
+
     firstName: string;
     lastName: string;
     role: string;
@@ -27,17 +30,18 @@ export class UserManagementComponent implements OnInit {
     users: User[] = [];
 
     constructor(
-        private _dialogService: MdDialog,
+        private _dialogService: MatDialog,
         private _serverService: MockServerService,
         private _toolbarService: ToolbarService) {
-    }
-
-    ngOnInit(): void {
         this._toolbarService.setTitle('User Management');
     }
 
+    ngOnInit(): void {
+        this.dataSource = this._filter(null, null, null);
+    }
+
     searchClicked(): void {
-        this.users = <User[]>this._serverService.getUserData(this.firstName, this.lastName, this.role);
+        this.dataSource = this._filter(this.firstName, this.lastName, this.role);
     }
 
     displayRole(role: string): string {
@@ -45,7 +49,7 @@ export class UserManagementComponent implements OnInit {
     }
 
     editUser(user: User): void {
-        let dialog = this._dialogService.open(EditUserComponent);
+        const dialog = this._dialogService.open(EditUserComponent);
 
         dialog.componentInstance.user = user;
 
@@ -58,5 +62,17 @@ export class UserManagementComponent implements OnInit {
         user.email = newUser.email;
         user.address = newUser.address;
         user.role = newUser.role;
+    }
+
+    private _filter(firstName: string, lastName: string, role: string): User[] {
+        return this._serverService.getUserData(firstName, lastName, role).map(d => {
+            return {
+                firstName: d.firstName,
+                lastName: d.lastName,
+                email: d.email,
+                address: d.address,
+                role: d.role,
+            } as User;
+        });
     }
 }
